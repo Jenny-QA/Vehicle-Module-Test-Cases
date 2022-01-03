@@ -69,7 +69,6 @@ public class CommonTestCases {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[contains(text(),'" + subMenu + "')]")));
 		//element = driver.findElement(By.xpath(""));
-		System.out.println(element);
 		js = (JavascriptExecutor)driver;
 		js.executeScript("arguments[0].click();", element);
 	}

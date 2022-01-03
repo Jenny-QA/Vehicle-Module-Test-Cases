@@ -38,7 +38,7 @@ public class LoginTestCases {
 	
 	@BeforeTest
 	public void openBrowser() {
-		driver.manage().window().maximize();
+		//driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Util.WAIT_TIME));
 		//driver.manage().timeouts().scriptTimeout(Duration.ofMinutes(Util.WAIT_TIME));
 		//driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(Util.WAIT_TIME)));
