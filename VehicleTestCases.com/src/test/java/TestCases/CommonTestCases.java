@@ -81,4 +81,15 @@ public class CommonTestCases {
 		assertEquals(errorMsg, msg);
 	}
 	
+	public void openForm(String xpath1, String xpath2) {
+		driver.findElement(By.xpath(xpath1)).click();
+		verifyAddButton(xpath2);
+	}
+	
+	public void verifyAddButton(String xpath) {
+		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		enable = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath))).isEnabled();
+		assertEquals(enable, false);
+	}
+	
 }
