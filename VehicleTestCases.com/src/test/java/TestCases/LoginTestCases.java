@@ -21,9 +21,9 @@ public class LoginTestCases {
 		// TODO Auto-generated constructor stub
 	}
 	
-	/*public LoginTestCases(WebDriver driver){
+	public LoginTestCases(WebDriver driver){
 		this.driver = driver;
-	}*/
+	}
 	
 	@BeforeSuite
 	public void initDriver() {
@@ -31,6 +31,7 @@ public class LoginTestCases {
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--no-sandbox");
 		options.addArguments("--disable-dev-shm-usage");
+		options.addArguments("--window-size=1920,1080");
 		options.addArguments("--headless");
 		driver = new ChromeDriver(options);
 	}

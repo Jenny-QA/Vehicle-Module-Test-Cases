@@ -11,4 +11,6 @@ public class ErrorMessage {
 	
 	public static final String loginSuccess = "Login successfully";
 	
+	public static final String DataError = "No Data Found";
+	
 }

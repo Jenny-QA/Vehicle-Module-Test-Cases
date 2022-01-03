@@ -5,6 +5,7 @@ import static org.testng.Assert.assertEquals;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -19,6 +20,7 @@ public class CommonTestCases {
 	public boolean enable;
 	public String errorMsg;
 	public WebDriverWait wait;
+	public JavascriptExecutor js;
 
 	public CommonTestCases() {
 		// TODO Auto-generated constructor stub
@@ -55,15 +57,29 @@ public class CommonTestCases {
 		driver.findElement(By.xpath("//input[@type='text']")).sendKeys(username);
 		driver.findElement(By.xpath("//input[@type='password']")).sendKeys(password);
 		driver.findElement(By.className("white-bbtn")).click();
+		checkErrorMessage(msg);
+	}
+	
+	public void clearElement(String element) {
+		driver.findElement(By.xpath(element)).clear();
+	}
+	
+	public void goMenu(String mainMenu, String subMenu) {
+		driver.findElement(By.xpath("//*[contains(text(),'" + mainMenu + "')]")).click();
+		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[contains(text(),'" + subMenu + "')]")));
+		//element = driver.findElement(By.xpath(""));
+		System.out.println(element);
+		js = (JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click();", element);
+	}
+	
+	public void checkErrorMessage(String msg) {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"toast-container\"]/div/div[2]")));
 		errorMsg = element.getText();
 		element.click();
 		assertEquals(errorMsg, msg);
-	}
-	
-	public void clearElement(String element) {
-		driver.findElement(By.xpath(element)).clear();
 	}
 	
 }

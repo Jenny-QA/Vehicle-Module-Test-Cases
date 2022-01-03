@@ -11,4 +11,8 @@ public class Util {
 	public static final String USER_NAME = "Jenny";
 	public static final String PASSWORD = "Test@111";
 	
+	public static final String MASTERS_MENU = "Masters";
+	public static final String OPERATOR_MENU = "Operators";
+	public static final String POLICIES_MENU = "Ppolicies";
+	
 }
