@@ -24,3 +24,8 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn test -f VehicleTestCases.com/pom.xml
+    - name: Test Reporter
+      uses: dorny/test-reporter@v1.5.0
+      with:
+        path: "**/surefire-reports/TEST-*.xml"
+        reporter: java-junit
