@@ -57,7 +57,12 @@ public class CommonTestCases {
 		driver.findElement(By.xpath("//input[@type='text']")).sendKeys(username);
 		driver.findElement(By.xpath("//input[@type='password']")).sendKeys(password);
 		driver.findElement(By.className("white-bbtn")).click();
-		checkErrorMessage(msg);
+		//checkErrorMessage(msg);
+		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"toast-container\"]/div/div[2]")));
+		errorMsg = element.getText();
+		element.click();
+		assertEquals(errorMsg, msg);
 	}
 
 	public void goMenu(String mainMenu, String subMenu) {
