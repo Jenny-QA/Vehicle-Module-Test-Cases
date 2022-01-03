@@ -59,11 +59,7 @@ public class CommonTestCases {
 		driver.findElement(By.className("white-bbtn")).click();
 		checkErrorMessage(msg);
 	}
-	
-	public void clearElement(String element) {
-		driver.findElement(By.xpath(element)).clear();
-	}
-	
+
 	public void goMenu(String mainMenu, String subMenu) {
 		driver.findElement(By.xpath("//*[contains(text(),'" + mainMenu + "')]")).click();
 		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
