@@ -12,16 +12,16 @@ import org.testng.annotations.Test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class VehicleMasterTestCases {
+public class AssignDriverToVehiclesTestCases {
 
 	private WebDriver driver;
 	CommonTestCases testcase;
 	
-	public VehicleMasterTestCases() {
+	public AssignDriverToVehiclesTestCases() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public VehicleMasterTestCases(WebDriver driver) {
+	public AssignDriverToVehiclesTestCases(WebDriver driver) {
 		this.driver = driver;
 	}	
 	
@@ -53,7 +53,7 @@ public class VehicleMasterTestCases {
 	
 	@Test(priority = 1)
 	public void gotoMenu() {
-		testcase.goMenu(Util.MASTERS_MENU, "Vehicle Master");
+		testcase.goMenu(Util.OPERATOR_MENU, "Assign Driver To Vehicles");
 	}
 	
 	@Test(priority = 2)

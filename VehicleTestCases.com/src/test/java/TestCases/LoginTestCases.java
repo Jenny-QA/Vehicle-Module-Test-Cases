@@ -44,9 +44,8 @@ public class LoginTestCases {
 	
 	@BeforeTest
 	public void openBrowser() {
-		//driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Util.WAIT_TIME));
-		//driver.manage().timeouts().scriptTimeout(Duration.ofMinutes(Util.WAIT_TIME));
+		driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(10));
 		//driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(Util.WAIT_TIME)));
 		driver.get(Util.BASE_URL);
 		testcase = new CommonTestCases(driver);
