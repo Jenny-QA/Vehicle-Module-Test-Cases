@@ -60,11 +60,8 @@ public class CommonTestCases {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"toast-container\"]/div/div[2]")));
 		errorMsg = element.getText();
-		//System.out.println(errorMsg);
 		element.click();
 		assertEquals(errorMsg, msg);
-		//enable = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[contains(text(),'" + msg + "')]"))).isDisplayed();
-		//assertEquals(enable, true);
 	}
 
 	public void goMenu(String mainMenu, String subMenu) {
