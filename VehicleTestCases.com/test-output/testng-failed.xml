@@ -5,9 +5,7 @@
     <classes>
       <class name="TestCases.VehicleMasterTestCases">
         <methods>
-          <include name="checkAddBUtton"/>
           <include name="quit"/>
-          <include name="Login"/>
           <include name="openBrowser"/>
           <include name="initDriver"/>
           <include name="checkSnackbar"/>

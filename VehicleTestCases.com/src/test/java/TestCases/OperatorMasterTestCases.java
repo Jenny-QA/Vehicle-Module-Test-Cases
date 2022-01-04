@@ -66,10 +66,10 @@ public class OperatorMasterTestCases {
 		testcase.checkErrorMessage(ErrorMessage.DataError);
 	}
 	
-	/*@Test(priority = 4)
+	@Test(priority = 4)
 	public void checkAddButton() {
 		testcase.openForm("//a[@class,'btn-primary']", "//button[@type='submit']");
-	}*/
+	}
 	
 	@AfterTest
 	public void quit() {

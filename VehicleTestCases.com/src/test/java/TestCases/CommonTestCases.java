@@ -55,8 +55,7 @@ public class CommonTestCases {
 	
 	public void verifyLogin(String username, String password ,String msg) {
 		driver.findElement(By.xpath("//input[@type='text']")).sendKeys(username);
-		driver.findElement(By.xpath("//input[@type='password']")).sendKeys(password);
-		driver.findElement(By.className("white-bbtn")).click();
+		driver.findElement(By.xpath("//input[@type='password']")).sendKeys(password + Keys.ENTER);
 		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"toast-container\"]/div/div[2]")));
 		errorMsg = element.getText();
@@ -86,8 +85,9 @@ public class CommonTestCases {
 	}
 	
 	public void verifyAddButton(String xpath) {
-		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		enable = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath))).isEnabled();
+		js = (JavascriptExecutor)driver;
+		js.executeScript("window.scroll();", element);
+		enable = driver.findElement(By.xpath(xpath)).isEnabled();
 		assertEquals(enable, false);
 	}
 	

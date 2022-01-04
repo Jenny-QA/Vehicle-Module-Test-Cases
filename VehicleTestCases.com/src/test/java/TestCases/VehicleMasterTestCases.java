@@ -40,7 +40,7 @@ public class VehicleMasterTestCases {
 	@BeforeTest
 	public void openBrowser() {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Util.WAIT_TIME));
-		driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(10));
+		driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(20));
 		//driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(Util.WAIT_TIME)));
 		driver.get(Util.BASE_URL);
 		testcase = new CommonTestCases(driver);
@@ -66,10 +66,10 @@ public class VehicleMasterTestCases {
 		testcase.checkErrorMessage(ErrorMessage.DataError);
 	}
 	
-	/*@Test(priority = 4)
+	@Test(priority = 4)
 	public void checkAddButton() {
-		testcase.openForm("//a[@class,'btn-primary']", "//button[@type='submit']");
-	}*/
+		testcase.openForm("//a[contains(@class,'btn-primary')]", "//button[contains(@type,'submit')]");
+	}
 	
 	@AfterTest
 	public void quit() {

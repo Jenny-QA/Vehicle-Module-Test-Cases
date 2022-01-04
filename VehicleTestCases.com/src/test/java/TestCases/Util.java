@@ -13,6 +13,6 @@ public class Util {
 	
 	public static final String MASTERS_MENU = "Masters";
 	public static final String OPERATOR_MENU = "Operators";
-	public static final String POLICIES_MENU = "Ppolicies";
+	public static final String POLICIES_MENU = "Policies";
 	
 }
