@@ -61,8 +61,8 @@ public class CommonTestCases {
 		driver.findElement(By.className("white-bbtn")).click();
 		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"toast-container\"]/div/div[2]")));
-		System.out.println(element);
 		errorMsg = element.getText();
+		System.out.println(errorMsg);
 		element.click();
 		assertEquals(errorMsg, msg);
 	}
