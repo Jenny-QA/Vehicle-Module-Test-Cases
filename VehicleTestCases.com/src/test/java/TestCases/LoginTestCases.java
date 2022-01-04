@@ -2,6 +2,7 @@ package TestCases;
 
 import java.time.Duration;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -23,6 +24,11 @@ public class LoginTestCases {
 	
 	public LoginTestCases(WebDriver driver){
 		this.driver = driver;
+	}
+	
+	public void clearElement() {
+		driver.findElement(By.xpath("//input[@type='text']")).clear();
+		driver.findElement(By.xpath("//input[@type='password']")).clear();
 	}
 	
 	@BeforeSuite
