@@ -3,8 +3,32 @@
 <suite name="Suite">
   <test thread-count="5" name="Test">
     <classes>
+      <class name="TestCases.VehicleManufacturerMasterTestCases"/>
+      <class name="TestCases.AssignInventoryTestCases"/>
+      <class name="TestCases.FuelMasterTestCases"/>
+      <class name="TestCases.CancellationPolicyTestCases"/>
+      <class name="TestCases.StopSellTestCases"/>
+      <class name="TestCases.PromotionTestCases"/>
+      <class name="TestCases.RateSetupTestCases"/>
+      <class name="TestCases.VehicleSubTestCases"/>
+      <class name="TestCases.BillingTypeMasterTestCases"/>
+      <class name="TestCases.PromotionMasterTestCases"/>
       <class name="TestCases.LoginTestCases"/>
       <class name="TestCases.VehicleMasterTestCases"/>
+      <class name="TestCases.WeightUnitMasterTestCases"/>
+      <class name="TestCases.PickupServiceMasterTestCases"/>
+      <class name="TestCases.OperatorVehicleSetupTestCases"/>
+      <class name="TestCases.LocationSetupTestCases"/>
+      <class name="TestCases.AssignDriverToVehiclesTestCases"/>
+      <class name="TestCases.SeasonSetupTestCases"/>
+      <class name="TestCases.PromotionAssignmentTestCases"/>
+      <class name="TestCases.DriverMasterTestCases"/>
+      <class name="TestCases.TaxPolicyTestCases"/>
+      <class name="TestCases.PaymentPolicyTestCase"/>
+      <class name="TestCases.StopSellMasterTestCases"/>
+      <class name="TestCases.OperatorMasterTestCases"/>
+      <class name="TestCases.VehicleColorMasterTestCases"/>
+      <class name="TestCases.VehicleSetupMasterTestCases"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
