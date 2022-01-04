@@ -70,7 +70,7 @@ public class CommonTestCases {
 	public void goMenu(String mainMenu, String subMenu) {
 		driver.findElement(By.xpath("//*[contains(text(),'" + mainMenu + "')]")).click();
 		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[contains(text(),'" + subMenu + "')]")));
+		element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[contains(text(),'" + subMenu + "')]")));
 		js = (JavascriptExecutor)driver;
 		js.executeScript("arguments[0].click();", element);
 	}
