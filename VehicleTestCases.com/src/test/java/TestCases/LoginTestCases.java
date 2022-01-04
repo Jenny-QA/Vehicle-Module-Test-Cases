@@ -79,16 +79,19 @@ public class LoginTestCases {
 	
 	@Test(priority = 5)
 	public void Login0() {
+		clearElement();
 		testcase.verifyLogin("Jainisha", "Test@111", ErrorMessage.userError);
 	}
 	
 	@Test(priority = 6)
 	public void Login1() {
+		clearElement();
 		testcase.verifyLogin("Jenny", "Test@1111", ErrorMessage.passwordError);
 	}
 	
 	@Test(priority = 7)
 	public void Login2() {
+		clearElement();
 		testcase.verifyLogin("Jenny", "Test@111", ErrorMessage.loginSuccess);
 	}
 	
