@@ -68,7 +68,7 @@ public class StopSellTestCases {
 	
 	@Test(priority = 4)
 	public void checkAddButton() {
-		testcase.openForm("//button[@class,'btn-primary']", "//button[@type='submit']");
+		testcase.openForm("//button[contains(@class,'btn-primary')]", "//button[contains(@type,'submit')]");
 	}
 	
 	@AfterTest

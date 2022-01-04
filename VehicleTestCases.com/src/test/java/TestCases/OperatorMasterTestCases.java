@@ -68,7 +68,7 @@ public class OperatorMasterTestCases {
 	
 	@Test(priority = 4)
 	public void checkAddButton() {
-		testcase.openForm("//a[@class,'btn-primary']", "//button[@type='submit']");
+		testcase.openForm("//a[contains(@class,'btn-primary')]", "//button[contains(@type,'submit')]");
 	}
 	
 	@AfterTest
