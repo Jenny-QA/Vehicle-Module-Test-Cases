@@ -63,7 +63,7 @@ public class CommonTestCases {
 		//System.out.println(errorMsg);
 		//element.click();
 		//assertEquals(errorMsg, msg);
-		enable = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[Contain(text(),'" + msg + "')]"))).isDisplayed();
+		enable = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[contains(text(),'" + msg + "')]"))).isDisplayed();
 		assertEquals(enable, true);
 	}
 
