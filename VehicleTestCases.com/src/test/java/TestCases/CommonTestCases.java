@@ -54,12 +54,14 @@ public class CommonTestCases {
 	}
 	
 	public void verifyLogin(String username, String password ,String msg) {
+		driver.findElement(By.xpath("//input[@type='text']")).clear();
+		driver.findElement(By.xpath("//input[@type='password']")).clear();
 		driver.findElement(By.xpath("//input[@type='text']")).sendKeys(username);
 		driver.findElement(By.xpath("//input[@type='password']")).sendKeys(password);
 		driver.findElement(By.className("white-bbtn")).click();
-		//checkErrorMessage(msg);
 		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"toast-container\"]/div/div[2]")));
+		element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"toast-container\"]/div/div[2]")));
+		System.out.println(element);
 		errorMsg = element.getText();
 		element.click();
 		assertEquals(errorMsg, msg);
@@ -69,7 +71,6 @@ public class CommonTestCases {
 		driver.findElement(By.xpath("//*[contains(text(),'" + mainMenu + "')]")).click();
 		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[contains(text(),'" + subMenu + "')]")));
-		//element = driver.findElement(By.xpath(""));
 		js = (JavascriptExecutor)driver;
 		js.executeScript("arguments[0].click();", element);
 	}

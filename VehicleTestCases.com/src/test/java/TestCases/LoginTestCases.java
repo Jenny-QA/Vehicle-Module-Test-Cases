@@ -2,7 +2,6 @@ package TestCases;
 
 import java.time.Duration;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -35,11 +34,6 @@ public class LoginTestCases {
 		options.addArguments("--window-size=1920,1080");
 		options.addArguments("--headless");
 		driver = new ChromeDriver(options);
-	}
-	
-	public void cleanElement() {
-		driver.findElement(By.xpath("//input[@type='text']")).clear();
-		driver.findElement(By.xpath("//input[@type='password']")).clear();
 	}
 	
 	@BeforeTest
@@ -78,20 +72,17 @@ public class LoginTestCases {
 	}
 	
 	@Test(priority = 5)
-	public void Login0() {	
-		cleanElement();		
+	public void Login0() {
 		testcase.verifyLogin("Jainisha", "Test@111", ErrorMessage.userError);
 	}
 	
 	@Test(priority = 6)
 	public void Login1() {
-		cleanElement();
 		testcase.verifyLogin("Jenny", "Test@1111", ErrorMessage.passwordError);
 	}
 	
 	@Test(priority = 7)
 	public void Login2() {
-		cleanElement();		
 		testcase.verifyLogin("Jenny", "Test@111", ErrorMessage.loginSuccess);
 	}
 	
