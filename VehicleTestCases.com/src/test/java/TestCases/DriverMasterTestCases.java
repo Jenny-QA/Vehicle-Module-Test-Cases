@@ -40,15 +40,15 @@ public class DriverMasterTestCases {
 	@BeforeTest
 	public void openBrowser() {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Util.WAIT_TIME));
-		driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(10));
-		//driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(Util.WAIT_TIME)));
+		driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(Util.WAIT_TIME));
+		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(Util.WAIT_TIME));
 		driver.get(Util.BASE_URL);
 		testcase = new CommonTestCases(driver);
 	}
 	
 	@Test(priority = 0)
 	public void Login() {		
-		testcase.verifyLogin("Jenny", "Test@111", ErrorMessage.loginSuccess);
+		testcase.verifyLogin2("Jenny", "Test@111");//, ErrorMessage.loginSuccess);
 	}	
 	
 	@Test(priority = 1)

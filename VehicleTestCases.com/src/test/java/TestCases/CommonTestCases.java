@@ -21,7 +21,8 @@ public class CommonTestCases {
 	public String errorMsg;
 	public WebDriverWait wait;
 	public JavascriptExecutor js;
-
+	//public RemoteWebDriver driver;
+	
 	public CommonTestCases() {
 		// TODO Auto-generated constructor stub
 	}
@@ -56,67 +57,52 @@ public class CommonTestCases {
 	public void verifyLogin(String username, String password ,String msg) {
 		driver.findElement(By.xpath("//input[@type='text']")).sendKeys(username);
 		driver.findElement(By.xpath("//input[@type='password']")).sendKeys(password + Keys.ENTER);
-		//try {
-			wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-			element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"toast-container\"]/div/div[2]")));
-			errorMsg = element.getText();
-			element.click();
-			assertEquals(errorMsg, msg);
-		//}
-		//catch(Exception e) {
-			//e.printStackTrace();
-		//}
+		wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+		element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"toast-container\"]/div/div[2]")));
+		errorMsg = element.getText();
+		element.click();
+		assertEquals(errorMsg, msg);
 	}
+	
+	public void verifyLogin2(String username, String password) {
+		driver.findElement(By.xpath("//input[@type='text']")).sendKeys(username);
+		driver.findElement(By.xpath("//input[@type='password']")).sendKeys(password + Keys.ENTER);
+//		wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+//		element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"toast-container\"]/div/div[2]")));
+//		errorMsg = element.getText();
+//		element.click();
+//		assertEquals(errorMsg, msg);
+	}	
 
 	public void goMenu(String mainMenu, String subMenu) {
 		driver.findElement(By.xpath("//*[contains(text(),'" + mainMenu + "')]")).click();
-		//try {
-			wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-			element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[contains(text(),'" + subMenu + "')]")));
-			js = (JavascriptExecutor)driver;
-			js.executeScript("arguments[0].click();", element);
-		//}
-		//catch(Exception e) {
-			//e.printStackTrace();
-		//}
+		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[contains(text(),'" + subMenu + "')]")));
+		js = (JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click();", element);
 	}
 
 	public void checkErrorMessage(String msg) {
-		//try {
-			wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-			element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"toast-container\"]/div/div[2]")));
-			errorMsg = element.getText();
-			element.click();
-			assertEquals(errorMsg, msg);
-		//}
-		//catch(Exception e) {
-			//e.printStackTrace();
-		//}
+		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"toast-container\"]/div/div[2]")));
+		errorMsg = element.getText();
+		element.click();
+		assertEquals(errorMsg, msg);
 	}
 
 	public void openForm(String xpath1, String xpath2) {
-		//try {
-			wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath1))).click();
-		//}
-		//catch(Exception e) {
-			//e.printStackTrace();
-		//}
+		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath1))).click();
 		verifyAddButton(xpath2);
 	}
 
 	public void verifyAddButton(String xpath) {
-		//try {
-			wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-			element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath))); 
-			js = (JavascriptExecutor)driver;
-			js.executeScript("window.scroll();", element);
-			enable = element.isEnabled();
-			assertEquals(enable, false);
-		//}
-		//catch(Exception e) {
-			//e.printStackTrace();
-		//}
+		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath))); 
+		js = (JavascriptExecutor)driver;
+		js.executeScript("window.scroll();", element);
+		enable = element.isEnabled();
+		assertEquals(enable, false);
 	}
 
 }

@@ -17,7 +17,7 @@ public class LoginTestCases {
 
 	private WebDriver driver;
 	CommonTestCases testcase;
-	
+    
 	public LoginTestCases() {
 		// TODO Auto-generated constructor stub
 	}
@@ -30,7 +30,7 @@ public class LoginTestCases {
 		driver.findElement(By.xpath("//input[@type='text']")).clear();
 		driver.findElement(By.xpath("//input[@type='password']")).clear();
 	}
-	
+		
 	@BeforeSuite
 	public void initDriver() {
 		WebDriverManager.chromedriver().setup();
@@ -45,8 +45,8 @@ public class LoginTestCases {
 	@BeforeTest
 	public void openBrowser() {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Util.WAIT_TIME));
-		driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(10));
-		//driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(Util.WAIT_TIME)));
+		driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(Util.WAIT_TIME));
+		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(Util.WAIT_TIME));
 		driver.get(Util.BASE_URL);
 		testcase = new CommonTestCases(driver);
 	}
@@ -93,7 +93,7 @@ public class LoginTestCases {
 	public void Login2() {
 		//clearElement();
 		driver.navigate().refresh();
-		testcase.verifyLogin("Jenny", "Test@111", ErrorMessage.loginSuccess);
+		testcase.verifyLogin2("Jenny", "Test@111"); //, ErrorMessage.loginSuccess);
 	}
 	
 	@AfterTest

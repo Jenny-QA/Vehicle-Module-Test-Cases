@@ -1,10 +1,12 @@
 package TestCases;
 
 import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.devtools.v94.audits.model.AttributionReportingIssueType;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
@@ -40,15 +42,15 @@ public class VehicleMasterTestCases {
 	@BeforeTest
 	public void openBrowser() {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Util.WAIT_TIME));
-		driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(20));
-		//driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(Util.WAIT_TIME)));
+		driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(Util.WAIT_TIME));
+		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(Util.WAIT_TIME));
 		driver.get(Util.BASE_URL);
 		testcase = new CommonTestCases(driver);
 	}
 	
 	@Test(priority = 0)
 	public void Login() {		
-		testcase.verifyLogin("Jenny", "Test@111", ErrorMessage.loginSuccess);
+		testcase.verifyLogin2("Jenny", "Test@111");//, ErrorMessage.loginSuccess);
 	}	
 	
 	@Test(priority = 1)
