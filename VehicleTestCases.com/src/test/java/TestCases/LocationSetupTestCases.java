@@ -2,6 +2,7 @@ package TestCases;
 
 import java.time.Duration;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -53,7 +54,7 @@ public class LocationSetupTestCases {
 	
 	@Test(priority = 1)
 	public void gotoMenu() {
-		testcase.goMenu(Util.OPERATOR_MENU, "Location Setup");
+		testcase.goMenu(By.xpath("//*[contains(text(),'Operators'"), By.xpath("//*[contains(text(),'Location Setup'"));
 	}
 	
 	@Test(priority = 2)

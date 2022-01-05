@@ -2,6 +2,7 @@ package TestCases;
 
 import java.time.Duration;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -53,7 +54,7 @@ public class PickupServiceMasterTestCases {
 	
 	@Test(priority = 1)
 	public void gotoMenu() {
-		testcase.goMenu(Util.MASTERS_MENU, "Pickup Service Master");
+		testcase.goMenu(By.xpath("//*[contains(text(),'Masters'"), By.xpath("//*[contains(text(),'Pickup Service Master'"));
 	}
 	
 	@Test(priority = 2)

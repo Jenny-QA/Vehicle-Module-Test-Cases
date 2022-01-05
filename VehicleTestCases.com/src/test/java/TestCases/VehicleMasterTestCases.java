@@ -1,12 +1,11 @@
 package TestCases;
 
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.devtools.v94.audits.model.AttributionReportingIssueType;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
@@ -54,8 +53,8 @@ public class VehicleMasterTestCases {
 	}	
 	
 	@Test(priority = 1)
-	public void gotoMenu() {
-		testcase.goMenu(Util.MASTERS_MENU, "Vehicle Master");
+	public void gotoMenu() {		
+		testcase.goMenu(By.xpath("//*[contains(text(),'Masters'"), By.xpath("//*[contains(text(),'Vehicle Master'"));
 	}
 	
 	@Test(priority = 2)

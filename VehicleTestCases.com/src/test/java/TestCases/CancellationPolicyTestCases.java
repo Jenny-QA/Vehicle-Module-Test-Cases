@@ -2,6 +2,7 @@ package TestCases;
 
 import java.time.Duration;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -53,7 +54,7 @@ public class CancellationPolicyTestCases {
 	
 	@Test(priority = 1)
 	public void gotoMenu() {
-		testcase.goMenu(Util.POLICIES_MENU, "Cancellation Policy");
+		testcase.goMenu(By.xpath("//*[contains(text(),'Policies'"), By.xpath("//*[contains(text(),'Cancellation Policy'"));
 	}
 	
 	@Test(priority = 2)
