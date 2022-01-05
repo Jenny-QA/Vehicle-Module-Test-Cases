@@ -56,16 +56,16 @@ public class CommonTestCases {
 	public void verifyLogin(String username, String password ,String msg) {
 		driver.findElement(By.xpath("//input[@type='text']")).sendKeys(username);
 		driver.findElement(By.xpath("//input[@type='password']")).sendKeys(password + Keys.ENTER);
-		try {
+		//try {
 			wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-			element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"toast-container\"]/div/div[2]")));
+			element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"toast-container\"]/div/div[2]")));
 			errorMsg = element.getText();
 			element.click();
 			assertEquals(errorMsg, msg);
-		}
-		catch(Exception e) {
-			e.printStackTrace();
-		}
+		//}
+		//catch(Exception e) {
+			//e.printStackTrace();
+		//}
 	}
 
 	public void goMenu(String mainMenu, String subMenu) {
@@ -95,27 +95,27 @@ public class CommonTestCases {
 	}
 
 	public void openForm(String xpath1, String xpath2) {
-		try {
+		//try {
 			wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath1))).click();
-		}
-		catch(Exception e) {
-			e.printStackTrace();
-		}
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath1))).click();
+		//}
+		//catch(Exception e) {
+			//e.printStackTrace();
+		//}
 		verifyAddButton(xpath2);
 	}
 
 	public void verifyAddButton(String xpath) {
-		try {
+		//try {
 			js = (JavascriptExecutor)driver;
 			js.executeScript("window.scroll();", element);
 			wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 			enable = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath))).isEnabled();
 			assertEquals(enable, false);
-		}
-		catch(Exception e) {
-			e.printStackTrace();
-		}
+		//}
+		//catch(Exception e) {
+			//e.printStackTrace();
+		//}
 	}
 
 }
