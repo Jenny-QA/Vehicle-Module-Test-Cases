@@ -25,34 +25,34 @@ public class CommonTestCases {
 	public CommonTestCases() {
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public CommonTestCases(WebDriver driver) {
 		this.driver = driver;
 	}
-	
+
 	public void verifyTitle() {
 		assertEquals(driver.getTitle(), Util.title); 
 	}
-	
+
 	public void verifyButton(String button) {
 		enable = driver.findElement(By.className(button)).isEnabled();
 		assertEquals(enable, false);
 	}
-	
+
 	public void verifyElement(String inputElement,  String msg) {
 		element = driver.findElement(By.xpath(inputElement));
 		element.sendKeys(Keys.TAB);
 		errorMsg = driver.findElement(RelativeLocator.with(By.tagName("span")).below(element)).getText();
 		assertEquals(errorMsg , msg);
 	}
-	
+
 	public void verifyLength(String inputElement,  String msg) {
 		element = driver.findElement(By.xpath(inputElement));
 		element.sendKeys("a" + Keys.TAB);
 		errorMsg = driver.findElement(RelativeLocator.with(By.tagName("span")).below(element)).getText();
 		assertEquals(errorMsg , msg);
 	}
-	
+
 	public void verifyLogin(String username, String password ,String msg) {
 		driver.findElement(By.xpath("//input[@type='text']")).sendKeys(username);
 		driver.findElement(By.xpath("//input[@type='password']")).sendKeys(password + Keys.ENTER);
@@ -71,34 +71,34 @@ public class CommonTestCases {
 	public void goMenu(String mainMenu, String subMenu) {
 		driver.findElement(By.xpath("//*[contains(text(),'" + mainMenu + "')]")).click();
 		try {
-		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[contains(text(),'" + subMenu + "')]")));
-		js = (JavascriptExecutor)driver;
-		js.executeScript("arguments[0].click();", element);
+			wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[contains(text(),'" + subMenu + "')]")));
+			js = (JavascriptExecutor)driver;
+			js.executeScript("arguments[0].click();", element);
 		}
 		catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void checkErrorMessage(String msg) {
 		try {
-		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"toast-container\"]/div/div[2]")));
-		errorMsg = element.getText();
-		element.click();
-		assertEquals(errorMsg, msg);
+			wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"toast-container\"]/div/div[2]")));
+			errorMsg = element.getText();
+			element.click();
+			assertEquals(errorMsg, msg);
 		}
 		catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void openForm(String xpath1, String xpath2) {
 		driver.findElement(By.xpath(xpath1)).click();
 		verifyAddButton(xpath2);
 	}
-	
+
 	public void verifyAddButton(String xpath) {
 		try {
 			js = (JavascriptExecutor)driver;
@@ -110,5 +110,5 @@ public class CommonTestCases {
 			e.printStackTrace();
 		}
 	}
-	
+
 }
