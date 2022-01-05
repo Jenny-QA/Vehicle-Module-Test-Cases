@@ -74,7 +74,14 @@ public class CommonTestCases {
 		js = (JavascriptExecutor)driver;
 		js.executeScript("arguments[0].click();", element);
 	}
-
+	
+	
+         public void goMenu(String mainMenu, String subMenu) {
+		driver.findElement(By.xpath("//*[contains(text(),'"+mainMenu+"')]").click();
+		element = new WebDriverWait(driver, Duration.ofSeconds(Util.WAIT_TIME)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[contains(text(),'"+subMenu+"')]"));
+		js = (JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click();", element);
+	}
 	public void checkErrorMessage(String msg) {
 		element = new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"toast-container\"]/div/div[2]")));
 		errorMsg = element.getText();
