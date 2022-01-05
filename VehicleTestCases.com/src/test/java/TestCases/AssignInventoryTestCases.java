@@ -54,7 +54,8 @@ public class AssignInventoryTestCases {
 	
 	@Test(priority = 1)
 	public void gotoMenu() {
-		testcase.goMenu(By.xpath("//*[contains(text(),'Operators'"), By.xpath("//*[contains(text(),'Assign Inventory'"));
+		testcase.goMenu(Util.OPERATOR_MENU, "Assign Inventory");
+		//testcase.goMenu(By.xpath("//*[contains(text(),'Operators'"), By.xpath("//*[contains(text(),'Assign Inventory'"));
 	}
 	
 	@Test(priority = 2)

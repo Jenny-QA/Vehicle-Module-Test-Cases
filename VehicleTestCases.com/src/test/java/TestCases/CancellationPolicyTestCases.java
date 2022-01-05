@@ -54,7 +54,8 @@ public class CancellationPolicyTestCases {
 	
 	@Test(priority = 1)
 	public void gotoMenu() {
-		testcase.goMenu(By.xpath("//*[contains(text(),'Policies'"), By.xpath("//*[contains(text(),'Cancellation Policy'"));
+		testcase.goMenu(Util.POLICIES_MENU, "Cancellation Policy");
+		//testcase.goMenu(By.xpath("//*[contains(text(),'Policies'"), By.xpath("//*[contains(text(),'Cancellation Policy'"));
 	}
 	
 	@Test(priority = 2)
@@ -69,7 +70,7 @@ public class CancellationPolicyTestCases {
 	
 	@Test(priority = 4)
 	public void checkAddButton() {
-		testcase.openForm(By.xpath("//a[contains(@class,'btn-primary')]"), By.xpath("//button[contains(@type,'submit')]"));
+		testcase.openForm(By.xpath("//a[contains(@class,\"btn-primary\")]"), By.xpath("//button[contains(@type,\"submit\")]"));
 		//testcase.openForm("//a[contains(@class,'btn-primary')]", "//button[contains(@type,'submit')]");
 	}
 	

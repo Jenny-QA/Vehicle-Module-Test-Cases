@@ -54,7 +54,8 @@ public class StopSellMasterTestCases {
 	
 	@Test(priority = 1)
 	public void gotoMenu() {
-		testcase.goMenu(By.xpath("//*[contains(text(),'Masters'"), By.xpath("//*[contains(text(),'Stop Sell Master'"));
+		testcase.goMenu(Util.MASTERS_MENU, "Stop Sell Master");
+		//testcase.goMenu(By.xpath("//*[contains(text(),'Masters'"), By.xpath("//*[contains(text(),'Stop Sell Master'"));
 	}
 	
 	@Test(priority = 2)
@@ -69,7 +70,7 @@ public class StopSellMasterTestCases {
 	
 	@Test(priority = 4)
 	public void checkAddButton() {
-		testcase.openForm(By.xpath("//a[contains(@class,'btn-primary')]"), By.xpath("//button[contains(@type,'submit')]"));
+		testcase.openForm(By.xpath("//a[contains(@class,\"btn-primary\")]"), By.xpath("//button[contains(@type,\"submit\")]"));
 		//testcase.openForm("//a[contains(@class,'btn-primary')]", "//button[contains(@type,'submit'])");
 	}
 	

@@ -22,7 +22,7 @@ public class CommonTestCases {
 	public WebDriverWait wait;
 	public JavascriptExecutor js;
 	//public RemoteWebDriver driver;
-	
+
 	public CommonTestCases() {
 		// TODO Auto-generated constructor stub
 	}
@@ -62,7 +62,7 @@ public class CommonTestCases {
 		element.click();
 		assertEquals(errorMsg, msg);
 	}
-	
+
 	public void verifyLogin2(String username, String password) {
 		driver.findElement(By.xpath("//input[@type='text']")).sendKeys(username);
 		driver.findElement(By.xpath("//input[@type='password']")).sendKeys(password + Keys.ENTER);
@@ -74,11 +74,11 @@ public class CommonTestCases {
 		js = (JavascriptExecutor)driver;
 		js.executeScript("arguments[0].click();", element);
 	}
-	
-	
-         public void goMenu(String mainMenu, String subMenu) {
-		driver.findElement(By.xpath("//*[contains(text(),'"+mainMenu+"')]").click();
-		element = new WebDriverWait(driver, Duration.ofSeconds(Util.WAIT_TIME)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[contains(text(),'"+subMenu+"')]"));
+
+
+	public void goMenu(String mainMenu, String subMenu) {
+		driver.findElement(By.xpath("//*[contains(text(),'"+mainMenu+"')]")).click();
+		element = new WebDriverWait(driver, Duration.ofSeconds(Util.WAIT_TIME)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[contains(text(),'"+subMenu+"')]")));
 		js = (JavascriptExecutor)driver;
 		js.executeScript("arguments[0].click();", element);
 	}
@@ -97,7 +97,7 @@ public class CommonTestCases {
 		enable = element.isEnabled();
 		assertEquals(enable, false);
 	}
-	
+
 	/*public void openForm(String xpath1, String xpath2) {
 		new WebDriverWait(driver, Duration.ofSeconds(Util.WAIT_TIME)).until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath1))).click();
 		verifyAddButton(xpath2);

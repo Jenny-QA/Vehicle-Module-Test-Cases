@@ -54,7 +54,8 @@ public class AssignDriverToVehiclesTestCases {
 	
 	@Test(priority = 1)
 	public void gotoMenu() {
-		testcase.goMenu(By.xpath("//*[contains(text(),'Operators'"), By.xpath("//*[contains(text(),'Assign Driver To Vehicles'"));
+		testcase.goMenu(Util.OPERATOR_MENU, "Assign Driver To Vehicles");
+		//testcase.goMenu(By.xpath("//*[contains(text(),'Operators'"), By.xpath("//*[contains(text(),'Assign Driver To Vehicles'"));
 	}
 	
 	@Test(priority = 2)
@@ -69,7 +70,7 @@ public class AssignDriverToVehiclesTestCases {
 	
 	@Test(priority = 4)
 	public void checkAddButton() {
-		testcase.openForm(By.xpath("//button[contains(@class,'btn-primary')]"), By.xpath("//button[contains(@type,'submit')]"));
+		testcase.openForm(By.xpath("//button[contains(@class,\"btn-primary\")]"), By.xpath("//button[contains(@type,\"submit\")]"));
 	}
 	
 	@AfterTest

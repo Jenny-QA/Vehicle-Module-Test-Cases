@@ -53,8 +53,9 @@ public class VehicleMasterTestCases {
 	}	
 	
 	@Test(priority = 1)
-	public void gotoMenu() {		
-		testcase.goMenu(By.xpath("//*[contains(text(),'Masters'"), By.xpath("//*[contains(text(),'Vehicle Master'"));
+	public void gotoMenu() {	
+		testcase.goMenu(Util.MASTERS_MENU, "Vehicle Master");
+		//testcase.goMenu(By.xpath("//*[contains(text(),'Masters'"), By.xpath("//*[contains(text(),'Vehicle Master'"));
 	}
 	
 	@Test(priority = 2)
@@ -69,7 +70,7 @@ public class VehicleMasterTestCases {
 	
 	@Test(priority = 4)
 	public void checkAddButton() {
-		testcase.openForm(By.xpath("//a[contains(@class,'btn-primary')]"), By.xpath("//button[contains(@type,'submit')]"));
+		testcase.openForm(By.xpath("//a[contains(@class,\"btn-primary\")]"), By.xpath("//button[contains(@type,\"submit\")]"));
 		//testcase.openForm("//a[contains(@class,'btn-primary')]", "//button[contains(@type,'submit')]");
 	}
 	
