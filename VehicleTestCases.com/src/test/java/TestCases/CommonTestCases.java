@@ -57,7 +57,7 @@ public class CommonTestCases {
 		driver.findElement(By.xpath("//input[@type='text']")).sendKeys(username);
 		driver.findElement(By.xpath("//input[@type='password']")).sendKeys(password + Keys.ENTER);
 		//try {
-			wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 			element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"toast-container\"]/div/div[2]")));
 			errorMsg = element.getText();
 			element.click();
@@ -72,7 +72,7 @@ public class CommonTestCases {
 		driver.findElement(By.xpath("//*[contains(text(),'" + mainMenu + "')]")).click();
 		//try {
 			wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-			element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(),'" + subMenu + "')]")));
+			element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[contains(text(),'" + subMenu + "')]")));
 			js = (JavascriptExecutor)driver;
 			js.executeScript("arguments[0].click();", element);
 		//}
@@ -107,10 +107,11 @@ public class CommonTestCases {
 
 	public void verifyAddButton(String xpath) {
 		//try {
+			wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath))); 
 			js = (JavascriptExecutor)driver;
 			js.executeScript("window.scroll();", element);
-			wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-			enable = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath))).isEnabled();
+			enable = element.isEnabled();
 			assertEquals(enable, false);
 		//}
 		//catch(Exception e) {
