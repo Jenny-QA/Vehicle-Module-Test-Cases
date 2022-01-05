@@ -71,7 +71,7 @@ public class CommonTestCases {
 	public void goMenu(String mainMenu, String subMenu) {
 		driver.findElement(By.xpath("//*[contains(text(),'" + mainMenu + "')]")).click();
 		//try {
-			wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 			element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[contains(text(),'" + subMenu + "')]")));
 			js = (JavascriptExecutor)driver;
 			js.executeScript("arguments[0].click();", element);
@@ -83,7 +83,7 @@ public class CommonTestCases {
 
 	public void checkErrorMessage(String msg) {
 		//try {
-			wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 			element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"toast-container\"]/div/div[2]")));
 			errorMsg = element.getText();
 			element.click();
@@ -107,7 +107,7 @@ public class CommonTestCases {
 
 	public void verifyAddButton(String xpath) {
 		//try {
-			wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 			element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath))); 
 			js = (JavascriptExecutor)driver;
 			js.executeScript("window.scroll();", element);
