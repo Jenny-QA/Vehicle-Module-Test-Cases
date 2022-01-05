@@ -95,7 +95,13 @@ public class CommonTestCases {
 	}
 
 	public void openForm(String xpath1, String xpath2) {
-		driver.findElement(By.xpath(xpath1)).click();
+		try {
+			wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath1))).click();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
 		verifyAddButton(xpath2);
 	}
 
@@ -103,7 +109,8 @@ public class CommonTestCases {
 		try {
 			js = (JavascriptExecutor)driver;
 			js.executeScript("window.scroll();", element);
-			enable = driver.findElement(By.xpath(xpath)).isEnabled();
+			wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			enable = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath))).isEnabled();
 			assertEquals(enable, false);
 		}
 		catch(Exception e) {
