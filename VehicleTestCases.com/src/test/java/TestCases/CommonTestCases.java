@@ -70,28 +70,28 @@ public class CommonTestCases {
 
 	public void goMenu(String mainMenu, String subMenu) {
 		driver.findElement(By.xpath("//*[contains(text(),'" + mainMenu + "')]")).click();
-		try {
+		//try {
 			wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-			element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[contains(text(),'" + subMenu + "')]")));
+			element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(),'" + subMenu + "')]")));
 			js = (JavascriptExecutor)driver;
 			js.executeScript("arguments[0].click();", element);
-		}
-		catch(Exception e) {
-			e.printStackTrace();
-		}
+		//}
+		//catch(Exception e) {
+			//e.printStackTrace();
+		//}
 	}
 
 	public void checkErrorMessage(String msg) {
-		try {
+		//try {
 			wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-			element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"toast-container\"]/div/div[2]")));
+			element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"toast-container\"]/div/div[2]")));
 			errorMsg = element.getText();
 			element.click();
 			assertEquals(errorMsg, msg);
-		}
-		catch(Exception e) {
-			e.printStackTrace();
-		}
+		//}
+		//catch(Exception e) {
+			//e.printStackTrace();
+		//}
 	}
 
 	public void openForm(String xpath1, String xpath2) {
