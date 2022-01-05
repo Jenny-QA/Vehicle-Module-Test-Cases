@@ -3,17 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="TestCases.VehicleMasterTestCases">
+      <class name="TestCases.PromotionTestCases">
         <methods>
           <include name="quit"/>
-          <include name="Login"/>
-          <include name="checkAddButton"/>
-          <include name="gotoMenu"/>
-          <include name="verifyTitle"/>
           <include name="openBrowser"/>
           <include name="initDriver"/>
+          <include name="checkAddButton"/>
         </methods>
-      </class> <!-- TestCases.VehicleMasterTestCases -->
+      </class> <!-- TestCases.PromotionTestCases -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
