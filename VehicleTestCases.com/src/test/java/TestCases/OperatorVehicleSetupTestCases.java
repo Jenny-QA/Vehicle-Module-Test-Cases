@@ -69,7 +69,8 @@ public class OperatorVehicleSetupTestCases {
 	
 	@Test(priority = 4)
 	public void checkAddButton() {
-		testcase.openForm("//button[contains(@class,'btn-primary')]", "//button[contains(@type,'submit')]");
+		testcase.openForm(By.xpath("//button[contains(@class,'btn-primary')]"), By.xpath("//button[contains(@type,'submit')]"));
+		//testcase.openForm("//button[contains(@class,'btn-primary')]", "//button[contains(@type,'submit')]");
 	}
 	
 	@AfterTest

@@ -82,10 +82,19 @@ public class CommonTestCases {
 		assertEquals(errorMsg, msg);
 	}
 
-	public void openForm(String xpath1, String xpath2) {
+	public void openForm(By openButton, By addButton) {
+		new WebDriverWait(driver, Duration.ofSeconds(Util.WAIT_TIME)).until(ExpectedConditions.presenceOfElementLocated(openButton)).click();
+		element = new WebDriverWait(driver, Duration.ofSeconds(Util.WAIT_TIME)).until(ExpectedConditions.presenceOfElementLocated(addButton)); 
+		js = (JavascriptExecutor)driver;
+		js.executeScript("window.scroll();", element);
+		enable = element.isEnabled();
+		assertEquals(enable, false);
+	}
+	
+	/*public void openForm(String xpath1, String xpath2) {
 		new WebDriverWait(driver, Duration.ofSeconds(Util.WAIT_TIME)).until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath1))).click();
 		verifyAddButton(xpath2);
-	}
+	}*/
 
 	public void verifyAddButton(String xpath) {
 		element = new WebDriverWait(driver, Duration.ofSeconds(Util.WAIT_TIME)).until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath))); 
