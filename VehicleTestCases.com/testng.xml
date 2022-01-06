@@ -3,32 +3,32 @@
 <suite name="Suite">
 	<test thread-count="5" name="Test">
 		<classes>
-<!-- 			<class name="TestCases.LoginTestCases" /> -->
-<!-- 			<class name="TestCases.VehicleMasterTestCases" /> -->
-<!-- 			<class name="TestCases.VehicleSubTestCases" /> -->
-<!-- 			<class name="TestCases.VehicleManufacturerMasterTestCases" /> -->
-<!-- 			<class name="TestCases.VehicleColorMasterTestCases" /> -->
-<!-- 			<class name="TestCases.FuelMasterTestCases" /> -->
-<!-- 			<class name="TestCases.PickupServiceMasterTestCases" /> -->
-<!-- 			<class name="TestCases.OperatorMasterTestCases" /> -->
-<!-- 			<class name="TestCases.BillingTypeMasterTestCases" /> -->
-<!-- 			<class name="TestCases.PromotionMasterTestCases" /> -->
-<!-- 			<class name="TestCases.WeightUnitMasterTestCases" /> -->
+			<class name="TestCases.LoginTestCases" />
+			<class name="TestCases.VehicleMasterTestCases" />
+			<class name="TestCases.VehicleSubTestCases" />
+			<class name="TestCases.VehicleManufacturerMasterTestCases" />
+			<class name="TestCases.VehicleColorMasterTestCases" />
+			<class name="TestCases.FuelMasterTestCases" />
+			<class name="TestCases.PickupServiceMasterTestCases" />
+			<class name="TestCases.OperatorMasterTestCases" />
+			<class name="TestCases.BillingTypeMasterTestCases" />
+			<class name="TestCases.PromotionMasterTestCases" />
+			<class name="TestCases.WeightUnitMasterTestCases" />
 			<class name="TestCases.StopSellMasterTestCases" />
-<!-- 			<class name="TestCases.VehicleSetupMasterTestCases" /> -->
-<!-- 			<class name="TestCases.LocationSetupTestCases" /> -->
-<!-- 			<class name="TestCases.SeasonSetupTestCases" /> -->
-<!-- 			<class name="TestCases.DriverMasterTestCases" /> -->
-<!-- 			<class name="TestCases.OperatorVehicleSetupTestCases" /> -->
-<!-- 			<class name="TestCases.AssignInventoryTestCases" /> -->
-<!-- 			<class name="TestCases.AssignDriverToVehiclesTestCases" /> -->
+			<class name="TestCases.VehicleSetupMasterTestCases" />
+			<class name="TestCases.LocationSetupTestCases" />
+			<class name="TestCases.SeasonSetupTestCases" />
+			<class name="TestCases.DriverMasterTestCases" />
+			<class name="TestCases.OperatorVehicleSetupTestCases" />
+			<class name="TestCases.AssignInventoryTestCases" />
+			<class name="TestCases.AssignDriverToVehiclesTestCases" />
 			<class name="TestCases.PromotionTestCases" />
-<!-- 			<class name="TestCases.PromotionAssignmentTestCases" /> -->
-<!-- 			<class name="TestCases.RateSetupTestCases" /> -->
-<!-- 			<class name="TestCases.StopSellTestCases" /> -->
-<!-- 			<class name="TestCases.PaymentPolicyTestCase" /> -->
-<!-- 			<class name="TestCases.CancellationPolicyTestCases" /> -->
-<!-- 			<class name="TestCases.TaxPolicyTestCases" /> -->
+			<class name="TestCases.PromotionAssignmentTestCases" />
+			<class name="TestCases.RateSetupTestCases" />
+			<class name="TestCases.StopSellTestCases" />
+			<class name="TestCases.PaymentPolicyTestCase" />
+			<class name="TestCases.CancellationPolicyTestCases" />
+			<class name="TestCases.TaxPolicyTestCases" />
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->

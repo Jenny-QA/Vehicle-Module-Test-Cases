@@ -34,8 +34,6 @@ public class StopSellMasterTestCases {
 		options.addArguments("--window-size=1920,1080");
 		options.addArguments("--headless");
 		driver = new ChromeDriver(options);
-//		WebDriverManager.firefoxdriver().setup();
-//		driver = new FirefoxDriver();
 	}
 	
 	
