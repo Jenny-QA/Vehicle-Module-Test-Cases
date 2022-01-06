@@ -54,7 +54,7 @@ public class AssignDriverToVehiclesTestCases {
 	
 	@Test(priority = 1)
 	public void gotoMenu() {
-		testcase.goMenu(Util.OPERATOR_MENU, "Assign Driver To Vehicles");
+		testcase.goMenu(Util.OPERATOR_MENU, "Assign Drivers to Vehicles");
 		//testcase.goMenu(By.xpath("//*[contains(text(),'Operators'"), By.xpath("//*[contains(text(),'Assign Driver To Vehicles'"));
 	}
 	

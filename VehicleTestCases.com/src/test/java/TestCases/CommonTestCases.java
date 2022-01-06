@@ -75,10 +75,9 @@ public class CommonTestCases {
 		js.executeScript("arguments[0].click();", element);
 	}
 
-
 	public void goMenu(String mainMenu, String subMenu) {
-		driver.findElement(By.xpath("//*[contains(text(),'"+mainMenu+"')]")).click();
-		element = new WebDriverWait(driver, Duration.ofSeconds(Util.WAIT_TIME)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[contains(text(),'"+subMenu+"')]")));
+		driver.findElement(By.xpath("//*[contains(text(),'" + mainMenu + "')]")).click();
+		element = new WebDriverWait(driver, Duration.ofSeconds(Util.WAIT_TIME)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[contains(text(),'" + subMenu + "')]")));
 		js = (JavascriptExecutor)driver;
 		js.executeScript("arguments[0].click();", element);
 	}
@@ -90,7 +89,7 @@ public class CommonTestCases {
 	}
 
 	public void openForm(By openButton, By addButton) {
-		new WebDriverWait(driver, Duration.ofSeconds(Util.WAIT_TIME)).until(ExpectedConditions.elementToBeClickable(openButton)).click();
+		new WebDriverWait(driver, Duration.ofSeconds(Util.WAIT_TIME)).until(ExpectedConditions.presenceOfElementLocated(openButton)).click();
 		element = new WebDriverWait(driver, Duration.ofSeconds(Util.WAIT_TIME)).until(ExpectedConditions.elementToBeClickable(addButton)); 
 		js = (JavascriptExecutor)driver;
 		js.executeScript("window.scroll();", element);
