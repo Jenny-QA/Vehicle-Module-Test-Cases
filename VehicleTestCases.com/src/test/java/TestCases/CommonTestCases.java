@@ -104,9 +104,9 @@ public class CommonTestCases {
 
 	public void verifyAddButton(String xpath) {
 		js = (JavascriptExecutor)driver;
-		//js.executeScript("window.scrollBy(0,250);");
-		js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
-		element = new WebDriverWait(driver, Duration.ofSeconds(Util.WAIT_TIME)).until(ExpectedConditions.elementToBeClickable(By.xpath(xpath))); 
+		js.executeScript("window.scrollBy(0,250);");
+		element = new WebDriverWait(driver, Duration.ofSeconds(Util.WAIT_TIME)).until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
+		//js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
 		enable = element.isEnabled();
 		assertEquals(enable, false);
 	}

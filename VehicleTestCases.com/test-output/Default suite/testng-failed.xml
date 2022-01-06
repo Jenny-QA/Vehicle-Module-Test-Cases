@@ -3,22 +3,18 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="TestCases.LoginTestCases">
+      <class name="TestCases.VehicleMasterTestCases">
         <methods>
-          <include name="Login2"/>
-          <include name="passwordLenght"/>
-          <include name="checkButton"/>
-          <include name="setup"/>
-          <include name="Login1"/>
-          <include name="passwordRequire"/>
-          <include name="userRequire"/>
           <include name="quit"/>
-          <include name="Login0"/>
-          <include name="initDriver"/>
+          <include name="Login"/>
+          <include name="checkAddButton"/>
+          <include name="gotoMenu"/>
           <include name="verifyTitle"/>
           <include name="openBrowser"/>
+          <include name="initDriver"/>
+          <include name="checkSnackbar"/>
         </methods>
-      </class> <!-- TestCases.LoginTestCases -->
+      </class> <!-- TestCases.VehicleMasterTestCases -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
