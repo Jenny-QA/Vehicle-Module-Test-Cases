@@ -4,7 +4,7 @@ public class Util {
 
 	public static final String BASE_URL = "https://vehicle-admin.praivit.com/#/auth/login";
 	
-	public static final int WAIT_TIME = 60;
+	public static final int WAIT_TIME = 160;
 	
 	public static final String title = "Vehicle Module";
 	

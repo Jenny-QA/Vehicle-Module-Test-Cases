@@ -5,6 +5,7 @@ import java.time.Duration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
@@ -27,13 +28,15 @@ public class StopSellMasterTestCases {
 	
 	@BeforeSuite
 	public void initDriver() {
-		WebDriverManager.chromedriver().setup();
+		/*WebDriverManager.chromedriver().setup();
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--no-sandbox");
 		options.addArguments("--disable-dev-shm-usage");
 		options.addArguments("--window-size=1920,1080");
 		options.addArguments("--headless");
-		driver = new ChromeDriver(options);
+		driver = new ChromeDriver(options);*/
+		WebDriverManager.firefoxdriver().setup();
+		driver = new FirefoxDriver();
 	}
 	
 	
@@ -70,7 +73,7 @@ public class StopSellMasterTestCases {
 	@Test(priority = 4)
 	public void checkAddButton() {
 		//testcase.openForm(By.xpath("//a[contains(@class,\"btn-primary\")]"), By.xpath("//button[contains(@type,\"submit\")]"));
-		testcase.openForm("//a[contains(@class,'btn-primary')]", "//button[contains(@type,'submit'])");
+		testcase.openForm("//a[contains(@class,'btn-primary')]", "//*[@id=\"mat-dialog-4\"]/app-add-edit-stop-sell-master/form/div[2]/button");
 	}
 	
 	@AfterTest

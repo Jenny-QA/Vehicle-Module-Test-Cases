@@ -70,7 +70,7 @@ public class PromotionTestCases {
 	@Test(priority = 4)
 	public void checkAddButton() {
 		//testcase.openForm(By.xpath("//button[contains(@class,\"btn-primary\")]"), By.xpath("//button[contains(@type,\"submit\")]"));
-		testcase.openForm("//button[contains(@class,'btn-primary')]", "//button[contains(@type,'submit')]");
+		testcase.openForm("/html/body/app-root/app-default-layout/div/div[2]/div[2]/div/app-main-layout/app-view/app-promotion/div[2]/div[1]/button", "//button[contains(@type,'submit')]");
 	}
 	
 	@AfterTest
