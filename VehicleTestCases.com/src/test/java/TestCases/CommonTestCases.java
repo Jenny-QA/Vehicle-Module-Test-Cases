@@ -4,8 +4,6 @@ import static org.testng.Assert.assertEquals;
 
 import java.time.Duration;
 
-import javax.xml.xpath.XPath;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -23,7 +21,6 @@ public class CommonTestCases {
 	public String errorMsg;
 	public WebDriverWait wait;
 	public JavascriptExecutor js;
-	//public RemoteWebDriver driver;
 
 	public CommonTestCases() {
 		// TODO Auto-generated constructor stub
@@ -108,7 +105,6 @@ public class CommonTestCases {
 		js = (JavascriptExecutor)driver;
 		//element = new WebDriverWait(driver, Duration.ofSeconds(Util.WAIT_TIME)).until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
 		element = driver.findElement(By.xpath(xpath));
-		//js.executeScript("window.scroll();", element);
 		js.executeScript("arguments[0].scrollIntoView(true);", element);
 		enable = element.isEnabled();
 		assertEquals(enable, false);
