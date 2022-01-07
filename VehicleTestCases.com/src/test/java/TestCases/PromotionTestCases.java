@@ -35,6 +35,8 @@ public class PromotionTestCases {
 		options.addArguments("--window-size=1920,1080");
 		options.addArguments("--headless");
 		driver = new ChromeDriver(options);
+		/*WebDriverManager.firefoxdriver().setup();
+		driver = new FirefoxDriver();*/
 	}
 	
 	@BeforeTest
@@ -51,7 +53,7 @@ public class PromotionTestCases {
 		testcase.verifyLogin2("Jenny", "Test@111");//, ErrorMessage.loginSuccess);
 	}	
 	
-	@Test(priority = 1)
+	/*@Test(priority = 1)
 	public void gotoMenu() {
 		testcase.goMenu(Util.OPERATOR_MENU, "Promotion");
 		//testcase.goMenu(By.xpath("//*[contains(text(),'Operators'"), By.xpath("//*[contains(text(),'Promotion'"));
@@ -67,20 +69,11 @@ public class PromotionTestCases {
 		testcase.checkErrorMessage(ErrorMessage.DataError);
 	}*/
 	
-	@Test(priority = 4)
+	/*@Test(priority = 4)
 	public void checkAddButton() {
 		//testcase.openForm(By.xpath("//button[contains(@class,\"btn-primary\")]"), By.xpath("//button[contains(@type,\"submit\")]"));
-		testcase.openForm("//*[@id=\"add-promotion\"]", "//button[contains(@type,'submit')]");
-		//testcase.openForm("//*[contains(@id=\"add-promotion\")]", "//button[contains(@type,'submit')]");
-		/*WebElement element = new WebDriverWait(driver, Duration.ofSeconds(Util.WAIT_TIME)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@id=\"add-promotion\"]")));
-		System.out.println(element);
-		JavascriptExecutor js = (JavascriptExecutor)driver;
-		js.executeScript("arguments[0].click();", element);
-		element = driver.findElement(By.xpath("//button[contains(@type,'submit')]"));
-		js.executeScript("arguments[0].scrollIntoView(true);", element);
-		boolean enable = element.isEnabled();
-		assertEquals(enable, false);*/
-	}
+		testcase.openForm("//*[@id='add-promotion']", "//button[contains(@type,'submit')]");
+	}*/
 	
 	@AfterTest
 	public void quit() {

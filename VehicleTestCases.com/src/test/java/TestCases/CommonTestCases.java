@@ -4,6 +4,8 @@ import static org.testng.Assert.assertEquals;
 
 import java.time.Duration;
 
+import javax.xml.xpath.XPath;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -99,7 +101,6 @@ public class CommonTestCases {
 
 	public void openForm(String xpath1, String xpath2) {
 		driver.findElement(By.xpath(xpath1)).click();
-		//new WebDriverWait(driver, Duration.ofSeconds(Util.WAIT_TIME)).until(ExpectedConditions.elementToBeClickable(By.xpath(xpath1))).click();
 		verifyAddButton(xpath2);
 	}
 
