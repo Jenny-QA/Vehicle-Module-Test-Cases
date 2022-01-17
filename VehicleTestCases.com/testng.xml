@@ -22,7 +22,7 @@
 			<class name="TestCases.OperatorVehicleSetupTestCases" />
 			<class name="TestCases.AssignInventoryTestCases" />
 			<class name="TestCases.AssignDriverToVehiclesTestCases" />
-			<class name="TestCases.PromotionTestCases" />
+<!-- 			<class name="TestCases.PromotionTestCases" /> -->
 			<class name="TestCases.PromotionAssignmentTestCases" />
 			<class name="TestCases.RateSetupTestCases" />
 			<class name="TestCases.StopSellTestCases" />
