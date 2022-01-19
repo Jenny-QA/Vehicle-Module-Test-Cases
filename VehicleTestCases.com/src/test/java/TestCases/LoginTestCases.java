@@ -1,5 +1,7 @@
 package TestCases;
 
+import static org.testng.Assert.assertNotEquals;
+
 import java.time.Duration;
 
 import org.openqa.selenium.By;
@@ -95,6 +97,7 @@ public class LoginTestCases {
 		driver.navigate().refresh();
 		testcase.verifyLogin2("Jenny", "Test@111");
 		//testcase.verifyLogin("Jenny", "Test@111", APIResponse.loginSuccess);
+		assertNotEquals(driver.getCurrentUrl(), Util.BASE_URL);
 	}
 	
 	@AfterTest
