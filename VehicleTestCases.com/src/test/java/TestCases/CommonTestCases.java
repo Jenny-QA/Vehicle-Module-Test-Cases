@@ -1,6 +1,7 @@
 package TestCases;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotEquals;
 
 import java.time.Duration;
 
@@ -51,20 +52,19 @@ public class CommonTestCases {
 		assertEquals(errorMsg , msg);
 	}
 
-	public void verifyLogin(String username, String password ,String msg) throws InterruptedException {
+	public void verifyLogin(String username, String password ,String msg) {
 		driver.findElement(By.xpath("//*[@id=\"usernm\"]")).sendKeys(username);
 		driver.findElement(By.xpath("//*[@id=\"pwd\"]")).sendKeys(password + Keys.ENTER);
 		element = new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"toast-container\"]/div/div[2]")));
-		System.out.println(element.getText());
 		errorMsg = element.getText();
-		Thread.sleep(3);
-		//element.click();
+		element.click();
 		assertEquals(errorMsg, msg);
 	}
 
-	public void verifyLogin2(String username, String password) {
+	public void verifyLogin2(String username, String password) {	
 		driver.findElement(By.xpath("//*[@id=\"usernm\"]")).sendKeys(username);
 		driver.findElement(By.xpath("//*[@id=\"pwd\"]")).sendKeys(password + Keys.ENTER);
+		assertNotEquals(driver.getCurrentUrl(), Util.BASE_URL);
 	}	
 
 	public void goMenu(String mainMenu, String subMenu) {

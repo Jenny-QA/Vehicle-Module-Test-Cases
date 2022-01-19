@@ -79,22 +79,22 @@ public class LoginTestCases {
 	}
 	
 	@Test(priority = 5)
-	public void Login0() throws InterruptedException {
+	public void Login0() {
 		driver.navigate().refresh();
 		testcase.verifyLogin("Jainisha", "Test@111", APIResponse.userError);
 	}
 	
 	@Test(priority = 6)
-	public void Login1() throws InterruptedException {
+	public void Login1() {
 		driver.navigate().refresh();
 		testcase.verifyLogin("Jenny", "Test@1111", APIResponse.passwordError);
 	}
 	
 	@Test(priority = 7)
-	public void Login2() throws InterruptedException {
+	public void Login2() {
 		driver.navigate().refresh();
-		//testcase.verifyLogin2("Jenny", "Test@111");
-		testcase.verifyLogin("Jenny", "Test@111", APIResponse.loginSuccess);
+		testcase.verifyLogin2("Jenny", "Test@111");
+		//testcase.verifyLogin("Jenny", "Test@111", APIResponse.loginSuccess);
 	}
 	
 	@AfterTest
