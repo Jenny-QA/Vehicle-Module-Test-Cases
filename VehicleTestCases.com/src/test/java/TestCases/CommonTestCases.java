@@ -54,8 +54,7 @@ public class CommonTestCases {
 	public void verifyLogin(String username, String password ,String msg) throws InterruptedException {
 		driver.findElement(By.xpath("//*[@id=\"usernm\"]")).sendKeys(username);
 		driver.findElement(By.xpath("//*[@id=\"pwd\"]")).sendKeys(password + Keys.ENTER);
-		//element = new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"toast-container\"]/div/div[2]")));
-		element = new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"toast-container\"]")));
+		element = new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"toast-container\"]/div/div[2]")));
 		System.out.println(element.getText());
 		errorMsg = element.getText();
 		Thread.sleep(3);
