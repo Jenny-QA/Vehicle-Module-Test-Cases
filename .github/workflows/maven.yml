@@ -27,12 +27,12 @@ jobs:
     - name: Test Reporter
       uses: dorny/test-reporter@v1.5.0
       with:
-        name: "Check Run"
+        name: "Report"
         path: "**/surefire-reports/TEST-*.xml"
         reporter: java-junit
         path-replace-backslashes: false
         list-suites: all
         list-tests: all
-        max-annotations: 10
+        max-annotations: 50
         fail-on-error: false
         only-summary: false
