@@ -79,21 +79,21 @@ public class LoginTestCases {
 	}
 	
 	@Test(priority = 5)
-	public void Login0() {
+	public void Login0() throws InterruptedException {
 		clearElement("//*[@id=\"usernm\"]");
 		clearElement("//*[@id=\"pwd\"]");
 		testcase.verifyLogin("Jainisha", "Test@111", APIResponse.userError);
 	}
 	
 	@Test(priority = 6)
-	public void Login1() {
+	public void Login1() throws InterruptedException {
 		clearElement("//*[@id=\"usernm\"]");
 		clearElement("//*[@id=\"pwd\"]");
 		testcase.verifyLogin("Jenny", "Test@1111", APIResponse.passwordError);
 	}
 	
 	@Test(priority = 7)
-	public void Login2() {
+	public void Login2() throws InterruptedException {
 		clearElement("//*[@id=\"usernm\"]");
 		clearElement("//*[@id=\"pwd\"]");
 		//testcase.verifyLogin2("Jenny", "Test@111");

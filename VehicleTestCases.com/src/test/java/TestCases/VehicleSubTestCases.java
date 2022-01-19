@@ -48,8 +48,8 @@ public class VehicleSubTestCases {
 	
 	@Test(priority = 0)
 	public void Login() {		
-		//testcase.verifyLogin2("Jenny", "Test@111");
-		testcase.verifyLogin("Jenny", "Test@111", APIResponse.loginSuccess);
+		testcase.verifyLogin2("Jenny", "Test@111");
+		//testcase.verifyLogin("Jenny", "Test@111", APIResponse.loginSuccess);
 	}	
 	
 	@Test(priority = 1)

@@ -9,7 +9,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.locators.RelativeLocator;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -52,18 +51,19 @@ public class CommonTestCases {
 		assertEquals(errorMsg , msg);
 	}
 
-	public void verifyLogin(String username, String password ,String msg) {
+	public void verifyLogin(String username, String password ,String msg) throws InterruptedException {
 		driver.findElement(By.xpath("//*[@id=\"usernm\"]")).sendKeys(username);
 		driver.findElement(By.xpath("//*[@id=\"pwd\"]")).sendKeys(password + Keys.ENTER);
 		element = new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"toast-container\"]/div/div[2]")));
 		errorMsg = element.getText();
-		element.click();
+		Thread.sleep(3);
+		//element.click();
 		assertEquals(errorMsg, msg);
 	}
 
 	public void verifyLogin2(String username, String password) {
-		driver.findElement(By.xpath("//input[@type='text']")).sendKeys(username);
-		driver.findElement(By.xpath("//input[@type='password']")).sendKeys(password + Keys.ENTER);
+		driver.findElement(By.xpath("//*[@id=\"usernm\"]")).sendKeys(username);
+		driver.findElement(By.xpath("//*[@id=\"pwd\"]")).sendKeys(password + Keys.ENTER);
 	}	
 
 	public void goMenu(String mainMenu, String subMenu) {
