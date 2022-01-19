@@ -96,8 +96,8 @@ public class LoginTestCases {
 	public void Login2() throws InterruptedException {
 		clearElement("//*[@id=\"usernm\"]");
 		clearElement("//*[@id=\"pwd\"]");
-		//testcase.verifyLogin2("Jenny", "Test@111");
-		testcase.verifyLogin("Jenny", "Test@111", APIResponse.loginSuccess);
+		testcase.verifyLogin2("Jenny", "Test@111");
+		//testcase.verifyLogin("Jenny", "Test@111", APIResponse.loginSuccess);
 	}
 	
 	@AfterTest
