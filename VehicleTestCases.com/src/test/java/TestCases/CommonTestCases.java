@@ -64,6 +64,13 @@ public class CommonTestCases {
 	public void verifyLogin2(String username, String password) {	
 		driver.findElement(By.xpath("//*[@id=\"usernm\"]")).sendKeys(username);
 		driver.findElement(By.xpath("//*[@id=\"pwd\"]")).sendKeys(password + Keys.ENTER);
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		assertNotEquals(driver.getCurrentUrl(), Util.BASE_URL);
 	}	
 
 	public void goMenu(String mainMenu, String subMenu) {

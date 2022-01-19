@@ -97,7 +97,7 @@ public class LoginTestCases {
 		driver.navigate().refresh();
 		testcase.verifyLogin2("Jenny", "Test@111");
 		//testcase.verifyLogin("Jenny", "Test@111", APIResponse.loginSuccess);
-		assertNotEquals(driver.getCurrentUrl(), Util.BASE_URL);
+		
 	}
 	
 	@AfterTest
