@@ -49,7 +49,7 @@ public class TaxPolicyTestCases {
 	@Test(priority = 0)
 	public void Login() {		
 		//testcase.verifyLogin2("Jenny", "Test@111");//, ErrorMessage.loginSuccess);
-		testcase.verifyLogin("Jenny", "Test@111", ErrorMessage.loginSuccess);
+		testcase.verifyLogin("Jenny", "Test@111", APIResponse.loginSuccess);
 	}	
 	
 	@Test(priority = 1)
@@ -64,7 +64,7 @@ public class TaxPolicyTestCases {
 	
 	@Test(priority = 3)
 	public void checkSnackbar(){
-		testcase.checkErrorMessage(ErrorMessage.DataError);
+		testcase.checkErrorMessage(APIResponse.DataError);
 	}
 	
 	@Test(priority = 4)
@@ -75,8 +75,8 @@ public class TaxPolicyTestCases {
 	
 	@AfterTest
 	public void quit() {
-		driver.close();
-		driver.quit();
+		if(driver != null)
+			driver.quit();
 	}
 	
 }

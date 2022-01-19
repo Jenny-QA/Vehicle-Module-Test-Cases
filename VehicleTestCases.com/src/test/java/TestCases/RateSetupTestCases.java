@@ -64,7 +64,7 @@ public class RateSetupTestCases {
 	
 	@Test(priority = 3)
 	public void checkSnackbar(){
-		testcase.checkErrorMessage(ErrorMessage.DataError);
+		testcase.checkErrorMessage(APIResponse.DataError);
 	}
 	
 	/*@Test(priority = 4)
@@ -74,8 +74,8 @@ public class RateSetupTestCases {
 	
 	@AfterTest
 	public void quit() {
-		driver.close();
-		driver.quit();
+		if(driver != null)
+			driver.quit();
 	}
 	
 }

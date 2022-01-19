@@ -63,41 +63,41 @@ public class LoginTestCases {
 	@Test(priority = 2)
 	public void userRequire() {
 		//testcase.verifyElement("//input[@type='text']", ErrorMessage.userRequire);
-		testcase.verifyElement("//*[@id=\"usernm\"]", "//*[@id=\"usernm_err\"]",ErrorMessage.userRequire);
+		testcase.verifyErrorMSg("//*[@id=\"usernm\"]", "//*[@id=\"usernm_err\"]", null,ErrorMessage.userRequire);
 	}
 	
 	@Test(priority = 3)
 	public void passwordRequire() {
 		//testcase.verifyElement("//input[@type='password']", ErrorMessage.passwordRequire);
-		testcase.verifyElement("//*[@id=\"password\"]", "//*[@id=\"pwd_err\"]",ErrorMessage.passwordRequire);
+		testcase.verifyErrorMSg("//*[@id=\"pwd\"]", "//*[@id=\"pwd_err\"]", null,ErrorMessage.passwordRequire);
 	}
 	
 	@Test(priority = 4)
 	public void passwordLenght() {
 		//testcase.verifyLength("//input[@type='password']", ErrorMessage.passwordLength);
-		testcase.verifyElement("//*[@id=\"password\"]", "//*[@id=\"pwd_err\"]",ErrorMessage.passwordLength);
+		testcase.verifyErrorMSg("//*[@id=\"pwd\"]", "//*[@id=\"pwd_err\"]", "a",ErrorMessage.passwordLength);
 	}
 	
 	@Test(priority = 5)
 	public void Login0() {
 		clearElement("//*[@id=\"usernm\"]");
-		clearElement("//*[@id=\"password\"]");
-		testcase.verifyLogin("Jainisha", "Test@111", ErrorMessage.userError);
+		clearElement("//*[@id=\"pwd\"]");
+		testcase.verifyLogin("Jainisha", "Test@111", APIResponse.userError);
 	}
 	
 	@Test(priority = 6)
 	public void Login1() {
 		clearElement("//*[@id=\"usernm\"]");
-		clearElement("//*[@id=\"password\"]");
-		testcase.verifyLogin("Jenny", "Test@1111", ErrorMessage.passwordError);
+		clearElement("//*[@id=\"pwd\"]");
+		testcase.verifyLogin("Jenny", "Test@1111", APIResponse.passwordError);
 	}
 	
 	@Test(priority = 7)
 	public void Login2() {
 		clearElement("//*[@id=\"usernm\"]");
-		clearElement("//*[@id=\"password\"]");
+		clearElement("//*[@id=\"pwd\"]");
 		//testcase.verifyLogin2("Jenny", "Test@111");
-		testcase.verifyLogin("Jenny", "Test@111", ErrorMessage.loginSuccess);
+		testcase.verifyLogin("Jenny", "Test@111", APIResponse.loginSuccess);
 	}
 	
 	@AfterTest

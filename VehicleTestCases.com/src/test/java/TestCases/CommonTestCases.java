@@ -39,24 +39,22 @@ public class CommonTestCases {
 		assertEquals(enable, false);
 	}
 
-	public void verifyElement(String inputElement, String xpathError  ,String msg) {
+	public void verifyErrorMSg(String inputElement, String xpathError,String errMsg ,String msg) {
 		element = driver.findElement(By.xpath(inputElement));
-		element.sendKeys(Keys.TAB);
+		
+		if(errMsg != null) 
+			element.sendKeys(errMsg + Keys.TAB);
+		else
+			element.sendKeys(Keys.TAB);
+		
 		//errorMsg = driver.findElement(RelativeLocator.with(By.tagName("span")).below(element)).getText();
 		errorMsg = driver.findElement(By.xpath(xpathError)).getText();
 		assertEquals(errorMsg , msg);
 	}
 
-	public void verifyLength(String inputElement,  String msg) {
-		element = driver.findElement(By.xpath(inputElement));
-		element.sendKeys("a" + Keys.TAB);
-		errorMsg = driver.findElement(RelativeLocator.with(By.tagName("span")).below(element)).getText();
-		assertEquals(errorMsg , msg);
-	}
-
 	public void verifyLogin(String username, String password ,String msg) {
 		driver.findElement(By.xpath("//*[@id=\"usernm\"]")).sendKeys(username);
-		driver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys(password + Keys.ENTER);
+		driver.findElement(By.xpath("//*[@id=\"pwd\"]")).sendKeys(password + Keys.ENTER);
 		element = new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"toast-container\"]/div/div[2]")));
 		errorMsg = element.getText();
 		element.click();

@@ -76,8 +76,8 @@ public class PromotionTestCases {
 	
 	@AfterTest
 	public void quit() {
-		driver.close();
-		driver.quit();
+		if(driver != null)
+			driver.quit();
 	}
 	
 }

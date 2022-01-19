@@ -64,7 +64,7 @@ public class StopSellTestCases {
 	
 	@Test(priority = 3)
 	public void checkSnackbar(){
-		testcase.checkErrorMessage(ErrorMessage.DataError);
+		testcase.checkErrorMessage(APIResponse.DataError);
 	}
 	
 	@Test(priority = 4)
@@ -75,7 +75,7 @@ public class StopSellTestCases {
 	
 	@AfterTest
 	public void quit() {
-		driver.close();
+		if(driver != null)
 		driver.quit();
 	}
 	
