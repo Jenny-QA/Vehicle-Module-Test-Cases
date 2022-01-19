@@ -55,8 +55,8 @@ public class CommonTestCases {
 	}
 
 	public void verifyLogin(String username, String password ,String msg) {
-		driver.findElement(By.xpath("//input[@type='text']")).sendKeys(username);
-		driver.findElement(By.xpath("//input[@type='password']")).sendKeys(password + Keys.ENTER);
+		driver.findElement(By.xpath("//*[@id=\"usernm\"]")).sendKeys(username);
+		driver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys(password + Keys.ENTER);
 		element = new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"toast-container\"]/div/div[2]")));
 		errorMsg = element.getText();
 		element.click();
