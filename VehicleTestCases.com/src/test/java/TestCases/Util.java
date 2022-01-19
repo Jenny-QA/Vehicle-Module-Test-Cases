@@ -2,9 +2,10 @@ package TestCases;
 
 public class Util {
 
-	public static final String BASE_URL = "https://vehicle-admin.praivit.com/#/auth/login";
+	//public static final String BASE_URL = "https://vehicle-admin.praivit.com/#/auth/login";
+	public static final String BASE_URL = "https://vehicle-module-angular-admin.vercel.app/#/auth/login";
 	
-	public static final int WAIT_TIME = 60;
+	public static final int WAIT_TIME = 45;
 	
 	public static final String title = "Vehicle Module";
 	

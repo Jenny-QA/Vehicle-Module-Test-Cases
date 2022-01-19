@@ -48,13 +48,13 @@ public class TaxPolicyTestCases {
 	
 	@Test(priority = 0)
 	public void Login() {		
-		testcase.verifyLogin2("Jenny", "Test@111");//, ErrorMessage.loginSuccess);
+		//testcase.verifyLogin2("Jenny", "Test@111");//, ErrorMessage.loginSuccess);
+		testcase.verifyLogin("Jenny", "Test@111", ErrorMessage.loginSuccess);
 	}	
 	
 	@Test(priority = 1)
 	public void gotoMenu() {
 		testcase.goMenu(Util.POLICIES_MENU, "Tax Policy");
-		//testcase.goMenu(By.xpath("//*[contains(text(),'Policies'"), By.xpath("//*[contains(text(),'Tax Policy'"));
 	}
 	
 	@Test(priority = 2)
@@ -69,8 +69,8 @@ public class TaxPolicyTestCases {
 	
 	@Test(priority = 4)
 	public void checkAddButton() {
-		//testcase.openForm(By.xpath("//a[contains(@class,\"btn-primary\")]"), By.xpath("//button[contains(@type,\"submit\")]"));
 		testcase.openForm("//a[contains(@class,'btn-primary')]", "//button[contains(@type,'submit')]");
+		
 	}
 	
 	@AfterTest

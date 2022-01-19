@@ -48,13 +48,13 @@ public class WeightUnitMasterTestCases {
 	
 	@Test(priority = 0)
 	public void Login() {		
-		testcase.verifyLogin2("Jenny", "Test@111");//, ErrorMessage.loginSuccess);
+		//testcase.verifyLogin2("Jenny", "Test@111");
+		testcase.verifyLogin("Jenny", "Test@111", ErrorMessage.loginSuccess);
 	}	
 	
 	@Test(priority = 1)
 	public void gotoMenu() {
 		testcase.goMenu(Util.MASTERS_MENU, "Weight Unit Master");
-		//testcase.goMenu(By.xpath("//*[contains(text(),'Masters'"), By.xpath("//*[contains(text(),'Weight Unit Master'"));
 	}
 	
 	@Test(priority = 2)
@@ -69,14 +69,14 @@ public class WeightUnitMasterTestCases {
 	
 	@Test(priority = 4)
 	public void checkAddButton() {
-		//testcase.openForm(By.xpath("//a[contains(@class,\"btn-primary\")]"), By.xpath("//button[contains(@type,\"submit\")]"));
-		testcase.openForm("//a[contains(@class,'btn-primary')]", "//button[contains(@type,'submit')]");
+		//testcase.openForm("//a[contains(@class,'btn-primary')]", "//button[contains(@type,'submit')]");
+		testcase.openForm("//*[@id=\"btn_addnew\"]", "//*[@id=\"btn_action\"]");
 	}
 	
 	@AfterTest
 	public void quit() {
-		driver.close();
-		driver.quit();
+		if(driver != null)
+			driver.quit();
 	}
 	
 }

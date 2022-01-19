@@ -39,10 +39,11 @@ public class CommonTestCases {
 		assertEquals(enable, false);
 	}
 
-	public void verifyElement(String inputElement,  String msg) {
+	public void verifyElement(String inputElement, String xpathError  ,String msg) {
 		element = driver.findElement(By.xpath(inputElement));
 		element.sendKeys(Keys.TAB);
-		errorMsg = driver.findElement(RelativeLocator.with(By.tagName("span")).below(element)).getText();
+		//errorMsg = driver.findElement(RelativeLocator.with(By.tagName("span")).below(element)).getText();
+		errorMsg = driver.findElement(By.xpath(xpathError)).getText();
 		assertEquals(errorMsg , msg);
 	}
 
@@ -67,33 +68,20 @@ public class CommonTestCases {
 		driver.findElement(By.xpath("//input[@type='password']")).sendKeys(password + Keys.ENTER);
 	}	
 
-	public void goMenu(By mainMenu, By subMenu) {
-		driver.findElement(mainMenu).click();
-		element = new WebDriverWait(driver, Duration.ofSeconds(Util.WAIT_TIME)).until(ExpectedConditions.presenceOfElementLocated(subMenu));
-		js = (JavascriptExecutor)driver;
-		js.executeScript("arguments[0].click();", element);
-	}
-
 	public void goMenu(String mainMenu, String subMenu) {
-		driver.findElement(By.xpath("//*[contains(text(),'" + mainMenu + "')]")).click();
-		element = new WebDriverWait(driver, Duration.ofSeconds(Util.WAIT_TIME)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[contains(text(),'" + subMenu + "')]")));
-		js = (JavascriptExecutor)driver;
-		js.executeScript("arguments[0].click();", element);
+		//driver.findElement(By.xpath("//*[contains(text(),'" + mainMenu + "')]")).click();
+		driver.findElement(By.xpath("//*[@id= '" + mainMenu  +" ']")).click();
+		//element = new WebDriverWait(driver, Duration.ofSeconds(Util.WAIT_TIME)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[contains(text(),'" + subMenu + "')]")));
+		driver.findElement(By.xpath("//*[@id= '" + subMenu  +" ']")).click();
+		//js = (JavascriptExecutor)driver;
+		//js.executeScript("arguments[0].click();", element);
 	}
+	
 	public void checkErrorMessage(String msg) {
 		element = new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"toast-container\"]/div/div[2]")));
 		errorMsg = element.getText();
 		element.click();
 		assertEquals(errorMsg, msg);
-	}
-
-	public void openForm(By openButton, By addButton) {
-		new WebDriverWait(driver, Duration.ofSeconds(Util.WAIT_TIME)).until(ExpectedConditions.presenceOfElementLocated(openButton)).click();
-		element = new WebDriverWait(driver, Duration.ofSeconds(Util.WAIT_TIME)).until(ExpectedConditions.elementToBeClickable(addButton)); 
-		js = (JavascriptExecutor)driver;
-		js.executeScript("window.scroll();", element);
-		enable = element.isEnabled();
-		assertEquals(enable, false);
 	}
 
 	public void openForm(String xpath1, String xpath2) {
@@ -109,5 +97,4 @@ public class CommonTestCases {
 		enable = element.isEnabled();
 		assertEquals(enable, false);
 	}
-
 }

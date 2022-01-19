@@ -26,9 +26,8 @@ public class LoginTestCases {
 		this.driver = driver;
 	}
 	
-	public void clearElement() {
-		driver.findElement(By.xpath("//input[@type='text']")).clear();
-		driver.findElement(By.xpath("//input[@type='password']")).clear();
+	public void clearElement(String xpath) {
+		driver.findElement(By.xpath(xpath)).clear();		
 	}
 		
 	@BeforeSuite
@@ -63,43 +62,48 @@ public class LoginTestCases {
 	
 	@Test(priority = 2)
 	public void userRequire() {
-		testcase.verifyElement("//input[@type='text']", ErrorMessage.userRequire);
+		//testcase.verifyElement("//input[@type='text']", ErrorMessage.userRequire);
+		testcase.verifyElement("//*[@id=\"usernm\"]", "//*[@id=\"usernm_err\"]",ErrorMessage.userRequire);
 	}
 	
 	@Test(priority = 3)
 	public void passwordRequire() {
-		testcase.verifyElement("//input[@type='password']", ErrorMessage.passwordRequire);
+		//testcase.verifyElement("//input[@type='password']", ErrorMessage.passwordRequire);
+		testcase.verifyElement("//*[@id=\"password\"]", "//*[@id=\"pwd_err\"]",ErrorMessage.passwordRequire);
 	}
 	
 	@Test(priority = 4)
 	public void passwordLenght() {
-		testcase.verifyLength("//input[@type='password']", ErrorMessage.passwordLength);
+		//testcase.verifyLength("//input[@type='password']", ErrorMessage.passwordLength);
+		testcase.verifyElement("//*[@id=\"password\"]", "//*[@id=\"pwd_err\"]",ErrorMessage.passwordLength);
 	}
 	
 	@Test(priority = 5)
 	public void Login0() {
-		clearElement();
+		clearElement("//*[@id=\"usernm\"]");
+		clearElement("//*[@id=\"password\"]");
 		testcase.verifyLogin("Jainisha", "Test@111", ErrorMessage.userError);
 	}
 	
 	@Test(priority = 6)
 	public void Login1() {
-		//clearElement();
-		driver.navigate().refresh();
+		clearElement("//*[@id=\"usernm\"]");
+		clearElement("//*[@id=\"password\"]");
 		testcase.verifyLogin("Jenny", "Test@1111", ErrorMessage.passwordError);
 	}
 	
 	@Test(priority = 7)
 	public void Login2() {
-		//clearElement();
-		driver.navigate().refresh();
-		testcase.verifyLogin2("Jenny", "Test@111"); //, ErrorMessage.loginSuccess);
+		clearElement("//*[@id=\"usernm\"]");
+		clearElement("//*[@id=\"password\"]");
+		//testcase.verifyLogin2("Jenny", "Test@111");
+		testcase.verifyLogin("Jenny", "Test@111", ErrorMessage.loginSuccess);
 	}
 	
 	@AfterTest
 	public void quit() {
-		driver.close();
-		driver.quit();
+		if(driver!=null) {
+			driver.quit();
+		}
 	}
-	
 }
