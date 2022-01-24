@@ -69,8 +69,8 @@ public class StopSellMasterTestCases {
 	
 	@Test(priority = 4)
 	public void checkAddButton() {
-		//testcase.openForm(By.xpath("//a[contains(@class,\"btn-primary\")]"), By.xpath("//button[contains(@type,\"submit\")]"));
-		testcase.openForm("//a[contains(@class,'btn-primary')]", "//*[@id=\"submit-btn\"]");
+		//testcase.openForm("//a[contains(@class,'btn-primary')]", "//*[@id=\"submit-btn\"]");
+		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_action\"]");
 	}
 	
 	@AfterTest

@@ -52,7 +52,7 @@ public class PromotionTestCases {
 		testcase.verifyLogin2("Jenny", "Test@111");//, ErrorMessage.loginSuccess);
 	}	
 	
-	/*@Test(priority = 1)
+	@Test(priority = 1)
 	public void gotoMenu() {
 		testcase.goMenu(Util.OPERATOR_MENU, "Promotion");
 		//testcase.goMenu(By.xpath("//*[contains(text(),'Operators'"), By.xpath("//*[contains(text(),'Promotion'"));
@@ -63,16 +63,16 @@ public class PromotionTestCases {
 		testcase.verifyTitle();
 	}
 	
-	/*@Test(priority = 3)
+	@Test(priority = 3)
 	public void checkSnackbar(){
-		testcase.checkErrorMessage(ErrorMessage.DataError);
-	}*/
+		testcase.checkErrorMessage(APIResponse.DataError);
+	}
 	
-	/*@Test(priority = 4)
+	@Test(priority = 4)
 	public void checkAddButton() {
-		//testcase.openForm(By.xpath("//button[contains(@class,\"btn-primary\")]"), By.xpath("//button[contains(@type,\"submit\")]"));
-		testcase.openForm("//*[@id='add-promotion']", "//button[contains(@type,'submit')]");
-	}*/
+		testcase.openForm("//*[@id=\"btn_addnew\"]", "//*[@id=\"btn_action\"]");
+		//testcase.openForm("//*[@id='add-promotion']", "//button[contains(@type,'submit')]");
+	}
 	
 	@AfterTest
 	public void quit() {
