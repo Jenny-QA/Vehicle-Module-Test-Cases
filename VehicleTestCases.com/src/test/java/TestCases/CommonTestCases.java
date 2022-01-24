@@ -74,9 +74,9 @@ public class CommonTestCases {
 
 	public void goMenu(String mainMenu, String subMenu) {
 		//driver.findElement(By.xpath("//*[contains(text(),'" + mainMenu + "')]")).click();
-		driver.findElement(By.xpath("//*[@id= '" + mainMenu  +" ']")).click();
+		driver.findElement(By.xpath("//*[@id= '" + mainMenu  +"']")).click();
 		//element = new WebDriverWait(driver, Duration.ofSeconds(Util.WAIT_TIME)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[contains(text(),'" + subMenu + "')]")));
-		driver.findElement(By.xpath("//*[@id= '" + subMenu  +" ']")).click();
+		driver.findElement(By.xpath("//*[@id= '" + subMenu  +"']")).click();
 		//js = (JavascriptExecutor)driver;
 		//js.executeScript("arguments[0].click();", element);
 	}
@@ -103,5 +103,13 @@ public class CommonTestCases {
 		js.executeScript("arguments[0].scrollIntoView(true);", element);
 		enable = element.isEnabled();
 		assertEquals(enable, false);
+	}
+	
+	public void checkError(String element_id, String input, String error_id, String err) {
+		element = driver.findElement(By.xpath(element_id));
+		element.sendKeys(input + Keys.TAB);
+		errorMsg = driver.findElement(By.xpath(error_id)).getText();
+		assertEquals(err, errorMsg);
+		element.clear();
 	}
 }

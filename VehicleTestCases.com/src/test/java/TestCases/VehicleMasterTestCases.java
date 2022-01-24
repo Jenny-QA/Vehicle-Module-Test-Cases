@@ -2,7 +2,6 @@ package TestCases;
 
 import java.time.Duration;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -70,14 +69,13 @@ public class VehicleMasterTestCases {
 	
 	@Test(priority = 4)
 	public void checkAddButton() {
-		//testcase.openForm("//a[contains(@class,'btn-primary')]", "//button[contains(@type,'submit')]");
 		testcase.openForm("//*[@id=\"btn_addnew\"]", "//*[@id=\"btn_action\"]");
 	}
 	
 	/*@Test
 	public void checkErrorMsg() {
-		driver.findElement(By.xpath("//*[@id=\"type\"]")).sendKeys("");
-		driver.findElement(null)
+		testcase.checkError("//*[@id=\"vehicle_type\"]", null, "//*[@id=\"type_err\"]", ErrorMessage.vehicleMaster_err1);
+		testcase.checkError("//*[@id=\"vehicle_type\"]", null, "//*[@id=\"type_err\"]", ErrorMessage.vehicleMaster_err2);
 	}*/
 	
 	@AfterTest
