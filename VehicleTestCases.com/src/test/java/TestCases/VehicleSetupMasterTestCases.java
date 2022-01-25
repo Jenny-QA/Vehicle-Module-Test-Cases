@@ -70,7 +70,7 @@ public class VehicleSetupMasterTestCases {
 	@Test(priority = 4)
 	public void checkAddButton() {
 		//testcase.openForm("//button[contains(@class,'btn-primary')]", "//button[contains(@type,'submit')]");
-		testcase.openForm("//*[@id=\"btn_addnew\"]", "//*[@id=\"btn_action\"]");
+		testcase.openForm("//*[@id=\"btn_addnew\"]", "//*[@id=\"btn_add\"]");
 	}
 	
 	@AfterTest
