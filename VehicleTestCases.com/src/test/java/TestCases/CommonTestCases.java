@@ -74,9 +74,9 @@ public class CommonTestCases {
 
 	public void goMenu(String mainMenu, String subMenu) {
 		//driver.findElement(By.xpath("//*[contains(text(),'" + mainMenu + "')]")).click();
-		driver.findElement(By.xpath("//*[@id= '" + mainMenu  +"']")).click();
+		driver.findElement(By.xpath("//*[@id= \"" + mainMenu  +"\"]")).click();
 		//element = new WebDriverWait(driver, Duration.ofSeconds(Util.WAIT_TIME)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[contains(text(),'" + subMenu + "')]")));
-		driver.findElement(By.xpath("//*[@id= '" + subMenu  +"']")).click();
+		driver.findElement(By.xpath("//*[@id= \"" + subMenu  +"\"]")).click();
 		//js = (JavascriptExecutor)driver;
 		//js.executeScript("arguments[0].click();", element);
 	}
