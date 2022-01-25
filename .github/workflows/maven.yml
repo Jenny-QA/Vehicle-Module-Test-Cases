@@ -33,6 +33,5 @@ jobs:
         path-replace-backslashes: false
         list-suites: all
         list-tests: all
-        max-annotations: 50
         fail-on-error: false
         only-summary: false
