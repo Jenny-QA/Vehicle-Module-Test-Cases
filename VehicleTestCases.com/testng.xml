@@ -4,10 +4,10 @@
 	<test thread-count="5" name="Test">
 		<classes>
 			<class name="TestCases.LoginTestCases" />
-			<class name="TestCases.VehicleMasterTestCases" />
- 			<class name="TestCases.VehicleSubTestCases" />
-<!-- 			<class name="TestCases.VehicleManufacturerMasterTestCases" /> -->
-<!-- 			<class name="TestCases.VehicleColorMasterTestCases" /> -->
+<!-- 			<class name="TestCases.VehicleMasterTestCases" /> -->
+<!--  			<class name="TestCases.VehicleSubTestCases" /> -->
+			<class name="TestCases.VehicleManufacturerMasterTestCases" />
+			<class name="TestCases.VehicleColorMasterTestCases" />
 <!-- 			<class name="TestCases.FuelMasterTestCases" /> -->
 <!-- 			<class name="TestCases.PickupServiceMasterTestCases" /> -->
 <!-- 			<class name="TestCases.OperatorMasterTestCases" /> -->
