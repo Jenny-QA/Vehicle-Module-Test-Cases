@@ -1,7 +1,7 @@
 package TestCases;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertFalse;
+//import static org.testng.Assert.assertFalse;
 
 import java.time.Duration;
 
@@ -82,13 +82,13 @@ public class CommonTestCases {
 	}
 	
 	public void checkErrorMessage(String msg) {
-		/*element = new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"toast-container\"]/div/div[2]")));
+		element = new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"toast-container\"]/div/div[2]")));
 		errorMsg = element.getText();
 		element.click();
-		assertEquals(errorMsg, msg);*/
-		element = new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"toast-container\"]/div/div[2]")));
+		assertEquals(errorMsg, msg);
+		/*element = new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"toast-container\"]/div/div[2]")));
 		enable = element.isDisplayed();
-		assertFalse(enable);
+		assertFalse(enable);*/
 	}
 
 	public void openForm(String xpath1, String xpath2) {
