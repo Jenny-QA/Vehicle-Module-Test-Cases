@@ -7,10 +7,10 @@
 <!-- 			<class name="TestCases.VehicleMasterTestCases" /> -->
 <!--  			<class name="TestCases.VehicleSubTestCases" /> -->
 <!-- 			<class name="TestCases.VehicleManufacturerMasterTestCases" /> -->
-			<class name="TestCases.VehicleColorMasterTestCases" />
-			<class name="TestCases.FuelMasterTestCases" />
-<!-- 			<class name="TestCases.PickupServiceMasterTestCases" /> -->
-<!-- 			<class name="TestCases.OperatorMasterTestCases" /> -->
+<!-- 			<class name="TestCases.VehicleColorMasterTestCases" /> -->
+<!-- 			<class name="TestCases.FuelMasterTestCases" /> -->
+			<class name="TestCases.PickupServiceMasterTestCases" />
+			<class name="TestCases.OperatorMasterTestCases" />
 <!-- 			<class name="TestCases.BillingTypeMasterTestCases" /> -->
 <!-- 			<class name="TestCases.PromotionMasterTestCases" /> -->
 <!-- 			<class name="TestCases.WeightUnitMasterTestCases" /> -->
