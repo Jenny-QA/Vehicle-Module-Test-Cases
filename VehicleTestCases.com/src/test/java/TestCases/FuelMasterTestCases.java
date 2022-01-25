@@ -69,7 +69,7 @@ public class FuelMasterTestCases {
 	
 	@Test(priority = 4)
 	public void checkAddButton() {
-		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_action\"]");
+		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_add\"]");
 		//testcase.openForm("//a[contains(@class,'btn-primary')]", "//button[contains(@type,'submit')]");
 	}
 	
