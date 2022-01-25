@@ -5,7 +5,7 @@
 		<classes>
 			<class name="TestCases.LoginTestCases" />
 			<class name="TestCases.VehicleMasterTestCases" />
-<!-- 			<class name="TestCases.VehicleSubTestCases" /> -->
+ 			<class name="TestCases.VehicleSubTestCases" />
 <!-- 			<class name="TestCases.VehicleManufacturerMasterTestCases" /> -->
 <!-- 			<class name="TestCases.VehicleColorMasterTestCases" /> -->
 <!-- 			<class name="TestCases.FuelMasterTestCases" /> -->

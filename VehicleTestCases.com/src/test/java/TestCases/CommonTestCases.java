@@ -102,7 +102,7 @@ public class CommonTestCases {
 		element = driver.findElement(By.xpath(xpath));
 		js.executeScript("arguments[0].scrollIntoView(true);", element);
 		enable = element.isEnabled();
-		assertEquals(enable, false);
+		assertEquals(false, enable);
 	}
 	
 	public void checkError(String element_id, String input, String error_id, String err) {
