@@ -17,9 +17,7 @@ public class VehicleSetupMasterTestCases {
 	private WebDriver driver;
 	CommonTestCases testcase;
 	
-	public VehicleSetupMasterTestCases() {
-		// TODO Auto-generated constructor stub
-	}
+	public VehicleSetupMasterTestCases() { }
 	
 	public VehicleSetupMasterTestCases(WebDriver driver) {
 		this.driver = driver;

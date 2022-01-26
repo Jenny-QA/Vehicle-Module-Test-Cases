@@ -17,9 +17,7 @@ public class OperatorMasterTestCases {
 	private WebDriver driver;
 	CommonTestCases testcase;
 	
-	public OperatorMasterTestCases() {
-		// TODO Auto-generated constructor stub
-	}
+	public OperatorMasterTestCases() { }
 	
 	public OperatorMasterTestCases(WebDriver driver) {
 		this.driver = driver;
@@ -35,7 +33,6 @@ public class OperatorMasterTestCases {
 		options.addArguments("--headless");
 		driver = new ChromeDriver(options);
 	}
-	
 	
 	@BeforeTest
 	public void openBrowser() {
@@ -54,7 +51,6 @@ public class OperatorMasterTestCases {
 	@Test(priority = 1)
 	public void gotoMenu() {
 		testcase.goMenu(Util.MASTERS_MENU, "Operator Master");
-		//testcase.goMenu(By.xpath("//*[contains(text(),'Masters'"), By.xpath("//*[contains(text(),'Operator Master'"));
 	}
 	
 	@Test(priority = 2)
@@ -70,8 +66,13 @@ public class OperatorMasterTestCases {
 	@Test(priority = 4)
 	public void checkAddButton() {
 		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_add\"]");
-		//testcase.openForm("//a[contains(@class,'btn-primary')]", "//button[contains(@type,'submit')]");
 	}
+	
+	@Test(priority = 5)
+	public void checkErrorMsg() {
+		testcase.checkError("//*[@id=\"fuel_type\"]", null, "//*[@id=\"type_err\"]", ErrorMessage.fuel_err1);
+		testcase.checkError("//*[@id=\"fuel_type\"]", "12$%", "//*[@id=\"type_err\"]", ErrorMessage.fuel_err2);
+	} 
 	
 	@AfterTest
 	public void quit() {

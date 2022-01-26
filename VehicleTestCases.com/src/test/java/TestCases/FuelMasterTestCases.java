@@ -17,9 +17,7 @@ public class FuelMasterTestCases {
 	private WebDriver driver;
 	CommonTestCases testcase;
 	
-	public FuelMasterTestCases() {
-		// TODO Auto-generated constructor stub
-	}
+	public FuelMasterTestCases() { }
 	
 	public FuelMasterTestCases(WebDriver driver) {
 		this.driver = driver;
@@ -54,7 +52,6 @@ public class FuelMasterTestCases {
 	@Test(priority = 1)
 	public void gotoMenu() {
 		testcase.goMenu(Util.MASTERS_MENU, "Fuel Master");
-		//testcase.goMenu(By.xpath("//*[contains(text(),'Masters'"), By.xpath("//*[contains(text(),'Fuel Master'"));
 	}
 	
 	@Test(priority = 2)
@@ -70,7 +67,12 @@ public class FuelMasterTestCases {
 	@Test(priority = 4)
 	public void checkAddButton() {
 		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_add\"]");
-		//testcase.openForm("//a[contains(@class,'btn-primary')]", "//button[contains(@type,'submit')]");
+	}
+	
+	@Test(priority = 5)
+	public void checkErrorMsg() {
+		testcase.checkError("//*[@id=\"fuel_type\"]", null, "//*[@id=\"type_err\"]", ErrorMessage.fuel_err1);
+		testcase.checkError("//*[@id=\"fuel_type\"]", "12$%", "//*[@id=\"type_err\"]", ErrorMessage.fuel_err2);
 	}
 	
 	@AfterTest
@@ -78,5 +80,4 @@ public class FuelMasterTestCases {
 		if(driver != null)
 			driver.quit();
 	}
-
 }

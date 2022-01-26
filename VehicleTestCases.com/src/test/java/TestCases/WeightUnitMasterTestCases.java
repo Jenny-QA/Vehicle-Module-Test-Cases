@@ -17,9 +17,7 @@ public class WeightUnitMasterTestCases {
 	private WebDriver driver;
 	CommonTestCases testcase;
 	
-	public WeightUnitMasterTestCases() {
-		// TODO Auto-generated constructor stub
-	}
+	public WeightUnitMasterTestCases() { }
 	
 	public WeightUnitMasterTestCases(WebDriver driver) {
 		this.driver = driver;
@@ -69,8 +67,13 @@ public class WeightUnitMasterTestCases {
 	
 	@Test(priority = 4)
 	public void checkAddButton() {
-		//testcase.openForm("//a[contains(@class,'btn-primary')]", "//button[contains(@type,'submit')]");
 		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_add\"]");
+	}
+	
+	@Test(priority = 5)
+	public void checkErrorMsg() {
+		testcase.checkError("//*[@id=\"unit_type\"]", null, "//*[@id=\"type_err\"]", ErrorMessage.weight_err1);
+		testcase.checkError("//*[@id=\"unit_type\"]", "12$%", "//*[@id=\"type_err\"]", ErrorMessage.weight_err2);
 	}
 	
 	@AfterTest

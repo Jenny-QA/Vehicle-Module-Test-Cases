@@ -3,7 +3,7 @@ package TestCases;
 public class Util {
 
 	//public static final String BASE_URL = "https://vehicle-admin.praivit.com/#/auth/login";
-	public static final String BASE_URL = "https://vehicle-module-angular-admin.vercel.app/#/auth/login";
+	public static final String BASE_URL = "https://vehicle-module-angular-admin.netlify.app/#/login";
 	
 	public static final int WAIT_TIME = 45;
 	

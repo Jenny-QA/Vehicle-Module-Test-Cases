@@ -17,9 +17,7 @@ public class VehicleColorMasterTestCases {
 	private WebDriver driver;
 	CommonTestCases testcase;
 	
-	public VehicleColorMasterTestCases() {
-		// TODO Auto-generated constructor stub
-	}
+	public VehicleColorMasterTestCases() { }
 	
 	public VehicleColorMasterTestCases(WebDriver driver) {
 		this.driver = driver;
@@ -48,7 +46,7 @@ public class VehicleColorMasterTestCases {
 	
 	@Test(priority = 0)
 	public void Login() {		
-		testcase.verifyLogin2("Jenny", "Test@111");//, ErrorMessage.loginSuccess);
+		testcase.verifyLogin2("Jenny", "Test@111");
 		//testcase.verifyLogin("Jenny", "Test@111", APIResponse.loginSuccess);
 	}	
 	
@@ -69,8 +67,13 @@ public class VehicleColorMasterTestCases {
 	
 	@Test(priority = 4)
 	public void checkAddButton() {
-		//testcase.openForm("//a[contains(@class,'btn-primary')]", "//button[contains(@type,'submit')]");
 		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_add\"]");
+	}
+	
+	@Test(priority = 5)
+	public void checkErrorMsg() {
+		testcase.checkError("//*[@id=\"color_type\"]", null, "//*[@id=\"type_err\"]", ErrorMessage.color_err1);
+		testcase.checkError("//*[@id=\"color_type\"]", "12$%", "//*[@id=\"type_err\"]", ErrorMessage.color_err2);
 	}
 	
 	@AfterTest

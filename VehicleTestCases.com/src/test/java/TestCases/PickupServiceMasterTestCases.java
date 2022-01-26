@@ -17,9 +17,7 @@ public class PickupServiceMasterTestCases {
 	private WebDriver driver;
 	CommonTestCases testcase;
 	
-	public PickupServiceMasterTestCases() {
-		// TODO Auto-generated constructor stub
-	}
+	public PickupServiceMasterTestCases() {	}
 	
 	public PickupServiceMasterTestCases(WebDriver driver) {
 		this.driver = driver;
@@ -54,7 +52,6 @@ public class PickupServiceMasterTestCases {
 	@Test(priority = 1)
 	public void gotoMenu() {
 		testcase.goMenu(Util.MASTERS_MENU, "Pickup Service Master");
-		//testcase.goMenu(By.xpath("//*[contains(text(),'Masters'"), By.xpath("//*[contains(text(),'Pickup Service Master'"));
 	}
 	
 	@Test(priority = 2)
@@ -70,7 +67,12 @@ public class PickupServiceMasterTestCases {
 	@Test(priority = 4)
 	public void checkAddButton() {
 		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_add\"]");
-		//testcase.openForm("//a[contains(@class,'btn-primary')]", "//button[contains(@type,'submit')]");
+	}
+	
+	@Test(priority = 5)
+	public void checkErrorMsg() {
+		testcase.checkError("//*[@id=\"vehicle_type\"]", null, "//*[@id=\"type_err\"]", ErrorMessage.vehicleMaster_err1);
+		testcase.checkError("//*[@id=\"vehicle_type\"]", "12$%", "//*[@id=\"type_err\"]", ErrorMessage.vehicleMaster_err2);
 	}
 	
 	@AfterTest

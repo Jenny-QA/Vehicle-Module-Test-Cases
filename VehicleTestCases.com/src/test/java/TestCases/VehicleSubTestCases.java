@@ -17,9 +17,7 @@ public class VehicleSubTestCases {
 	private WebDriver driver;
 	CommonTestCases testcase;
 	
-	public VehicleSubTestCases() {
-		// TODO Auto-generated constructor stub
-	}
+	public VehicleSubTestCases() { }
 	
 	public VehicleSubTestCases(WebDriver driver) {
 		this.driver = driver;
@@ -69,8 +67,14 @@ public class VehicleSubTestCases {
 	
 	@Test(priority = 4)
 	public void checkAddButton() {
-		//testcase.openForm("//button[contains(@class,'btn-primary')]", "//button[contains(@type,'submit')]");
 		testcase.openForm("//*[@id=\"btn_addnew\"]", "//*[@id=\"btn_add\"]");
+	}
+	
+	@Test(priority = 5)
+	public void checkErrorMsg() {
+		testcase.checkError("//*[@id=\"vehicle_type\"]", null, "//*[@id=\"vehicle_type_err\"]", ErrorMessage.subVehicle_err1);
+		testcase.checkError("//*[@id=\"subvehicle_type\"]", null, "//*[@id=\"type_err\"]", ErrorMessage.subVehicle_err2);
+		testcase.checkError("//*[@id=\"subvehicle_type\"]", "12$%", "//*[@id=\"type_err\"]", ErrorMessage.subVehicle_err3);
 	}
 	
 	@AfterTest

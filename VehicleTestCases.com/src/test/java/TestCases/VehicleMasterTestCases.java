@@ -17,9 +17,7 @@ public class VehicleMasterTestCases {
 	private WebDriver driver;
 	CommonTestCases testcase;
 	
-	public VehicleMasterTestCases() {
-		// TODO Auto-generated constructor stub
-	}
+	public VehicleMasterTestCases() { }
 	
 	public VehicleMasterTestCases(WebDriver driver) {
 		this.driver = driver;
@@ -72,11 +70,11 @@ public class VehicleMasterTestCases {
 		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_add\"]");
 	}
 	
-	/*@Test
+	@Test(priority = 5)
 	public void checkErrorMsg() {
-		testcase.checkError("//*[@id=\"vehicle_type\"]", null, "//*[@id=\"type_err\"]", ErrorMessage.vehicleMaster_err1);
-		testcase.checkError("//*[@id=\"vehicle_type\"]", null, "//*[@id=\"type_err\"]", ErrorMessage.vehicleMaster_err2);
-	}*/
+		testcase.checkError("//*[@id=\"pickup_type\"]", null, "//*[@id=\"type_err\"]", ErrorMessage.pick_err1);
+		testcase.checkError("//*[@id=\"pickup_type\"]", "12$%", "//*[@id=\"type_err\"]", ErrorMessage.pick_err2);
+	}
 	
 	@AfterTest
 	public void quit() {
