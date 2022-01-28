@@ -11,6 +11,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CommonTestCases {
@@ -22,9 +23,7 @@ public class CommonTestCases {
 	public WebDriverWait wait;
 	public JavascriptExecutor js;
 
-	public CommonTestCases() {
-		// TODO Auto-generated constructor stub
-	}
+	public CommonTestCases() { }
 
 	public CommonTestCases(WebDriver driver) {
 		this.driver = driver;
@@ -64,21 +63,12 @@ public class CommonTestCases {
 	public void verifyLogin2(String username, String password) {	
 		driver.findElement(By.xpath("//*[@id=\"usernm\"]")).sendKeys(username);
 		driver.findElement(By.xpath("//*[@id=\"pwd\"]")).sendKeys(password + Keys.ENTER);
-		/*try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		assertNotEquals(driver.getCurrentUrl(), Util.BASE_URL);*/
+		//assertNotEquals(driver.getCurrentUrl(), Util.BASE_URL);
 	}	
 
 	public void goMenu(String mainMenu, String subMenu) {
-		//driver.findElement(By.xpath("//*[contains(text(),'" + mainMenu + "')]")).click();
 		driver.findElement(By.xpath("//*[@id= \"" + mainMenu  +"\"]")).click();
-		//element = new WebDriverWait(driver, Duration.ofSeconds(Util.WAIT_TIME)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[contains(text(),'" + subMenu + "')]")));
 		driver.findElement(By.xpath("//*[@id= \"" + subMenu  +"\"]")).click();
-		//js = (JavascriptExecutor)driver;
-		//js.executeScript("arguments[0].click();", element);
 	}
 	
 	public void checkErrorMessage(String msg) {
@@ -86,30 +76,56 @@ public class CommonTestCases {
 		errorMsg = element.getText();
 		element.click();
 		assertEquals(errorMsg, msg);
-		/*element = new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"toast-container\"]/div/div[2]")));
-		enable = element.isDisplayed();
-		assertFalse(enable);*/
 	}
 
 	public void openForm(String xpath1, String xpath2) {
 		driver.findElement(By.xpath(xpath1)).click();
-		verifyAddButton(xpath2);
+		checkAddEnable(xpath2);
 	}
 
-	public void verifyAddButton(String xpath) {
+	public void checkAddEnable(String xpath) {
 		js = (JavascriptExecutor)driver;
-		//element = new WebDriverWait(driver, Duration.ofSeconds(Util.WAIT_TIME)).until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
 		element = driver.findElement(By.xpath(xpath));
 		js.executeScript("arguments[0].scrollIntoView(true);", element);
 		enable = element.isEnabled();
 		assertEquals(false, enable);
+	}
+
+	public void clickAdd(String id) {
+		driver.findElement(By.xpath(id)).click();
+	}
+	
+	public void clickCancel(String id) {
+		driver.findElement(By.xpath(id)).click();
 	}
 	
 	public void checkError(String element_id, String input, String error_id, String err) {
 		element = driver.findElement(By.xpath(element_id));
 		element.sendKeys(input + Keys.TAB);
 		errorMsg = driver.findElement(By.xpath(error_id)).getText();
-		assertEquals(err, errorMsg);
 		element.clear();
+		assertEquals(err, errorMsg);
+	}
+	
+	public void addSingleData(String type,String msg, String err) {
+		driver.findElement(By.xpath(type)).sendKeys(msg);
+		clickAdd("//*[@id=\"btn_add\"]");
+		checkErrorMessage(err);
+	}
+	
+	public void addDoubleData(String type, String msg, String des, String msg1, String err) {
+		driver.findElement(By.xpath(type)).sendKeys(msg);
+		driver.findElement(By.xpath(des)).sendKeys(msg1);
+		clickAdd("//*[@id=\"btn_add\"]");
+		checkErrorMessage(err);
+	}
+	
+	public void addTripleData(String dropDrown, String value, String type, String msg, String des, String msg1, String err) {
+		Select dropdown = new Select(driver.findElement(By.xpath(dropDrown)));
+		dropdown.selectByVisibleText(value);
+		driver.findElement(By.xpath(type)).sendKeys(msg);
+		driver.findElement(By.xpath(des)).sendKeys(msg1);
+		clickAdd("//*[@id=\"btn_add\"]");
+		checkErrorMessage(err);
 	}
 }

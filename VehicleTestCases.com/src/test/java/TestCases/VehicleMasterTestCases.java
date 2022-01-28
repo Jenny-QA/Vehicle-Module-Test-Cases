@@ -5,6 +5,7 @@ import java.time.Duration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+//import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
@@ -30,10 +31,9 @@ public class VehicleMasterTestCases {
 		options.addArguments("--no-sandbox");
 		options.addArguments("--disable-dev-shm-usage");
 		options.addArguments("--window-size=1920,1080");
-		options.addArguments("--headless");
+		//options.addArguments("--headless");
 		driver = new ChromeDriver(options);
 	}
-	
 	
 	@BeforeTest
 	public void openBrowser() {
@@ -55,7 +55,7 @@ public class VehicleMasterTestCases {
 		testcase.goMenu(Util.MASTERS_MENU, "Vehicle Master");
 	}
 	
-	@Test(priority = 2)
+	/*@Test(priority = 2)
 	public void verifyTitle() {
 		testcase.verifyTitle();
 	}
@@ -63,18 +63,33 @@ public class VehicleMasterTestCases {
 	@Test(priority = 3)
 	public void checkSnackbar(){
 		testcase.checkErrorMessage(APIResponse.DataError);
-	}
+	}*/
 	
 	@Test(priority = 4)
 	public void checkAddButton() {
 		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_add\"]");
 	}
 	
-	@Test(priority = 5)
+	/*@Test(priority = 5)
 	public void checkErrorMsg() {
-		testcase.checkError("//*[@id=\"pickup_type\"]", null, "//*[@id=\"type_err\"]", ErrorMessage.pick_err1);
-		testcase.checkError("//*[@id=\"pickup_type\"]", "12$%", "//*[@id=\"type_err\"]", ErrorMessage.pick_err2);
+		testcase.checkError("//*[@id=\"vehicle_type\"]", "", "//*[@id=\"type_err\"]", ErrorMessage.vehicleMaster_err1);
+		testcase.checkError("//*[@id=\"vehicle_type\"]", "12$%", "//*[@id=\"type_err\"]", ErrorMessage.vehicleMaster_err2);
+	}*/
+
+	@Test(priority = 6)
+	public void addData(){	
+		testcase.addSingleData("//*[@id=\"vehicle_type\"]", "Car", APIResponse.vehicleAdd);
 	}
+	
+	/*@Test(priority = 7)
+	public void editData(){	
+		testcase.addSingleData("//*[@id=\"vehicle_type\"]", "Car", APIResponse.vehicleAdd);
+	}*/
+	
+	/*@Test(priority = 8)
+	public void deleteData() {
+		
+	}*/
 	
 	@AfterTest
 	public void quit() {

@@ -58,20 +58,25 @@ public class PromotionMasterTestCases {
 		testcase.verifyTitle();
 	}
 	
-	@Test(priority = 3)
+	/*@Test(priority = 3)
 	public void checkSnackbar(){
 		testcase.checkErrorMessage(APIResponse.DataError);
-	}
+	}*/
 	
 	@Test(priority = 4)
 	public void checkAddButton() {
 		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_add\"]");
 	}
 	
-	@Test(priority = 5)
+	/*@Test(priority = 5)
 	public void checkErrorMsg() {
 		testcase.checkError("//*[@id=\"promotion_type\"]", null, "//*[@id=\"type_err\"]", ErrorMessage.promotionM_err1);
 		testcase.checkError("//*[@id=\"promotion_type\"]", "12$%", "//*[@id=\"type_err\"]", ErrorMessage.promotionM_err2);
+	}*/
+	
+	@Test(priority = 6)
+	public void addData(){	
+		testcase.addDoubleData("//*[@id=\"promotion_type\"]", "Promo 3", "//*[@id=\"description\"]", "Desc", APIResponse.promotionAdd);
 	}
 	
 	@AfterTest

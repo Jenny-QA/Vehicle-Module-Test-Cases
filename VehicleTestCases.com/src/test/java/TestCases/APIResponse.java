@@ -84,5 +84,11 @@ public class APIResponse {
 	public static final String unitDelete = "";
 	public static final String UnitDeleteAlready = "";
 	
-	
+	//Stop Sell Master Message
+	public static final String sellSuccess = "";
+	public static final String sellAdd = "";
+	public static final String sellExists = "";
+	public static final String sellUpdate = "";
+	public static final String sellDelete = "";
+	public static final String sellDeleteAlready = "";
 }

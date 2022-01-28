@@ -59,20 +59,25 @@ public class FuelMasterTestCases {
 		testcase.verifyTitle();
 	}
 	
-	@Test(priority = 3)
+	/*@Test(priority = 3)
 	public void checkSnackbar(){
 		testcase.checkErrorMessage(APIResponse.DataError);
-	}
+	}*/
 	
 	@Test(priority = 4)
 	public void checkAddButton() {
 		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_add\"]");
 	}
 	
-	@Test(priority = 5)
+	/*@Test(priority = 5)
 	public void checkErrorMsg() {
 		testcase.checkError("//*[@id=\"fuel_type\"]", null, "//*[@id=\"type_err\"]", ErrorMessage.fuel_err1);
 		testcase.checkError("//*[@id=\"fuel_type\"]", "12$%", "//*[@id=\"type_err\"]", ErrorMessage.fuel_err2);
+	}*/
+	
+	@Test(priority = 6)
+	public void addData(){	
+		testcase.addDoubleData("//*[@id=\"fuel_type\"]", "Petrol", "//*[@id=\"description\"]", "Desc", APIResponse.fuelExists);
 	}
 	
 	@AfterTest

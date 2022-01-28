@@ -36,7 +36,6 @@ public class OperatorVehicleSetupTestCases {
 		driver = new ChromeDriver(options);
 	}
 	
-	
 	@BeforeTest
 	public void openBrowser() {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Util.WAIT_TIME));
@@ -54,7 +53,6 @@ public class OperatorVehicleSetupTestCases {
 	@Test(priority = 1)
 	public void gotoMenu() {
 		testcase.goMenu(Util.OPERATOR_MENU, "Operator Vehicle Setup");
-		//testcase.goMenu(By.xpath("//*[contains(text(),'Operators'"), By.xpath("//*[contains(text(),'Operator Vehicle Setup'"));
 	}
 	
 	@Test(priority = 2)
@@ -70,8 +68,12 @@ public class OperatorVehicleSetupTestCases {
 	@Test(priority = 4)
 	public void checkAddButton() {
 		testcase.openForm("//*[@id=\"btn_addnew\"]", "//*[@id=\"btn_action\"]");
-		//testcase.openForm("//button[contains(@class,'btn-primary')]", "//button[contains(@type,'submit')]");
 	}
+	
+	/*@Test(priority = 6)
+	public void addData(){	
+		testcase.addDoubleData("//*[@id=\"fuel_type\"]", "Petrol", "//*[@id=\"description\"]", "Desc", APIResponse.fuelExists);
+	}*/
 	
 	@AfterTest
 	public void quit() {

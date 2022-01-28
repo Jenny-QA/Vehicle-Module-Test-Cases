@@ -32,8 +32,7 @@ public class StopSellMasterTestCases {
 		options.addArguments("--window-size=1920,1080");
 		options.addArguments("--headless");
 		driver = new ChromeDriver(options);
-	}
-	
+	}	
 	
 	@BeforeTest
 	public void openBrowser() {
@@ -59,20 +58,25 @@ public class StopSellMasterTestCases {
 		testcase.verifyTitle();
 	}
 	
-	@Test(priority = 3)
+	/*@Test(priority = 3)
 	public void checkSnackbar(){
 		testcase.checkErrorMessage(APIResponse.DataError);
-	}
+	}*/
 	
 	@Test(priority = 4)
 	public void checkAddButton() {
 		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_add\"]");
 	}
 	
-	@Test(priority = 5)
+	/*@Test(priority = 5)
 	public void checkErrorMsg() {
 		testcase.checkError("//*[@id=\"stopsell_type\"]", null, "//*[@id=\"type_err\"]", ErrorMessage.stopSellM_err1);
 		testcase.checkError("//*[@id=\"stopsell_type\"]", "12$%", "//*[@id=\"type_err\"]", ErrorMessage.stopSellM_err2);
+	}*/
+	
+	@Test(priority = 6)
+	public void addData(){	
+		testcase.addDoubleData("//*[@id=\"stopsell_type\"]", "B;ack out", "//*[@id=\"description\"]", "Desc", APIResponse.sellAdd);
 	}
 	
 	@AfterTest

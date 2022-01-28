@@ -30,10 +30,9 @@ public class VehicleManufacturerMasterTestCases {
 		options.addArguments("--no-sandbox");
 		options.addArguments("--disable-dev-shm-usage");
 		options.addArguments("--window-size=1920,1080");
-		options.addArguments("--headless");
+		//options.addArguments("--headless");
 		driver = new ChromeDriver(options);
 	}
-	
 	
 	@BeforeTest
 	public void openBrowser() {
@@ -60,21 +59,25 @@ public class VehicleManufacturerMasterTestCases {
 		testcase.verifyTitle();
 	}
 	
-	@Test(priority = 3)
-	public void checkSnackbar(){
-		testcase.checkErrorMessage(APIResponse.DataError);
-	}
+//	@Test(priority = 3)
+//	public void checkSnackbar(){
+//		testcase.checkErrorMessage(APIResponse.DataError);
+//	}
 	
 	@Test(priority = 4)
 	public void checkAddButton() {
-		//testcase.openForm("//a[contains(@class,'btn-primary')]", "//button[contains(@type,'submit')]");
 		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_add\"]");
 	}
 	
-	@Test(priority = 5)
+	/*@Test(priority = 5)
 	public void checkErrorMsg() {
 		testcase.checkError("//*[@id=\"manfacturer_type\"]", null, "//*[@id=\"type_err\"]", ErrorMessage.manufacturer_err1);
 		testcase.checkError("//*[@id=\"manfacturer_type\"]", "12$%", "//*[@id=\"type_err\"]", ErrorMessage.manufacturer_err2);
+	}*/
+	
+	@Test(priority = 6)
+	public void addData(){	
+		testcase.addDoubleData("//*[@id=\"manfacturer_type\"]", "Toyota", "//*[@id=\"description\"]", "Desc", APIResponse.manufacturerAdd);
 	}
 	
 	@AfterTest

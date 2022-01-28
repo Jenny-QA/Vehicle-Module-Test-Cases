@@ -32,8 +32,7 @@ public class WeightUnitMasterTestCases {
 		options.addArguments("--window-size=1920,1080");
 		options.addArguments("--headless");
 		driver = new ChromeDriver(options);
-	}
-	
+	}	
 	
 	@BeforeTest
 	public void openBrowser() {
@@ -70,10 +69,15 @@ public class WeightUnitMasterTestCases {
 		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_add\"]");
 	}
 	
-	@Test(priority = 5)
+	/*@Test(priority = 5)
 	public void checkErrorMsg() {
 		testcase.checkError("//*[@id=\"unit_type\"]", null, "//*[@id=\"type_err\"]", ErrorMessage.weight_err1);
 		testcase.checkError("//*[@id=\"unit_type\"]", "12$%", "//*[@id=\"type_err\"]", ErrorMessage.weight_err2);
+	}*/
+	
+	@Test(priority = 6)
+	public void addData(){	
+		testcase.addDoubleData("//*[@id=\"unit_type\"]", "Pound", "//*[@id=\"description\"]", "Desc", APIResponse.unitAdd);
 	}
 	
 	@AfterTest
