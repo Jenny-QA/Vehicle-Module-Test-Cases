@@ -30,7 +30,7 @@ public class PickupServiceMasterTestCases {
 		options.addArguments("--no-sandbox");
 		options.addArguments("--disable-dev-shm-usage");
 		options.addArguments("--window-size=1920,1080");
-		options.addArguments("--headless");
+		//options.addArguments("--headless");
 		driver = new ChromeDriver(options);
 	}
 	
@@ -66,17 +66,46 @@ public class PickupServiceMasterTestCases {
 	@Test(priority = 4)
 	public void checkAddButton() {
 		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_add\"]");
+		testcase.clickCancel("//*[@id=\"a_cancel\"]");
 	}
 	
-	/*@Test(priority = 5)
+	@Test(priority = 5)
 	public void checkErrorMsg() {
-		testcase.checkError("//*[@id=\"vehicle_type\"]", null, "//*[@id=\"type_err\"]", ErrorMessage.vehicleMaster_err1);
-		testcase.checkError("//*[@id=\"vehicle_type\"]", "12$%", "//*[@id=\"type_err\"]", ErrorMessage.vehicleMaster_err2);
-	}*/
+		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_add\"]");
+		testcase.checkError("//*[@id=\"pickup_type\"]", "", "//*[@id=\"type_err\"]", ErrorMessage.vehicleMaster_err1);
+		//testcase.checkError("//*[@id=\"pickup_type\"]", "12$%", "//*[@id=\"type_err\"]", ErrorMessage.vehicleMaster_err2);
+		testcase.clickCancel("//*[@id=\"a_cancel\"]");
+	}
 	
 	@Test(priority = 6)
 	public void addData(){	
-		testcase.addDoubleData("//*[@id=\"vehicle_type\"]", "Petrol", "//*[@id=\"description\"]", "Desc", APIResponse.fuelExists);
+		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_add\"]");
+		testcase.addDoubleData("//*[@id=\"pickup_type\"]", "AA", "//*[@id=\"description\"]", "Desc", APIResponse.pickupAdd);
+		//testcase.clickCancel("//*[@id=\"a_cancel\"]");
+	}
+	
+	@Test(priority = 7)
+	public void existData(){	
+		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_add\"]");
+		testcase.addDoubleData("//*[@id=\"pickup_type\"]", "Airport shuffle", "//*[@id=\"description\"]", "Desc", APIResponse.pickupExists);
+		testcase.clickCancel("//*[@id=\"a_cancel\"]");
+	}
+	
+	@Test(priority = 8)
+	public void editData(){	
+		testcase.editDoubleData("//*[@id=\"0\"]//*[@id=\"edit\"]", "//*[@id=\"pickup_type\"]", "AB", "//*[@id=\"description\"]", "Desc", APIResponse.pickupUpdate);
+		//testcase.clickCancel("//*[@id=\"a_cancel\"]");
+	}
+	
+	@Test(priority = 9)
+	public void editExistData(){	
+		testcase.editDoubleData("//*[@id=\"0\"]//*[@id=\"edit\"]", "//*[@id=\"pickup_type\"]", "Airport shuffle", "//*[@id=\"description\"]", "Desc", APIResponse.pickupExists);
+		testcase.clickCancel("//*[@id=\"a_cancel\"]");
+	}
+	
+	@Test(priority = 10)
+	public void deleteData() {
+		testcase.delete("//*[@id=\"0\"]//*[@id=\"delete\"]", APIResponse.pickupDelete);
 	}
 	
 	@AfterTest
@@ -84,5 +113,4 @@ public class PickupServiceMasterTestCases {
 		if(driver != null)
 			driver.quit();
 	}
-	
 }

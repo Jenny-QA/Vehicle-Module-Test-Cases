@@ -67,17 +67,46 @@ public class VehicleManufacturerMasterTestCases {
 	@Test(priority = 4)
 	public void checkAddButton() {
 		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_add\"]");
+		testcase.clickCancel("//*[@id=\"a_cancel\"]");
 	}
 	
-	/*@Test(priority = 5)
+	@Test(priority = 5)
 	public void checkErrorMsg() {
-		testcase.checkError("//*[@id=\"manfacturer_type\"]", null, "//*[@id=\"type_err\"]", ErrorMessage.manufacturer_err1);
-		testcase.checkError("//*[@id=\"manfacturer_type\"]", "12$%", "//*[@id=\"type_err\"]", ErrorMessage.manufacturer_err2);
-	}*/
+		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_add\"]");
+		testcase.checkError("//*[@id=\"manfacturer_type\"]", "", "//*[@id=\"type_err\"]", ErrorMessage.manufacturer_err1);
+		//testcase.checkError("//*[@id=\"manfacturer_type\"]", "12$%", "//*[@id=\"type_err\"]", ErrorMessage.manufacturer_err2);
+		testcase.clickCancel("//*[@id=\"a_cancel\"]");
+	}
 	
 	@Test(priority = 6)
 	public void addData(){	
-		testcase.addDoubleData("//*[@id=\"manfacturer_type\"]", "Toyota", "//*[@id=\"description\"]", "Desc", APIResponse.manufacturerAdd);
+		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_add\"]");
+		testcase.addDoubleData("//*[@id=\"manfacturer_type\"]", "AA", "//*[@id=\"description\"]", "Desc", APIResponse.manufacturerAdd);
+		//testcase.clickCancel("//*[@id=\"a_cancel\"]");
+	}
+	
+	@Test(priority = 7)
+	public void existData(){	
+		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_add\"]");
+		testcase.addDoubleData("//*[@id=\"manfacturer_type\"]", "Kia", "//*[@id=\"description\"]", "Desc", APIResponse.manufacturerExists);
+		testcase.clickCancel("//*[@id=\"a_cancel\"]");
+	}
+	
+	@Test(priority = 8)
+	public void editData(){	
+		testcase.editDoubleData("//*[@id=\"0\"]//*[@id=\"edit\"]", "//*[@id=\"manfacturer_type\"]", "AB", "//*[@id=\"description\"]","desc", APIResponse.manufacturerUpdate);
+		//testcase.clickCancel("//*[@id=\"a_cancel\"]");
+	}
+	
+	@Test(priority = 8)
+	public void editExistData(){	
+		testcase.editDoubleData("//*[@id=\"0\"]//*[@id=\"edit\"]", "//*[@id=\"manfacturer_type\"]", "Kia", "//*[@id=\"description\"]","desc", APIResponse.manufacturerExists);
+		testcase.clickCancel("//*[@id=\"a_cancel\"]");
+	}
+	
+	@Test(priority = 10)
+	public void deleteData() {
+		testcase.delete("//*[@id=\"0\"]//*[@id=\"delete\"]", APIResponse.manufacturerDelete);
 	}
 	
 	@AfterTest
@@ -85,5 +114,4 @@ public class VehicleManufacturerMasterTestCases {
 		driver.close();
 		driver.quit();
 	}
-	
 }

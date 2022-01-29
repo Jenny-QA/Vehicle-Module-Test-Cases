@@ -30,7 +30,7 @@ public class WeightUnitMasterTestCases {
 		options.addArguments("--no-sandbox");
 		options.addArguments("--disable-dev-shm-usage");
 		options.addArguments("--window-size=1920,1080");
-		options.addArguments("--headless");
+		//options.addArguments("--headless");
 		driver = new ChromeDriver(options);
 	}	
 	
@@ -59,25 +59,56 @@ public class WeightUnitMasterTestCases {
 		testcase.verifyTitle();
 	}
 	
-	@Test(priority = 3)
+	/*@Test(priority = 3)
 	public void checkSnackbar(){
 		testcase.checkErrorMessage(APIResponse.DataError);
-	}
+	}*/
 	
 	@Test(priority = 4)
 	public void checkAddButton() {
 		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_add\"]");
+		testcase.clickCancel("//*[@id=\"a_cancel\"]");
 	}
 	
-	/*@Test(priority = 5)
+	@Test(priority = 5)
 	public void checkErrorMsg() {
-		testcase.checkError("//*[@id=\"unit_type\"]", null, "//*[@id=\"type_err\"]", ErrorMessage.weight_err1);
-		testcase.checkError("//*[@id=\"unit_type\"]", "12$%", "//*[@id=\"type_err\"]", ErrorMessage.weight_err2);
-	}*/
+		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_add\"]");
+		testcase.checkError("//*[@id=\"unit_type\"]", "", "//*[@id=\"type_err\"]", ErrorMessage.weight_err1);
+		//testcase.checkError("//*[@id=\"unit_type\"]", "12$%", "//*[@id=\"type_err\"]", ErrorMessage.weight_err2);
+		testcase.clickCancel("//*[@id=\"a_cancel\"]");
+	}
 	
 	@Test(priority = 6)
 	public void addData(){	
-		testcase.addDoubleData("//*[@id=\"unit_type\"]", "Pound", "//*[@id=\"description\"]", "Desc", APIResponse.unitAdd);
+		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_add\"]");
+		testcase.addDoubleData("//*[@id=\"unit_type\"]", "AA", "//*[@id=\"description\"]", "Desc", APIResponse.unitAdd);
+		//testcase.clickCancel("//*[@id=\"a_cancel\"]");
+	}
+	
+	@Test(priority = 7)
+	public void existData(){	
+		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_add\"]");
+		testcase.addDoubleData("//*[@id=\"unit_type\"]", "Per KG", "//*[@id=\"description\"]", "Desc", APIResponse.unitExists);
+		testcase.clickCancel("//*[@id=\"a_cancel\"]");
+	}
+	
+	@Test(priority = 8)
+	public void editData(){	
+		//System.out.println(driver.findElement(By.xpath("//*[@id=\"0\"]/td[3]//*[@id=\"edit\"]")));
+		testcase.editDoubleData("//*[@id=\"0\"]//*[@id=\"edit\"]", "//*[@id=\"unit_type\"]", "AB", "//*[@id=\"description\"]","desc", APIResponse.unitUpdate);
+		//testcase.clickCancel("//*[@id=\"a_cancel\"]");
+	}
+	
+	@Test(priority = 9)
+	public void editExistData(){
+		//System.out.println(driver.findElement(By.xpath("//*[@id=\"0\"]/td[3]//*[@id=\"edit\"]")));
+		testcase.editDoubleData("//*[@id=\"0\"]/td[3]//*[@id=\"edit\"]", "//*[@id=\"unit_type\"]", "Per KG", "//*[@id=\"description\"]","desc", APIResponse.unitExists);
+		testcase.clickCancel("//*[@id=\"a_cancel\"]");
+	}
+	
+	@Test(priority = 10)
+	public void deleteData() {
+		testcase.delete("//*[@id=\"0\"]//*[@id=\"delete\"]", APIResponse.unitDelete);
 	}
 	
 	@AfterTest

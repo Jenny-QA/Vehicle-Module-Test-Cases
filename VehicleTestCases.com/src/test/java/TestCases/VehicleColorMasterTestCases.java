@@ -68,19 +68,61 @@ public class VehicleColorMasterTestCases {
 	@Test(priority = 4)
 	public void checkAddButton() {
 		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_add\"]");
+		testcase.clickCancel("//*[@id=\"a_cancel\"]");
 	}
 	
-	/*@Test(priority = 5)
+	@Test(priority = 5)
 	public void checkErrorMsg() {
-		testcase.checkError("//*[@id=\"color_type\"]", null, "//*[@id=\"type_err\"]", ErrorMessage.color_err1);
-		testcase.checkError("//*[@id=\"color_type\"]", "12$%", "//*[@id=\"type_err\"]", ErrorMessage.color_err2);
-	}*/
+		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_add\"]");
+		testcase.checkError("//*[@id=\"color_type\"]", "", "//*[@id=\"type_err\"]", ErrorMessage.color_err1);
+		//testcase.checkError("//*[@id=\"color_type\"]", "12$%", "//*[@id=\"type_err\"]", ErrorMessage.color_err2);
+		testcase.checkError("//*[@id=\"color_code\"]", "", "//*[@id=\"type_err\"]", ErrorMessage.color_err1);
+		testcase.clickCancel("//*[@id=\"a_cancel\"]");
+	}
 	
 	@Test(priority = 6)
 	public void addData() {
-		driver.findElement(By.xpath("//*[@id=\"color_type\"]")).sendKeys("Cloudy");
-		driver.findElement(By.xpath("//*[@id=\"color_code\"]")).sendKeys("#ffaeff");
+		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_add\"]");
+		driver.findElement(By.xpath("//*[@id=\"color_type\"]")).sendKeys("A");
+		driver.findElement(By.xpath("//*[@id=\"color_code\"]")).sendKeys("#ff3eff");
 		driver.findElement(By.xpath("//*[@id=\"btn_add\"]")).click();
+		testcase.checkErrorMessage(APIResponse.colorAdd);
+		//testcase.clickCancel("//*[@id=\"a_cancel\"]");
+	}
+	
+	@Test(priority = 7)
+	public void existData() {
+		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_add\"]");
+		driver.findElement(By.xpath("//*[@id=\"color_type\"]")).sendKeys("Red");
+		driver.findElement(By.xpath("//*[@id=\"color_code\"]")).sendKeys("#ff3eff");
+		driver.findElement(By.xpath("//*[@id=\"btn_add\"]")).click();
+		testcase.checkErrorMessage(APIResponse.colorNameExists);
+		testcase.clickCancel("//*[@id=\"a_cancel\"]");
+	}
+	
+	@Test(priority = 8)
+	public void editData() {
+		driver.findElement(By.xpath("//*[@id=\"0\"]//*[@id=\"edit\"]")).click();
+		driver.findElement(By.xpath("//*[@id=\"color_type\"]")).sendKeys("AB");
+		driver.findElement(By.xpath("//*[@id=\"color_code\"]")).sendKeys("#ff3eff");
+		driver.findElement(By.xpath("//*[@id=\"btn_add\"]")).click();
+		testcase.checkErrorMessage(APIResponse.colorUpdate);
+		//testcase.clickCancel("//*[@id=\"a_cancel\"]");	
+	}
+	
+	@Test(priority = 9)
+	public void editExistData() {
+		driver.findElement(By.xpath("//*[@id=\"0\"]//*[@id=\"edit\"]")).click();
+		driver.findElement(By.xpath("//*[@id=\"color_type\"]")).sendKeys("AB");
+		driver.findElement(By.xpath("//*[@id=\"color_code\"]")).sendKeys("#0000ff");
+		driver.findElement(By.xpath("//*[@id=\"btn_add\"]")).click();
+		testcase.checkErrorMessage(APIResponse.colorCodeExists);
+		testcase.clickCancel("//*[@id=\"a_cancel\"]");	
+	}
+	
+	@Test(priority = 10)
+	public void deleteData() {
+		testcase.delete("//*[@id=\"0\"]//*[@id=\"delete\"]", APIResponse.colorDelete);
 	}
 	
 	@AfterTest
@@ -88,5 +130,4 @@ public class VehicleColorMasterTestCases {
 		if(driver != null)
 			driver.quit();
 	}
-	
 }

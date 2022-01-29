@@ -7,7 +7,7 @@ public class Util {
 	public static final String BASE_URL = "http://localhost:4200/#/auth/login";
 	
 	
-	public static final int WAIT_TIME = 180;
+	public static final int WAIT_TIME = 10;
 	
 	public static final String title = "Vehicle Module";
 	

@@ -54,12 +54,12 @@ public class VehicleSubTestCases {
 		testcase.goMenu(Util.MASTERS_MENU, "Vehicle Sub Master");
 	}
 	
-	/*@Test(priority = 2)
+	@Test(priority = 2)
 	public void verifyTitle() {
 		testcase.verifyTitle();
 	}
 	
-	@Test(priority = 3)
+	/*@Test(priority = 3)
 	public void checkSnackbar(){
 		testcase.checkErrorMessage(APIResponse.DataError);
 	}*/
@@ -67,18 +67,47 @@ public class VehicleSubTestCases {
 	@Test(priority = 4)
 	public void checkAddButton() {
 		testcase.openForm("//*[@id=\"btn_addnew\"]", "//*[@id=\"btn_add\"]");
+		testcase.clickCancel("//*[@id=\"a_cancel\"]");
 	}
 	
-	/*@Test(priority = 5)
+	@Test(priority = 5)
 	public void checkErrorMsg() {
+		testcase.openForm("//*[@id=\"btn_addnew\"]", "//*[@id=\"btn_add\"]");
 		//testcase.checkError("//*[@id=\"vehicle_type\"]", "", "//*[@id=\"vehicle_type_err\"]", ErrorMessage.subVehicle_err1);
 		testcase.checkError("//*[@id=\"subvehicle_type\"]", "", "//*[@id=\"type_err\"]", ErrorMessage.subVehicle_err2);
-		testcase.checkError("//*[@id=\"subvehicle_type\"]", "12$%", "//*[@id=\"type_err\"]", ErrorMessage.subVehicle_err3);
-	}*/
+		//testcase.checkError("//*[@id=\"subvehicle_type\"]", "12$%", "//*[@id=\"type_err\"]", ErrorMessage.subVehicle_err3);
+		testcase.clickCancel("//*[@id=\"a_cancel\"]");
+	}
 	
 	@Test(priority = 6)
 	public void addData() {
-		testcase.addTripleData("//*[@id=\"vehicle_type\"]", "Car", "//*[@id=\"subvehicle_type\"]", "Sudan", "//*[@id=\"description\"]", "Car Sudan", APIResponse.subvehicleAdd);
+		testcase.openForm("//*[@id=\"btn_addnew\"]", "//*[@id=\"btn_add\"]");
+		testcase.addTripleData("//*[@id=\"vehicle_type\"]", "B", "//*[@id=\"subvehicle_type\"]", "AA", "//*[@id=\"description\"]", "Car Sudan", APIResponse.subvehicleAdd);
+		//testcase.clickCancel("//*[@id=\"a_cancel\"]");
+	}
+	
+	@Test(priority = 7)
+	public void existData() {
+		testcase.openForm("//*[@id=\"btn_addnew\"]", "//*[@id=\"btn_add\"]");
+		testcase.addTripleData("//*[@id=\"vehicle_type\"]", "B", "//*[@id=\"subvehicle_type\"]", "Sudan", "//*[@id=\"description\"]", "Car Sudan", APIResponse.subvehicleExists);
+		testcase.clickCancel("//*[@id=\"a_cancel\"]");
+	}
+	
+	@Test(priority = 8)
+	public void editData(){	
+		testcase.editTripleData("//*[@id=\"0\"]//*[@id=\"edit\"]", "//*[@id=\"vehicle_type\"]", "B", "//*[@id=\"subvehicle_type\"]", "AB", "//*[@id=\"description\"]","desc", APIResponse.subvehicleUpdate);
+		//testcase.clickCancel("//*[@id=\"a_cancel\"]");
+	}
+	
+	@Test(priority = 9)
+	public void editExistData(){	
+		testcase.editTripleData("//*[@id=\"0\"]//*[@id=\"edit\"]", "//*[@id=\"vehicle_type\"]", "B", "//*[@id=\"subvehicle_type\"]", "Sudan", "//*[@id=\"description\"]","desc", APIResponse.subvehicleExists);
+		testcase.clickCancel("//*[@id=\"a_cancel\"]");
+	}
+	
+	@Test(priority = 10)
+	public void deleteData() {
+		testcase.delete("//*[@id=\"0\"]//*[@id=\"delete\"]", APIResponse.subvehicleDelete);
 	}
 	
 	@AfterTest

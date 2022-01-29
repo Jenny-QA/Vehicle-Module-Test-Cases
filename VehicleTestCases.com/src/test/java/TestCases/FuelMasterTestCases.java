@@ -30,10 +30,9 @@ public class FuelMasterTestCases {
 		options.addArguments("--no-sandbox");
 		options.addArguments("--disable-dev-shm-usage");
 		options.addArguments("--window-size=1920,1080");
-		options.addArguments("--headless");
+		//options.addArguments("--headless");
 		driver = new ChromeDriver(options);
 	}
-	
 	
 	@BeforeTest
 	public void openBrowser() {
@@ -67,17 +66,46 @@ public class FuelMasterTestCases {
 	@Test(priority = 4)
 	public void checkAddButton() {
 		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_add\"]");
+		testcase.clickCancel("//*[@id=\"a_cancel\"]");
 	}
 	
-	/*@Test(priority = 5)
+	@Test(priority = 5)
 	public void checkErrorMsg() {
-		testcase.checkError("//*[@id=\"fuel_type\"]", null, "//*[@id=\"type_err\"]", ErrorMessage.fuel_err1);
-		testcase.checkError("//*[@id=\"fuel_type\"]", "12$%", "//*[@id=\"type_err\"]", ErrorMessage.fuel_err2);
-	}*/
+		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_add\"]");
+		testcase.checkError("//*[@id=\"fuel_type\"]", "", "//*[@id=\"type_err\"]", ErrorMessage.fuel_err1);
+		//testcase.checkError("//*[@id=\"fuel_type\"]", "12$%", "//*[@id=\"type_err\"]", ErrorMessage.fuel_err2);
+		testcase.clickCancel("//*[@id=\"a_cancel\"]");
+	}
 	
 	@Test(priority = 6)
 	public void addData(){	
-		testcase.addDoubleData("//*[@id=\"fuel_type\"]", "Petrol", "//*[@id=\"description\"]", "Desc", APIResponse.fuelExists);
+		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_add\"]");
+		testcase.addDoubleData("//*[@id=\"fuel_type\"]", "AA", "//*[@id=\"description\"]", "Desc", APIResponse.fuelAdd);
+		//testcase.clickCancel("//*[@id=\"a_cancel\"]");
+	}
+	
+	@Test(priority = 7)
+	public void existData(){	
+		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_add\"]");
+		testcase.addDoubleData("//*[@id=\"fuel_type\"]", "Disal", "//*[@id=\"description\"]", "Desc", APIResponse.fuelExists);
+		testcase.clickCancel("//*[@id=\"a_cancel\"]");
+	}
+	
+	@Test(priority = 8)
+	public void editData(){	
+		testcase.editDoubleData("//*[@id=\"0\"]//*[@id=\"edit\"]", "//*[@id=\"fuel_type\"]", "AB", "//*[@id=\"description\"]", "Desc", APIResponse.fuelUpdate);
+		//testcase.clickCancel("//*[@id=\"a_cancel\"]");
+	}
+	
+	@Test(priority = 9)
+	public void editExistData(){	
+		testcase.editDoubleData("//*[@id=\"0\"]//*[@id=\"edit\"]", "//*[@id=\"fuel_type\"]", "Disal", "//*[@id=\"description\"]", "Desc", APIResponse.fuelExists);
+		testcase.clickCancel("//*[@id=\"a_cancel\"]");
+	}
+	
+	@Test(priority = 10)
+	public void deleteData() {
+		testcase.delete("//*[@id=\"0\"]//*[@id=\"delete\"]", APIResponse.fuelDelete);
 	}
 	
 	@AfterTest

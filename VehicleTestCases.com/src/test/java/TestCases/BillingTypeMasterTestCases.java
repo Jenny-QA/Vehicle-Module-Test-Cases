@@ -30,7 +30,7 @@ public class BillingTypeMasterTestCases {
 		options.addArguments("--no-sandbox");
 		options.addArguments("--disable-dev-shm-usage");
 		options.addArguments("--window-size=1920,1080");
-		options.addArguments("--headless");
+		//options.addArguments("--headless");
 		driver = new ChromeDriver(options);
 	}	
 	
@@ -66,17 +66,46 @@ public class BillingTypeMasterTestCases {
 	@Test(priority = 4)
 	public void checkAddButton() {
 		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_add\"]");
+		testcase.clickCancel("//*[@id=\"a_cancel\"]");
 	}
 	
-	/*@Test(priority = 5)
+	@Test(priority = 5)
 	public void checkErrorMsg() {
-		testcase.checkError("//*[@id=\"billing_type\"]", null, "//*[@id=\"type_err\"]", ErrorMessage.billing_err1);
-		testcase.checkError("//*[@id=\"billing_type\"]", "12$%", "//*[@id=\"type_err\"]", ErrorMessage.billing_err2);
-	}*/
+	testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_add\"]");
+		testcase.checkError("//*[@id=\"billing_type\"]", "", "//*[@id=\"type_err\"]", ErrorMessage.billing_err1);
+		//testcase.checkError("//*[@id=\"billing_type\"]", "12$%", "//*[@id=\"type_err\"]", ErrorMessage.billing_err2);
+		testcase.clickCancel("//*[@id=\"a_cancel\"]");
+	}
 	
 	@Test(priority = 6)
 	public void addData(){	
-		testcase.addDoubleData("//*[@id=\"billing_type\"]", "Per Day", "//*[@id=\"description\"]", "Desc", APIResponse.billingAdd);
+		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_add\"]");
+		testcase.addDoubleData("//*[@id=\"billing_type\"]", "AA", "//*[@id=\"description\"]", "Desc", APIResponse.billingAdd);
+		//testcase.clickCancel("//*[@id=\"a_cancel\"]");
+	}
+	
+	@Test(priority = 7)
+	public void existData(){	
+		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_add\"]");
+		testcase.addDoubleData("//*[@id=\"billing_type\"]", "Per Day", "//*[@id=\"description\"]", "Desc", APIResponse.billingExists);
+		testcase.clickCancel("//*[@id=\"a_cancel\"]");
+	}
+	
+	@Test(priority = 8)
+	public void editData(){	
+		testcase.editDoubleData("//*[@id=\"0\"]//*[@id=\"edit\"]", "//*[@id=\"billing_type\"]", "AA ", "//*[@id=\"description\"]", "Desc", APIResponse.billingUpdate);
+		//testcase.clickCancel("//*[@id=\"a_cancel\"]");
+	}
+	
+	@Test(priority = 9)
+	public void editExistData(){	
+		testcase.editDoubleData("//*[@id=\"0\"]//*[@id=\"edit\"]", "//*[@id=\"billing_type\"]", "Per Day", "//*[@id=\"description\"]", "Desc", APIResponse.billingExists);
+		testcase.clickCancel("//*[@id=\"a_cancel\"]");
+	}
+	
+	@Test(priority = 10)
+	public void deleteData() {
+		testcase.delete("//*[@id=\"0\"]//*[@id=\"delete\"]", APIResponse.billingDelete);
 	}
 	
 	@AfterTest
@@ -84,5 +113,4 @@ public class BillingTypeMasterTestCases {
 		if(driver != null)
 			driver.quit();
 	}
-	
 }

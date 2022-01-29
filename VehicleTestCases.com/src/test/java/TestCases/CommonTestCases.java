@@ -67,17 +67,25 @@ public class CommonTestCases {
 	}	
 
 	public void goMenu(String mainMenu, String subMenu) {
-		driver.findElement(By.xpath("//*[@id= \"" + mainMenu  +"\"]")).click();
-		driver.findElement(By.xpath("//*[@id= \"" + subMenu  +"\"]")).click();
+		try { Thread.sleep(5000);}catch(Exception e) {}
+		//new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id= \"" + mainMenu  +"\"]")));
+		//driver.findElement(By.xpath("//*[@id= \"" + mainMenu + "\"]")).click();
+		js = (JavascriptExecutor)driver;
+		element = driver.findElement(By.xpath("//*[@id= \"" + subMenu  +"\"]"));//.click();
+		js.executeScript("arguments[0].click();", element);
 	}
 	
 	public void checkErrorMessage(String msg) {
-		element = new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"toast-container\"]/div/div[2]")));
+		element = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"toast-container\"]/div/div[2]")));
 		errorMsg = element.getText();
 		element.click();
 		assertEquals(errorMsg, msg);
 	}
 
+	public void addNewForm(String xpath1) {
+		driver.findElement(By.xpath(xpath1)).click();
+	}
+	
 	public void openForm(String xpath1, String xpath2) {
 		driver.findElement(By.xpath(xpath1)).click();
 		checkAddEnable(xpath2);
@@ -101,7 +109,20 @@ public class CommonTestCases {
 	
 	public void checkError(String element_id, String input, String error_id, String err) {
 		element = driver.findElement(By.xpath(element_id));
-		element.sendKeys(input + Keys.TAB);
+		if(input == "")
+			element.sendKeys(Keys.TAB);
+		else
+			element.sendKeys(input + Keys.TAB);
+		//System.out.println(element);
+		errorMsg = driver.findElement(By.xpath(error_id)).getText();
+		element.clear();
+		assertEquals(err, errorMsg);
+	}
+	
+	public void checkSelectError(String element_id, String input, String error_id, String err) {
+		Select dropdown = new Select(driver.findElement(By.xpath(element_id)));
+		dropdown.selectByIndex(0);
+		System.out.println("working");
 		errorMsg = driver.findElement(By.xpath(error_id)).getText();
 		element.clear();
 		assertEquals(err, errorMsg);
@@ -126,6 +147,49 @@ public class CommonTestCases {
 		driver.findElement(By.xpath(type)).sendKeys(msg);
 		driver.findElement(By.xpath(des)).sendKeys(msg1);
 		clickAdd("//*[@id=\"btn_add\"]");
+		checkErrorMessage(err);
+	}
+	
+	public void editSingleData(String rowId, String type,String msg, String err) {
+		driver.findElement(By.xpath(rowId)).click();
+		driver.findElement(By.xpath(type)).clear();
+		addSingleData(type, msg, err);
+		//driver.findElement(By.xpath(type)).sendKeys(msg);
+		//clickAdd("//*[@id=\"btn_add\"]");
+		//checkErrorMessage(err);
+	}
+	
+	public void editDoubleData(String rowId, String type, String msg, String des, String msg1, String err) {
+		driver.findElement(By.xpath(rowId)).click();
+		driver.findElement(By.xpath(type)).clear();
+		driver.findElement(By.xpath(des)).clear();
+		driver.findElement(By.xpath(type)).sendKeys(msg);
+		driver.findElement(By.xpath(des)).sendKeys(msg1);
+		clickAdd("//*[@id=\"btn_add\"]");
+		checkErrorMessage(err);
+	}
+	
+	public void editTripleData(String rowId, String dropDrown, String value, String type, String msg, String des, String msg1, String err) {
+		driver.findElement(By.xpath(rowId)).click();
+		Select dropdown = new Select(driver.findElement(By.xpath(dropDrown)));
+		dropdown.selectByVisibleText(value);
+		driver.findElement(By.xpath(type)).clear();
+		driver.findElement(By.xpath(des)).clear();		
+		driver.findElement(By.xpath(type)).sendKeys(msg);
+		driver.findElement(By.xpath(des)).sendKeys(msg1);
+		clickAdd("//*[@id=\"btn_add\"]");
+		checkErrorMessage(err);
+	}
+	
+	public void delete(String id, String err) {
+		driver.findElement(By.xpath(id)).click();
+		//driver.findElement(By.xpath("//*[@id=\"mat-dialog-1\"]/app-confirm-common-dialog/mat-dialog-actions/button")).click();
+		try {
+			Thread.sleep(10000);
+		}catch(Exception e) {	
+		}
+		driver.findElement(By.xpath("//*[@id=\"delete_yes\"]")).click();
+		//*[@id="mat-dialog-1"]/app-confirm-common-dialog/mat-dialog-actions/button
 		checkErrorMessage(err);
 	}
 }

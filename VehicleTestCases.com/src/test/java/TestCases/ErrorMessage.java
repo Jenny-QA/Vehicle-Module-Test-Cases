@@ -18,6 +18,7 @@ public class ErrorMessage {
 	
 	public static final String color_err1 = "Vehicle color is required";
 	public static final String color_err2 = "Only Alphabets allowed";
+	public static final String color_err3 = "Color code is required";
 	
 	public static final String fuel_err1 = "Fuel Type Name is required";
 	public static final String fuel_err2 = "Only Alphabets allowed";
@@ -70,8 +71,9 @@ public class ErrorMessage {
 	public static final String setupM_err11 = "No of Doors is not valid";
 	public static final String setupM_err12 = "Maximum Capacity is not valid";
 	public static final String setupM_err13 = "Fuel Consumption(m/g) is not valid";
-	public static final String setupM_err14 = "Weight is not valid";
-	public static final String setupM_err15 = "Unit is required";
-	public static final String setupM_err16 = "CO2 Emission(grams) is not valid";	
+	public static final String setupM_err14 = "Weight is required";
+	public static final String setupM_err15 = "Weight is not valid";
+	public static final String setupM_err16 = "Unit is required";
+	public static final String setupM_err17 = "CO2 Emission(grams) is not valid";	
 	
 }
