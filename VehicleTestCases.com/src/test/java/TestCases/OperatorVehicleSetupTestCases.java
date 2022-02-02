@@ -17,9 +17,7 @@ public class OperatorVehicleSetupTestCases {
 	private WebDriver driver;
 	CommonTestCases testcase;
 	
-	public OperatorVehicleSetupTestCases() {
-		// TODO Auto-generated constructor stub
-	}
+	public OperatorVehicleSetupTestCases() {}
 	
 	public OperatorVehicleSetupTestCases(WebDriver driver) {
 		this.driver = driver;
@@ -32,7 +30,7 @@ public class OperatorVehicleSetupTestCases {
 		options.addArguments("--no-sandbox");
 		options.addArguments("--disable-dev-shm-usage");
 		options.addArguments("--window-size=1920,1080");
-		options.addArguments("--headless");
+		//options.addArguments("--headless");
 		driver = new ChromeDriver(options);
 	}
 	
@@ -62,23 +60,18 @@ public class OperatorVehicleSetupTestCases {
 	
 	@Test(priority = 3)
 	public void checkSnackbar(){
-		testcase.checkErrorMessage(APIResponse.DataError);
+		testcase.checkToast(APIResponse.DataError);
 	}
 	
 	@Test(priority = 4)
 	public void checkAddButton() {
-		testcase.openForm("//*[@id=\"btn_addnew\"]", "//*[@id=\"btn_action\"]");
+		testcase.clickButton("//*[@id=\"btn_addnew\"]"); 
+		testcase.verifyButton("//*[@id=\"btn_action\"]");
 	}
-	
-	/*@Test(priority = 6)
-	public void addData(){	
-		testcase.addDoubleData("//*[@id=\"fuel_type\"]", "Petrol", "//*[@id=\"description\"]", "Desc", APIResponse.fuelExists);
-	}*/
 	
 	@AfterTest
 	public void quit() {
 		if(driver != null)
 			driver.quit();
 	}
-	
 }

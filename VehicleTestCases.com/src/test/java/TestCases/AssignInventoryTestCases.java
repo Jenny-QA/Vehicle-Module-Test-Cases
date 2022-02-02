@@ -32,7 +32,7 @@ public class AssignInventoryTestCases {
 		options.addArguments("--no-sandbox");
 		options.addArguments("--disable-dev-shm-usage");
 		options.addArguments("--window-size=1920,1080");
-		options.addArguments("--headless");
+		//options.addArguments("--headless");
 		driver = new ChromeDriver(options);
 	}
 	
@@ -54,7 +54,6 @@ public class AssignInventoryTestCases {
 	@Test(priority = 1)
 	public void gotoMenu() {
 		testcase.goMenu(Util.OPERATOR_MENU, "Assign Inventory");
-		//testcase.goMenu(By.xpath("//*[contains(text(),'Operators'"), By.xpath("//*[contains(text(),'Assign Inventory'"));
 	}
 	
 	@Test(priority = 2)
@@ -62,14 +61,15 @@ public class AssignInventoryTestCases {
 		testcase.verifyTitle();
 	}
 	
-	@Test(priority = 3)
+	/*@Test(priority = 3)
 	public void checkSnackbar(){
-		testcase.checkErrorMessage(APIResponse.DataError);
-	}
+		testcase.checkToast(APIResponse.DataError);
+	}*/
 	
 	/*@Test(priority = 4)
 	public void checkAddButton() {
-		testcase.openForm("//a[@class,'btn-primary']", "//button[@type='submit']");
+		testcase.clickButton("//*[@id=\"btn_addnew\"]");
+		testcase.verifyButton("//*[@id=\"btn_add\"]");
 	}*/
 	
 	@AfterTest

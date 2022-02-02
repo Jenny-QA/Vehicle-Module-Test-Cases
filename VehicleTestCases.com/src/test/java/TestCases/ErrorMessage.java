@@ -11,7 +11,7 @@ public class ErrorMessage {
 	
 	public static final String subVehicle_err1 = "Please Select Vehicle Type";
 	public static final String subVehicle_err2 = "Vehicle Sub Type Name is required";
-	public static final String subVehicle_err3 = "";
+	public static final String subVehicle_err3 = "Only Alphabets allowed";
 	
 	public static final String manufacturer_err1 = "Manufacturer Name is required";
 	public static final String manufacturer_err2 = "Only Alphabets and digits are allowed. Start with Alphabets";

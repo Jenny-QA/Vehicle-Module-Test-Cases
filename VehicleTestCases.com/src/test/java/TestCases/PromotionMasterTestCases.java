@@ -60,47 +60,46 @@ public class PromotionMasterTestCases {
 	
 	/*@Test(priority = 3)
 	public void checkSnackbar(){
-		testcase.checkErrorMessage(APIResponse.DataError);
+		testcase.checkToast(APIResponse.DataError);
 	}*/
 	
 	@Test(priority = 4)
 	public void checkAddButton() {
-		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_add\"]");
-		testcase.clickCancel("//*[@id=\"a_cancel\"]");
+		testcase.clickButton("//*[@id=\"a_addnew\"]"); 
+		testcase.verifyButton("//*[@id=\"btn_add\"]");
+		testcase.clickButton("//*[@id=\"a_cancel\"]");
 	}
 	
 	@Test(priority = 5)
 	public void checkErrorMsg() {
-		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_add\"]");
+		testcase.clickButton("//*[@id=\"a_addnew\"]");
 		testcase.checkError("//*[@id=\"promotion_type\"]", "", "//*[@id=\"type_err\"]", ErrorMessage.promotionM_err1);
-		//testcase.checkError("//*[@id=\"promotion_type\"]", "12$%", "//*[@id=\"type_err\"]", ErrorMessage.promotionM_err2);
-		testcase.clickCancel("//*[@id=\"a_cancel\"]");
+		testcase.checkError("//*[@id=\"promotion_type\"]", "12$%", "//*[@id=\"type_err\"]", ErrorMessage.promotionM_err2);
+		testcase.clickButton("//*[@id=\"a_cancel\"]");
 	}
 	
 	@Test(priority = 6)
 	public void addData(){	
-		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_add\"]");
+		testcase.clickButton("//*[@id=\"a_addnew\"]");
 		testcase.addDoubleData("//*[@id=\"promotion_type\"]", "AA", "//*[@id=\"description\"]", "Desc", APIResponse.promotionAdd);
-		//testcase.clickCancel("//*[@id=\"a_cancel\"]");
 	}
 	
 	@Test(priority = 7)
 	public void existData(){	
-		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_add\"]");
+		testcase.clickButton("//*[@id=\"a_addnew\"]");
 		testcase.addDoubleData("//*[@id=\"promotion_type\"]", "Promo", "//*[@id=\"description\"]", "Desc", APIResponse.promotionExists);
-		testcase.clickCancel("//*[@id=\"a_cancel\"]");
+		testcase.clickButton("//*[@id=\"a_cancel\"]");
 	}
 	
 	@Test(priority = 8)
 	public void editData(){	
 		testcase.editDoubleData("//*[@id=\"0\"]//*[@id=\"edit\"]", "//*[@id=\"promotion_type\"]", "AB", "//*[@id=\"description\"]", "Desc", APIResponse.promotionUpdate);
-		//testcase.clickCancel("//*[@id=\"a_cancel\"]");
 	}
 	
 	@Test(priority = 9)
 	public void editExistData(){	
 		testcase.editDoubleData("//*[@id=\"0\"]//*[@id=\"edit\"]", "//*[@id=\"promotion_type\"]", "Promo", "//*[@id=\"description\"]", "Desc", APIResponse.promotionExists);
-		testcase.clickCancel("//*[@id=\"a_cancel\"]");
+		testcase.clickButton("//*[@id=\"a_cancel\"]");
 	}
 	
 	@Test(priority = 10)

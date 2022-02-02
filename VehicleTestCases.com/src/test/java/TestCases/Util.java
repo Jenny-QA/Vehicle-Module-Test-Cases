@@ -3,11 +3,10 @@ package TestCases;
 public class Util {
 
 	//public static final String BASE_URL = "https://vehicle-admin.praivit.com/#/auth/login";
-	//public static final String BASE_URL = "https://vehicle-module-angular-admin.netlify.app/#/auth/login";
-	public static final String BASE_URL = "http://localhost:4200/#/auth/login";
+	public static final String BASE_URL = "https://vehicle-module-angular-admin-sonam.netlify.app/#/auth/login";
+	//public static final String BASE_URL = "http://localhost:4200/#/auth/login";
 	
-	
-	public static final int WAIT_TIME = 10;
+	public static final int WAIT_TIME = 30;
 	
 	public static final String title = "Vehicle Module";
 	

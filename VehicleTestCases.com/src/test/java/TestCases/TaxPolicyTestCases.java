@@ -17,9 +17,7 @@ public class TaxPolicyTestCases {
 	private WebDriver driver;
 	CommonTestCases testcase;
 	
-	public TaxPolicyTestCases() {
-		// TODO Auto-generated constructor stub
-	}
+	public TaxPolicyTestCases() {}
 	
 	public TaxPolicyTestCases(WebDriver driver) {
 		this.driver = driver;
@@ -32,11 +30,10 @@ public class TaxPolicyTestCases {
 		options.addArguments("--no-sandbox");
 		options.addArguments("--disable-dev-shm-usage");
 		options.addArguments("--window-size=1920,1080");
-		options.addArguments("--headless");
+		//options.addArguments("--headless");
 		driver = new ChromeDriver(options);
 	}
-	
-	
+		
 	@BeforeTest
 	public void openBrowser() {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Util.WAIT_TIME));
@@ -48,7 +45,7 @@ public class TaxPolicyTestCases {
 	
 	@Test(priority = 0)
 	public void Login() {		
-		testcase.verifyLogin2("Jenny", "Test@111");//, ErrorMessage.loginSuccess);
+		testcase.verifyLogin2("Jenny", "Test@111");
 		//testcase.verifyLogin("Jenny", "Test@111", APIResponse.loginSuccess);
 	}	
 	
@@ -64,13 +61,13 @@ public class TaxPolicyTestCases {
 	
 	@Test(priority = 3)
 	public void checkSnackbar(){
-		testcase.checkErrorMessage(APIResponse.DataError);
+		testcase.checkToast(APIResponse.DataError);
 	}
 	
 	@Test(priority = 4)
 	public void checkAddButton() {
-		//testcase.openForm("//a[contains(@class,'btn-primary')]", "//button[contains(@type,'submit')]");
-		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_action\"]");
+		testcase.clickButton("//*[@id=\"a_addnew\"]");
+		testcase.verifyButton("//*[@id=\"btn_action\"]");
 	}
 	
 	@AfterTest

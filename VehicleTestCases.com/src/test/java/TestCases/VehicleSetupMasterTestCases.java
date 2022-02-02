@@ -62,20 +62,21 @@ public class VehicleSetupMasterTestCases {
 		testcase.verifyTitle();
 	}
 
-	/*@Test(priority = 3)
+	@Test(priority = 3)
 	public void checkSnackbar(){
-		testcase.checkErrorMessage(APIResponse.DataError);
-	}*/
+		testcase.checkToast(APIResponse.DataError);
+	}
 
 	@Test(priority = 4)
 	public void checkAddButton() {
-		testcase.openForm("//*[@id=\"btn_addnew\"]", "//*[@id=\"btn_add\"]");
-		testcase.clickCancel("//*[@id=\"a_cancel\"]");
+		testcase.clickButton("//*[@id=\"btn_addnew\"]");
+		testcase.verifyButton("//*[@id=\"btn_add\"]");
+		testcase.clickButton("//*[@id=\"a_cancel\"]");
 	}
 	
 	@Test(priority = 5)
 	public void checkErrorMsg() {
-		testcase.openForm("//*[@id=\"btn_addnew\"]", "//*[@id=\"btn_add\"]");
+		testcase.clickButton("//*[@id=\"btn_addnew\"]");
 		//testcase.checkSelectError("//*[@id=\"vehicle_type\"]", "", "//*[@id=\"vehicle_err\"]", ErrorMessage.setupM_err1);
 		//testcase.checkError("//*[@id=\"subvehicle_type\"]", "", "//*[@id=\"subvehicle_err\"]", ErrorMessage.setupM_err2);
 		//testcase.checkError("//*[@id=\"manufacturer_type\"]", "", "//*[@id=\"manufacturer_err\"]", ErrorMessage.setupM_err3);
@@ -94,12 +95,12 @@ public class VehicleSetupMasterTestCases {
 		testcase.checkError("//*[@id=\"unit_no\"]", "12.053", "//*[@id=\"unit_no_err\"]", ErrorMessage.setupM_err15);
 		//testcase.checkError("//*[@id=\"unit\"]", "", "//*[@id=\"unit_err\"]", ErrorMessage.setupM_err16);
 		testcase.checkError("//*[@id=\"co2_emission\"]", "12.025", "//*[@id=\"co2_err\"]", ErrorMessage.setupM_err17);		
-		testcase.clickCancel("//*[@id=\"a_cancel\"]");
+		testcase.clickButton("//*[@id=\"a_cancel\"]");
 	}
 
 	@Test(priority = 6)
 	public void addData() {
-		testcase.openForm("//*[@id=\"btn_addnew\"]", "//*[@id=\"btn_add\"]");
+		testcase.clickButton("//*[@id=\"btn_addnew\"]");
 		Select dropSelect = new Select(driver.findElement(By.xpath("//*[@id=\"vehicle_type\"]")));
 		dropSelect.selectByVisibleText("B");
 		dropSelect = new Select(driver.findElement(By.xpath("//*[@id=\"subvehicle_type\"]")));
@@ -123,15 +124,24 @@ public class VehicleSetupMasterTestCases {
 		dropSelect = new Select(driver.findElement(By.xpath("//*[@id=\"unit\"]")));
 		dropSelect.selectByVisibleText("Per Pound");
 		driver.findElement(By.xpath("//*[@id=\"co2_emission\"]")).sendKeys("0.25");
-		driver.findElement(By.xpath("//*[@id=\"0\"]//*[@id=\"fuel_policy\"]")).click();
-		//driver.findElement(By.xpath("//*[@id=\"1\"]//*[@id=\"fuel_policy\"]")).click();
-		testcase.clickAdd("//*[@id=\"btn_add\"]");
-		testcase.checkErrorMessage(APIResponse.setupAdd);
+		
+		//CheckBox
+		driver.findElement(By.xpath("//*[@id=\"0\" and @type=\"checkbox\"]")).click();
+		//driver.findElement(By.xpath("//*[@id=\"1\" and @type=\"checkbox\"]")).click();
+		driver.findElement(By.xpath("//*[@id=\"2\" and @type=\"checkbox\"]")).click();
+		//driver.findElement(By.xpath("//*[@id=\"3\" and @type=\"checkbox\"]")).click();
+		driver.findElement(By.xpath("//*[@id=\"4\" and @type=\"checkbox\"]")).click();
+		
+		//Radio BUtton
+		driver.findElement(By.xpath("//*[@id=\"0\" and @name=\"fuel_policy\"]")).click();
+		//driver.findElement(By.xpath("//*[@id=\"1\" and @name=\"fuel_policy\"]")).click();
+		testcase.clickButton("//*[@id=\"btn_add\"]");
+		testcase.checkToast(APIResponse.setupAdd);
 	}
 
 	@Test(priority = 7)
 	public void existData() {
-		testcase.openForm("//*[@id=\"btn_addnew\"]", "//*[@id=\"btn_add\"]");
+		testcase.clickButton("//*[@id=\"btn_addnew\"]");
 		Select dropSelect = new Select(driver.findElement(By.xpath("//*[@id=\"vehicle_type\"]")));
 		dropSelect.selectByVisibleText("B");
 		dropSelect = new Select(driver.findElement(By.xpath("//*[@id=\"subvehicle_type\"]")));
@@ -155,11 +165,11 @@ public class VehicleSetupMasterTestCases {
 		dropSelect = new Select(driver.findElement(By.xpath("//*[@id=\"unit\"]")));
 		dropSelect.selectByVisibleText("Per Pound");
 		driver.findElement(By.xpath("//*[@id=\"co2_emission\"]")).sendKeys("0.25");
-		driver.findElement(By.xpath("//*[@id=\"0\"]//*[@id=\"fuel_policy\"]")).click();
-		//driver.findElement(By.xpath("//*[@id=\"1\"]//*[@id=\"fuel_policy\"]")).click();
-		testcase.clickAdd("//*[@id=\"btn_add\"]");
-		testcase.checkErrorMessage(APIResponse.setupExist);
-		testcase.clickAdd("//*[@id=\"a_cancel\"]");
+		driver.findElement(By.xpath("//*[@id=\"0\" and @name=\"fuel_policy\"]")).click();
+		//driver.findElement(By.xpath("//*[@id=\"1\" and @name=\"fuel_policy\"]")).click();
+		testcase.clickButton("//*[@id=\"btn_add\"]");
+		testcase.checkToast(APIResponse.setupExist);
+		testcase.clickButton("//*[@id=\"a_cancel\"]");
 	}
 
 	@Test(priority = 8)
@@ -202,10 +212,10 @@ public class VehicleSetupMasterTestCases {
 		dropSelect = new Select(driver.findElement(By.xpath("//*[@id=\"unit\"]")));
 		dropSelect.selectByVisibleText("Per Pound");
 		driver.findElement(By.xpath("//*[@id=\"co2_emission\"]")).sendKeys("0.25");
-		//driver.findElement(By.xpath("//*[@id=\"0\"]//*[@id=\"fuel_policy\"]")).click();
-		driver.findElement(By.xpath("//*[@id=\"1\"]//*[@id=\"fuel_policy\"]")).click();
-		testcase.clickAdd("//*[@id=\"btn_add\"]");
-		testcase.checkErrorMessage(APIResponse.setupUpdate);
+		//driver.findElement(By.xpath("//*[@id=\"0\" and @name=\"fuel_policy\"]")).click();
+		driver.findElement(By.xpath("//*[@id=\"1\" and @name=\"fuel_policy\"]")).click();
+		testcase.clickButton("//*[@id=\"btn_add\"]");
+		testcase.checkToast(APIResponse.setupUpdate);
 	}
 
 	@Test(priority = 9)
@@ -248,11 +258,11 @@ public class VehicleSetupMasterTestCases {
 		dropSelect = new Select(driver.findElement(By.xpath("//*[@id=\"unit\"]")));
 		dropSelect.selectByVisibleText("Per Pound");
 		driver.findElement(By.xpath("//*[@id=\"co2_emission\"]")).sendKeys("0.25");
-		driver.findElement(By.xpath("//*[@id=\"0\"]//*[@id=\"fuel_policy\"]")).click();
-		//driver.findElement(By.xpath("//*[@id=\"1\"]//*[@id=\"fuel_policy\"]")).click();
-		testcase.clickAdd("//*[@id=\"btn_add\"]");
-		testcase.checkErrorMessage(APIResponse.setupExist);
-		testcase.clickAdd("//*[@id=\"a_cancel\"]");
+		driver.findElement(By.xpath("//*[@id=\"0\" and @name=\"fuel_policy\"]")).click();
+		//driver.findElement(By.xpath("//*[@id=\"1\" and @name=\"fuel_policy\"]")).click();
+		testcase.clickButton("//*[@id=\"btn_add\"]");
+		testcase.checkToast(APIResponse.setupExist);
+		testcase.clickButton("//*[@id=\"a_cancel\"]");
 	}
 
 	@Test(priority = 10)
@@ -265,5 +275,4 @@ public class VehicleSetupMasterTestCases {
 		if(driver != null)
 			driver.quit();
 	}
-
 }

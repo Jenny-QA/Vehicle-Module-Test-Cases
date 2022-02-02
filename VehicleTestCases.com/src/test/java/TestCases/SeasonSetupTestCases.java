@@ -17,9 +17,7 @@ public class SeasonSetupTestCases {
 	private WebDriver driver;
 	CommonTestCases testcase;
 	
-	public SeasonSetupTestCases() {
-		// TODO Auto-generated constructor stub
-	}
+	public SeasonSetupTestCases() {}
 	
 	public SeasonSetupTestCases(WebDriver driver) {
 		this.driver = driver;
@@ -32,10 +30,9 @@ public class SeasonSetupTestCases {
 		options.addArguments("--no-sandbox");
 		options.addArguments("--disable-dev-shm-usage");
 		options.addArguments("--window-size=1920,1080");
-		options.addArguments("--headless");
+		//options.addArguments("--headless");
 		driver = new ChromeDriver(options);
 	}
-	
 	
 	@BeforeTest
 	public void openBrowser() {
@@ -54,7 +51,6 @@ public class SeasonSetupTestCases {
 	@Test(priority = 1)
 	public void gotoMenu() {
 		testcase.goMenu(Util.OPERATOR_MENU, "Season Setup");
-		//testcase.goMenu(By.xpath("//*[contains(text(),'Operators'"), By.xpath("//*[contains(text(),'Season Setup'"));
 	}
 	
 	@Test(priority = 2)
@@ -62,15 +58,15 @@ public class SeasonSetupTestCases {
 		testcase.verifyTitle();
 	}
 	
-	@Test(priority = 3)
+	/*@Test(priority = 3)
 	public void checkSnackbar(){
-		testcase.checkErrorMessage(APIResponse.DataError);
-	}
+		testcase.checkToast(APIResponse.DataError);
+	}*/
 	
 	@Test(priority = 4)
 	public void checkAddButton() {
-		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_action\"]");
-		//testcase.openForm("//a[contains(@class,'btn-primary')]", "//button[contains(@type,'submit')]");
+		testcase.clickButton("//*[@id=\"a_addnew\"]");
+		testcase.verifyButton("//*[@id=\"btn_action\"]");
 	}
 	
 	@AfterTest

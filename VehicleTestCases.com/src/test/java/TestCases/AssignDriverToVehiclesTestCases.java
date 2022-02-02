@@ -17,9 +17,7 @@ public class AssignDriverToVehiclesTestCases {
 	private WebDriver driver;
 	CommonTestCases testcase;
 	
-	public AssignDriverToVehiclesTestCases() {
-		// TODO Auto-generated constructor stub
-	}
+	public AssignDriverToVehiclesTestCases() {	}
 	
 	public AssignDriverToVehiclesTestCases(WebDriver driver) {
 		this.driver = driver;
@@ -54,7 +52,6 @@ public class AssignDriverToVehiclesTestCases {
 	@Test(priority = 1)
 	public void gotoMenu() {
 		testcase.goMenu(Util.OPERATOR_MENU, "Assign Drivers to Vehicles");
-		//testcase.goMenu(By.xpath("//*[contains(text(),'Operators'"), By.xpath("//*[contains(text(),'Assign Driver To Vehicles'"));
 	}
 	
 	@Test(priority = 2)
@@ -64,13 +61,13 @@ public class AssignDriverToVehiclesTestCases {
 	
 	@Test(priority = 3)
 	public void checkSnackbar(){
-		testcase.checkErrorMessage(APIResponse.DataError);
+		testcase.checkToast(APIResponse.DataError);
 	}
 	
 	@Test(priority = 4)
 	public void checkAddButton() {
-		testcase.openForm("//*[@id=\"btn_addnew\"]", "//*[@id=\"btn_action\"]");
-		//testcase.openForm("//button[contains(@class,\"btn-primary\")]", "//button[contains(@type,\"submit\")]");
+		testcase.clickButton("//*[@id=\"btn_addnew\"]");
+		testcase.verifyButton("//*[@id=\"btn_add\"]");
 	}
 	
 	@AfterTest

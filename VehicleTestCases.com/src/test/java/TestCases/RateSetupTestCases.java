@@ -17,9 +17,7 @@ public class RateSetupTestCases {
 	private WebDriver driver;
 	CommonTestCases testcase;
 	
-	public RateSetupTestCases() {
-		// TODO Auto-generated constructor stub
-	}
+	public RateSetupTestCases() {}
 	
 	public RateSetupTestCases(WebDriver driver) {
 		this.driver = driver;
@@ -32,10 +30,9 @@ public class RateSetupTestCases {
 		options.addArguments("--no-sandbox");
 		options.addArguments("--disable-dev-shm-usage");
 		options.addArguments("--window-size=1920,1080");
-		options.addArguments("--headless");
+		//options.addArguments("--headless");
 		driver = new ChromeDriver(options);
 	}
-	
 	
 	@BeforeTest
 	public void openBrowser() {
@@ -54,7 +51,6 @@ public class RateSetupTestCases {
 	@Test(priority = 1)
 	public void gotoMenu() {
 		testcase.goMenu(Util.OPERATOR_MENU, "Rate Setup");
-		//testcase.goMenu(By.xpath("//*[contains(text(),'Operators'"), By.xpath("//*[contains(text(),'Rate Setup'"));
 	}
 	
 	@Test(priority = 2)
@@ -62,15 +58,16 @@ public class RateSetupTestCases {
 		testcase.verifyTitle();
 	}
 	
-	@Test(priority = 3)
+	/*@Test(priority = 3)
 	public void checkSnackbar(){
-		testcase.checkErrorMessage(APIResponse.DataError);
-	}
-	
-	/*@Test(priority = 4)
-	public void checkAddButton() {
-		testcase.openForm("//a[@class,'btn-primary']", "//button[@type='submit']");
+		testcase.checkToast(APIResponse.DataError);
 	}*/
+	
+	@Test(priority = 4)
+	public void checkAddButton() {
+		testcase.clickButton("//a[@class,'btn-primary']");
+		testcase.verifyButton("//button[@type='submit']");
+	}
 	
 	@AfterTest
 	public void quit() {

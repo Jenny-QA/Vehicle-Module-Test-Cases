@@ -3,19 +3,23 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="TestCases.OperatorMasterTestCases">
+      <class name="TestCases.VehicleManufacturerMasterTestCases">
         <methods>
-          <include name="addFirstData"/>
-          <include name="addSecondData"/>
-          <include name="editFirstData"/>
-          <include name="editSecondData"/>
-          <include name="deleteData"/>
-          <include name="openBrowser"/>
           <include name="initDriver"/>
-          <include name="editExistData"/>
+          <include name="addData"/>
+          <include name="checkAddButton"/>
+          <include name="Login"/>
           <include name="quit"/>
+          <include name="checkErrorMsg"/>
+          <include name="editData"/>
+          <include name="editExistData"/>
+          <include name="verifyTitle"/>
+          <include name="gotoMenu"/>
+          <include name="openBrowser"/>
+          <include name="existData"/>
+          <include name="deleteData"/>
         </methods>
-      </class> <!-- TestCases.OperatorMasterTestCases -->
+      </class> <!-- TestCases.VehicleManufacturerMasterTestCases -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

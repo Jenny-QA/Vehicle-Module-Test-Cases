@@ -62,62 +62,87 @@ public class VehicleColorMasterTestCases {
 	
 //	@Test(priority = 3)
 //	public void checkSnackbar(){
-//		testcase.checkErrorMessage(APIResponse.DataError);
+//		testcase.checkToast(APIResponse.DataError);
 //	}
-	
+
 	@Test(priority = 4)
 	public void checkAddButton() {
-		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_add\"]");
-		testcase.clickCancel("//*[@id=\"a_cancel\"]");
+		testcase.clickButton("//*[@id=\"a_addnew\"]");
+		testcase.verifyButton("//*[@id=\"btn_add\"]");
+		testcase.clickButton("//*[@id=\"a_cancel\"]");
 	}
 	
 	@Test(priority = 5)
 	public void checkErrorMsg() {
-		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_add\"]");
+		testcase.clickButton("//*[@id=\"a_addnew\"]");
 		testcase.checkError("//*[@id=\"color_type\"]", "", "//*[@id=\"type_err\"]", ErrorMessage.color_err1);
-		//testcase.checkError("//*[@id=\"color_type\"]", "12$%", "//*[@id=\"type_err\"]", ErrorMessage.color_err2);
-		testcase.checkError("//*[@id=\"color_code\"]", "", "//*[@id=\"type_err\"]", ErrorMessage.color_err1);
-		testcase.clickCancel("//*[@id=\"a_cancel\"]");
+		testcase.checkError("//*[@id=\"color_type\"]", "12$%", "//*[@id=\"type_err\"]", ErrorMessage.color_err2);
+		testcase.checkError("//*[@id=\"color_code\"]", "", "//*[@id=\"code_err\"]", ErrorMessage.color_err3);
+		testcase.clickButton("//*[@id=\"a_cancel\"]");
 	}
 	
 	@Test(priority = 6)
 	public void addData() {
-		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_add\"]");
+		testcase.clickButton("//*[@id=\"a_addnew\"]");
 		driver.findElement(By.xpath("//*[@id=\"color_type\"]")).sendKeys("A");
-		driver.findElement(By.xpath("//*[@id=\"color_code\"]")).sendKeys("#ff3eff");
+		
+		driver.findElement(By.xpath("//*[@id=\"color_code\"]")).click();
+		try { Thread.sleep(10000);} catch(Exception e) {}
+		driver.findElement(By.xpath("//app-add-edit-vehicle-color/form/div[1]/div[2]/color-picker/div/div[7]/div[1]/input")).clear();
+		driver.findElement(By.xpath("//app-add-edit-vehicle-color/form/div[1]/div[2]/color-picker/div/div[7]/div[1]/input")).sendKeys("#ff3eff");
+		
 		driver.findElement(By.xpath("//*[@id=\"btn_add\"]")).click();
-		testcase.checkErrorMessage(APIResponse.colorAdd);
-		//testcase.clickCancel("//*[@id=\"a_cancel\"]");
+		driver.findElement(By.xpath("//*[@id=\"delete_yes\"]")).click();
+		testcase.checkToast(APIResponse.colorAdd);
 	}
 	
 	@Test(priority = 7)
 	public void existData() {
-		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_add\"]");
+		testcase.clickButton("//*[@id=\"a_addnew\"]");
 		driver.findElement(By.xpath("//*[@id=\"color_type\"]")).sendKeys("Red");
-		driver.findElement(By.xpath("//*[@id=\"color_code\"]")).sendKeys("#ff3eff");
+		
+		driver.findElement(By.xpath("//*[@id=\"color_code\"]")).click();
+		driver.findElement(By.xpath("//app-add-edit-vehicle-color/form/div[1]/div[2]/color-picker/div/div[7]/div[1]/input")).clear();
+		driver.findElement(By.xpath("//app-add-edit-vehicle-color/form/div[1]/div[2]/color-picker/div/div[7]/div[1]/input")).sendKeys("#ff3eff");
+		
 		driver.findElement(By.xpath("//*[@id=\"btn_add\"]")).click();
-		testcase.checkErrorMessage(APIResponse.colorNameExists);
-		testcase.clickCancel("//*[@id=\"a_cancel\"]");
+		//driver.findElement(By.xpath("//*[@id=\"delete_yes\"]")).click();
+		//testcase.clickButton("//*[@id=\"delete_yes\"]");
+		testcase.checkToast(APIResponse.colorNameExists);
+		testcase.clickButton("//*[@id=\"a_cancel\"]");
 	}
 	
 	@Test(priority = 8)
 	public void editData() {
 		driver.findElement(By.xpath("//*[@id=\"0\"]//*[@id=\"edit\"]")).click();
+		
+		driver.findElement(By.xpath("//*[@id=\"color_type\"]")).clear();
 		driver.findElement(By.xpath("//*[@id=\"color_type\"]")).sendKeys("AB");
-		driver.findElement(By.xpath("//*[@id=\"color_code\"]")).sendKeys("#ff3eff");
+		
+		driver.findElement(By.xpath("//*[@id=\"color_code\"]")).click();
+		driver.findElement(By.xpath("//app-add-edit-vehicle-color/form/div[1]/div[2]/color-picker/div/div[7]/div[1]/input")).clear();
+		driver.findElement(By.xpath("//app-add-edit-vehicle-color/form/div[1]/div[2]/color-picker/div/div[7]/div[1]/input")).sendKeys("#ff3eff");
+		
 		driver.findElement(By.xpath("//*[@id=\"btn_add\"]")).click();
-		testcase.checkErrorMessage(APIResponse.colorUpdate);
-		//testcase.clickCancel("//*[@id=\"a_cancel\"]");	
+		driver.findElement(By.xpath("//*[@id=\"delete_yes\"]")).click();
+		testcase.checkToast(APIResponse.colorUpdate);	
 	}
 	
 	@Test(priority = 9)
 	public void editExistData() {
 		driver.findElement(By.xpath("//*[@id=\"0\"]//*[@id=\"edit\"]")).click();
+		
+		driver.findElement(By.xpath("//*[@id=\"color_type\"]")).clear();
 		driver.findElement(By.xpath("//*[@id=\"color_type\"]")).sendKeys("AB");
-		driver.findElement(By.xpath("//*[@id=\"color_code\"]")).sendKeys("#0000ff");
+		
+		driver.findElement(By.xpath("//*[@id=\"color_code\"]")).click();
+		driver.findElement(By.xpath("//app-add-edit-vehicle-color/form/div[1]/div[2]/color-picker/div/div[7]/div[1]/input")).clear();
+		driver.findElement(By.xpath("//app-add-edit-vehicle-color/form/div[1]/div[2]/color-picker/div/div[7]/div[1]/input")).sendKeys("#ffff00");
+		
 		driver.findElement(By.xpath("//*[@id=\"btn_add\"]")).click();
-		testcase.checkErrorMessage(APIResponse.colorCodeExists);
-		testcase.clickCancel("//*[@id=\"a_cancel\"]");	
+		driver.findElement(By.xpath("//*[@id=\"delete_yes\"]")).click();
+		testcase.checkToast(APIResponse.colorCodeExists);
+		testcase.clickButton("//*[@id=\"a_cancel\"]");	
 	}
 	
 	@Test(priority = 10)

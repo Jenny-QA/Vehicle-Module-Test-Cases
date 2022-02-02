@@ -17,9 +17,7 @@ public class PaymentPolicyTestCase {
 	private WebDriver driver;
 	CommonTestCases testcase;
 	
-	public PaymentPolicyTestCase() {
-		// TODO Auto-generated constructor stub
-	}
+	public PaymentPolicyTestCase() {}
 	
 	public PaymentPolicyTestCase(WebDriver driver) {
 		this.driver = driver;
@@ -35,7 +33,6 @@ public class PaymentPolicyTestCase {
 		options.addArguments("--headless");
 		driver = new ChromeDriver(options);
 	}
-	
 	
 	@BeforeTest
 	public void openBrowser() {
@@ -54,7 +51,6 @@ public class PaymentPolicyTestCase {
 	@Test(priority = 1)
 	public void gotoMenu() {
 		testcase.goMenu(Util.POLICIES_MENU, "Payment Policy");
-		//testcase.goMenu(By.xpath("//*[contains(text(),'Policies'"), By.xpath("//*[contains(text(),'Payment Policy'"));
 	}
 	
 	@Test(priority = 2)
@@ -62,15 +58,15 @@ public class PaymentPolicyTestCase {
 		testcase.verifyTitle();
 	}
 	
-	@Test(priority = 3)
+	/*@Test(priority = 3)
 	public void checkSnackbar(){
-		testcase.checkErrorMessage(APIResponse.DataError);
-	}
+		testcase.checkToast(APIResponse.DataError);
+	}*/
 	
 	@Test(priority = 4)
 	public void checkAddButton() {
-		testcase.openForm("//*[@id=\"btn_addnew\"]", "//*[@id=\"btn_action\"]");
-		//testcase.openForm("//a[contains(@class,'btn-primary')]", "//button[contains(@type,'submit')]");
+		testcase.clickButton("//*[@id=\"btn_addnew\"]"); 
+		testcase.verifyButton("//*[@id=\"btn_action\"]");
 	}
 	
 	@AfterTest

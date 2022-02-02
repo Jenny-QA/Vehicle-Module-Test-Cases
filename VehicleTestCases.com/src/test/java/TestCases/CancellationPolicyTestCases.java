@@ -17,9 +17,7 @@ public class CancellationPolicyTestCases {
 	private WebDriver driver;
 	CommonTestCases testcase;
 	
-	public CancellationPolicyTestCases() {
-		// TODO Auto-generated constructor stub
-	}
+	public CancellationPolicyTestCases() {}
 	
 	public CancellationPolicyTestCases(WebDriver driver) {
 		this.driver = driver;
@@ -32,7 +30,7 @@ public class CancellationPolicyTestCases {
 		options.addArguments("--no-sandbox");
 		options.addArguments("--disable-dev-shm-usage");
 		options.addArguments("--window-size=1920,1080");
-		options.addArguments("--headless");
+		//options.addArguments("--headless");
 		driver = new ChromeDriver(options);
 	}
 	
@@ -62,15 +60,15 @@ public class CancellationPolicyTestCases {
 		testcase.verifyTitle();
 	}
 	
-	@Test(priority = 3)
+	/*@Test(priority = 3)
 	public void checkSnackbar(){
-		testcase.checkErrorMessage(APIResponse.DataError);
-	}
+		testcase.checkToast(APIResponse.DataError);
+	}*/
 	
 	@Test(priority = 4)
 	public void checkAddButton() {
-		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_action\"]");
-		//testcase.openForm("//a[contains(@class,'btn-primary')]", "//button[contains(@type,'submit')]");
+		testcase.clickButton("//*[@id=\"a_addnew\"]");
+		testcase.verifyButton("//*[@id=\"btn_action\"]");
 	}
 	
 	@AfterTest

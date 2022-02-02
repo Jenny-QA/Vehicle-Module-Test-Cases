@@ -64,39 +64,50 @@ public class OperatorMasterTestCases {
 
 	/*@Test(priority = 3)
 	public void checkSnackbar(){
-		testcase.checkErrorMessage(APIResponse.DataError);
+		testcase.checkToast(APIResponse.DataError);
 	}*/
 
-	/*@Test(priority = 4)
+	@Test(priority = 4)
 	public void checkAddButton() {
-		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_add\"]");
-		testcase.clickCancel("//*[@id=\"a_cancel\"]");
-	}*/
-
-	/*@Test(priority = 5)
-	public void checkFirstErrorMsg() {
-		testcase.openForm("//*[@id=\"a_addnew\"]", "//*[@id=\"btn_add\"]");
-
+		testcase.clickButton("//*[@id=\"a_addnew\"]");
 		//pagedown
 		JavascriptExecutor js = (JavascriptExecutor)driver;
+		js.executeScript("window.scrollBy(0, document.body.scrollHeight);");
+
+		testcase.verifyButton("//*[@id=\"btn_add\"]");
+		testcase.clickButton("//*[@id=\"a_cancel\"]");
+	}
+
+	@Test(priority = 5)
+	public void checkFirstErrorMsg() {
+		//Page UP
+		JavascriptExecutor js = (JavascriptExecutor)driver;
+		js.executeScript("window.scrollTo(0, 0);");
+
+		testcase.clickButton("//*[@id=\"a_addnew\"]");
+		
+		//Page Up
 		js.executeScript("window.scrollTo(0, 0);");
 
 		testcase.checkError("//*[@id=\"address_line1\"]", "", "//*[@id=\"add_err\"]", ErrorMessage.operatorM_err3);
 		testcase.checkError("//*[@id=\"transporter_name\"]", "", "//*[@id=\"transporter_err\"]", ErrorMessage.operatorM_err1);
-		
-		//testcase.checkError("//*[@id=\"address_line2\"]", "", "//*[@id=\"add_err\"]", ErrorMessage.operatorM_err3);
+		testcase.checkError("//*[@id=\"transporter_name\"]", "!@12", "//*[@id=\"transporter_err\"]", ErrorMessage.operatorM_err2);
+		testcase.checkError("//*[@id=\"address_line1\"]", "@#", "//*[@id=\"add_err\"]", ErrorMessage.operatorM_err4);
+		testcase.checkError("//*[@id=\"address_line2\"]", "@#", "//*[@id=\"add_err\"]", ErrorMessage.operatorM_err4);
 
 		//pagedown
 		js = (JavascriptExecutor)driver;
 		js.executeScript("window.scrollBy(0, document.body.scrollHeight);");
 
 		testcase.checkError("//*[@id=\"0\"]//*[@id=\"address_line1\"]", "", "//*[@id=\"0\"]//*[@id=\"add_err\"]", ErrorMessage.operatorM_err3);
-		testcase.clickCancel("//*[@id=\"a_cancel\"]");
-	}*/
+		testcase.checkError("//*[@id=\"0\"]//*[@id=\"address_line1\"]", "@#", "//*[@id=\"add_err\"]", ErrorMessage.operatorM_err4);
 
+		testcase.clickButton("//*[@id=\"a_cancel\"]");
+	}
+	
 	@Test(priority = 6)
 	public void addFirstData() {
-		testcase.addNewForm("//*[@id=\"a_addnew\"]");
+		testcase.clickButton("//*[@id=\"a_addnew\"]");
 
 		JavascriptExecutor js = (JavascriptExecutor)driver;
 		js.executeScript("return document.readyState").equals("complete");
@@ -124,7 +135,7 @@ public class OperatorMasterTestCases {
 		//driver.findElement(By.xpath("//*[@id=\"btn_addlocation\"]")).click();
 
 		//pagedown
-		/*js = (JavascriptExecutor)driver;
+		js = (JavascriptExecutor)driver;
 		js.executeScript("window.scrollBy(0, document.body.scrollHeight);");
 
 		driver.findElement(By.xpath("//*[@id=\"1\"]//*[@id=\"address_line1\"]")).sendKeys("A");
@@ -134,11 +145,11 @@ public class OperatorMasterTestCases {
 		dropSelect.selectByVisibleText("California");
 		dropSelect = new Select(driver.findElement(By.xpath("//*[@id=\"1\"]//*[@id=\"city\"]")));
 		dropSelect.selectByVisibleText("California City");
-		*/
-		testcase.clickAdd("//*[@id=\"btn_add\"]");
-		testcase.checkErrorMessage(APIResponse.operatorAdd1);
+		//
+		testcase.clickButton("//*[@id=\"btn_add\"]");
+		testcase.checkToast(APIResponse.operatorAdd1);
 	}
-
+	
 	@Test(priority = 7)
 	public void checkSecondErrorMsg() {
 
@@ -169,7 +180,7 @@ public class OperatorMasterTestCases {
 		//testcase.checkError("//*[@id=\"to_hour\"]", "", "//*[@id=\"to_hour_err\"]", ErrorMessage.operatorM_err14);
 		//testcase.clickCancel("//*[@id=\"a_cancel\"]");
 	}
-
+	
 	@Test(priority = 8)
 	public void addSecondData() {
 
@@ -193,18 +204,18 @@ public class OperatorMasterTestCases {
 		driver.findElement(By.xpath("//*[@id=\"from_hour\"]")).sendKeys("1000AM");
 		driver.findElement(By.xpath("//*[@id=\"to_hour\"]")).sendKeys("1100PM");
 		driver.findElement(By.xpath("//*[@id=\"5\"]")).click();
-		testcase.clickAdd("//*[@id=\"btn_add\"]");
-		testcase.checkErrorMessage(APIResponse.operatorAdd2);
+		testcase.clickButton("//*[@id=\"btn_add\"]");
+		testcase.checkToast(APIResponse.operatorAdd2);
 	}
 	
-	/*@Test(priority = 9)
+	@Test(priority = 9)
 	public void addExistData() {
 		JavascriptExecutor js = (JavascriptExecutor)driver;
 		js.executeScript("window.scrollTo(0, 0);");
-		
-		testcase.addNewForm("//*[@id=\"a_addnew\"]");
 
-		
+		testcase.clickButton("//*[@id=\"a_addnew\"]");
+
+
 		Select dropSelect = new Select(driver.findElement(By.xpath("//*[@id=\"country\"]")));
 		dropSelect.selectByVisibleText("India");
 		dropSelect = new Select(driver.findElement(By.xpath("//*[@id=\"state\"]")));
@@ -225,13 +236,13 @@ public class OperatorMasterTestCases {
 		dropSelect = new Select(driver.findElement(By.xpath("//*[@id=\"0\"]//*[@id=\"city\"]")));
 		dropSelect.selectByVisibleText("Rajkot");
 		driver.findElement(By.xpath("//*[@id=\"0\"]//*[@id=\"address_line1\"]")).sendKeys("A");
-		
+
 		driver.findElement(By.xpath("//*[@id=\"btn_addlocation\"]")).click();
 		driver.findElement(By.xpath("//*[@id=\"1\"]//*[@id=\"btn_deletelocation\"]")).click();
 		driver.findElement(By.xpath("//*[@id=\"delete_yes\"]")).click();
 
-		testcase.clickAdd("//*[@id=\"btn_add\"]");
-		testcase.checkErrorMessage(APIResponse.operatorExist1);
+		testcase.clickButton("//*[@id=\"btn_add\"]");
+		testcase.checkToast(APIResponse.operatorExist1);
 
 		//pagedown
 //		js = (JavascriptExecutor)driver;
@@ -253,12 +264,12 @@ public class OperatorMasterTestCases {
 //		driver.findElement(By.xpath("//*[@id=\"from_hour\"]")).sendKeys("1000AM");
 //		driver.findElement(By.xpath("//*[@id=\"to_hour\"]")).sendKeys("1100PM");
 //		driver.findElement(By.xpath("//*[@id=\"5\"]")).click();
-//		testcase.clickAdd("//*[@id=\"btn_add\"]");
-//		testcase.checkErrorMessage(APIResponse.operatorExist3);
-		
-		testcase.clickCancel("//*[@id=\"a_cancel\"]");
-	}*/
+//		testcase.clickButton("//*[@id=\"btn_add\"]");
+//		testcase.checkToast(APIResponse.operatorExist3);
 
+		testcase.clickButton("//*[@id=\"a_cancel\"]");
+	}
+	
 	@Test(priority = 10)
 	public void editFirstData() {
 		driver.findElement(By.xpath("//*[@id=\"0\"]//*[@id=\"edit\"]")).click();
@@ -297,8 +308,8 @@ public class OperatorMasterTestCases {
 		//		driver.findElement(By.xpath("//*[@id=\"1\"]//*[@id=\"btn_deletelocation\"]")).click();
 		//		driver.findElement(By.xpath("//*[@id=\"delete_yes\"]")).click();
 
-		testcase.clickAdd("//*[@id=\"btn_add\"]");
-		testcase.checkErrorMessage(APIResponse.operatorUpdate1);
+		testcase.clickButton("//*[@id=\"btn_add\"]");
+		testcase.checkToast(APIResponse.operatorUpdate1);
 
 	}
 
@@ -334,8 +345,8 @@ public class OperatorMasterTestCases {
 		driver.findElement(By.xpath("//*[@id=\"1\"]")).click();
 		driver.findElement(By.xpath("//*[@id=\"3\"]")).click();
 
-		testcase.clickAdd("//*[@id=\"btn_add\"]");
-		testcase.checkErrorMessage(APIResponse.operatorUpdate2);
+		testcase.clickButton("//*[@id=\"btn_add\"]");
+		testcase.checkToast(APIResponse.operatorUpdate2);
 
 	}
 
@@ -377,8 +388,8 @@ public class OperatorMasterTestCases {
 		//		driver.findElement(By.xpath("//*[@id=\"1\"]//*[@id=\"btn_deletelocation\"]")).click();
 		//		driver.findElement(By.xpath("//*[@id=\"delete_yes\"]")).click();
 
-		testcase.clickAdd("//*[@id=\"btn_add\"]");
-		testcase.checkErrorMessage(APIResponse.operatorUpdate1);
+		testcase.clickButton("//*[@id=\"btn_add\"]");
+		testcase.checkToast(APIResponse.operatorUpdate1);
 
 		//pagedown
 		js = (JavascriptExecutor)driver;
@@ -410,9 +421,9 @@ public class OperatorMasterTestCases {
 		driver.findElement(By.xpath("//*[@id=\"1\"]")).click();
 		driver.findElement(By.xpath("//*[@id=\"3\"]")).click();
 
-		testcase.clickAdd("//*[@id=\"btn_add\"]");
-		testcase.checkErrorMessage(APIResponse.operatorExist3);
-		testcase.clickCancel("//*[@id=\"a_cancel\"]");
+		testcase.clickButton("//*[@id=\"btn_add\"]");
+		testcase.checkToast(APIResponse.operatorExist3);
+		testcase.clickButton("//*[@id=\"a_cancel\"]");
 	}
 
 	@Test(priority = 13)
